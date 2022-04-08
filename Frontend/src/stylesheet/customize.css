@@ -1,0 +1,136 @@
+
+/**
+ * Color
+ */
+
+.blue-color {
+    color: #1E425F;
+}
+
+.text-light-blue {
+    color: #3F75A0;
+}
+
+.yello-color {
+    color: #EABD00;
+}
+
+.alarm-color {
+    color: #C43A3A;
+}
+
+/**
+ * Size
+ */
+
+.h-40px {
+    height: 40px;
+}
+
+.h-45px {
+    height: 45px;
+}
+
+.h-50px {
+    height: 50px;
+}
+
+.h-60px {
+    height: 60px;
+}
+
+.h-75px {
+    height: 75px;
+}
+
+.h-80px {
+    height: 80px;
+}
+
+/**
+ * Hover
+ */
+
+.hover-item:hover {
+    color: #3F75A0;
+}
+
+a {
+    color: black;
+}
+
+.under-padding-line {
+    text-decoration: underline #EABD00;
+    text-underline-offset: 4px;
+}
+
+.under-padding-line-lg {
+    text-decoration: underline #EABD00 11px;
+    text-underline-offset: -10px;
+    text-decoration-skip-ink: none;
+}
+
+/**
+ * Background
+ */
+.bg-home-theme {
+    background: linear-gradient(135deg,
+    white 20%, yellow 0, yellow 22%, white 0, white 42%, yellow 0, yellow 44%, white 0, white 64%, yellow 0, yellow 66%, white 0);
+    -webkit-background-size: 10px 10px;
+    background-size: 10px 10px;
+}
+
+.bg-profile-yellow {
+    background: repeating-linear-gradient(-45deg, #F2C305, #F2C305 5px, #F4D65B 5px, #F4D65B 7px);
+}
+
+/**
+ * Button
+ */
+
+.btn-primary-round {
+    border-radius: 38px;
+    border: 1px solid #1E425F;
+}
+
+.btn-secondary-round {
+    border-radius: 38px;
+    border: 1px solid #EABD00;
+}
+
+.btn-primary-semi-round {
+    border-radius: 10px;
+    border: 1px solid #1E425F;
+}
+
+.btn-secondary-semi-round {
+    border-radius: 10px;
+    border: 3px solid #EABD00;
+}
+
+
+.slick-dots li button:before {
+    font-size: 20px;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.slick-dots li button:before {
+    content: '○';
+}
+
+.slick-dots li.slick-active button:before {
+    content: '●';
+}
+
+.center-cropped-wrapper {
+    overflow: hidden;
+}
+
+.center-cropped {
+}
+
+.co-menu-item:hover {
+    background: #3F75A0;
+    color: #F4D65B;
+}
