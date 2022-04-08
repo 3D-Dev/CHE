@@ -1,0 +1,31 @@
+{
+  "alert.fieldRequired": "Trường này là bắt buộc.",
+  "form.item.name": "Tên Ví dụ",
+  "form.item.introduce.name": "người giới thiệu",
+  "form.item.introduce.date": "Ngày đăng kí",
+  "form.item.coin.address": "Địa chỉ gửi tiền",
+  "form.item.email": "Địa chỉ e-mail",
+  "form.item.email.confirm": "Địa chỉ e-mail (nửa chiều rộng chữ và số) (bắt buộc)",
+  "form.item.name.confirm": "SATO KEIKO (bắt buộc) (chữ La tinh Hepburn, chữ in hoa, nửa chiều rộng)",
+
+  "str.item.policy.confirm": "Tôi đồng ý với các điều khoản sử dụng.",
+  "str.item.policy": "→Điều khoản sử dụng",
+
+  "str.item.news.first": "Khoảng 5% đốt (lò đốt) và khai thác",
+  "str.item.news.second": "Vì số lượng người mới tăng lên, chúng tôi xin tổng hợp lại các thông tin cơ bản về Rabbit Coin HBY&#x1f609;",
+  "str.item.news.third": "Để bảo vệ cộng đồng Rabbit Coin",
+  "str.item.asakusa": "Asakusa",
+  "str.item.explain.rabbit.club": "Giải thích Câu lạc bộ Thỏ trong 10 phút!",
+  "str.item.campaign.offer": "(Nhấp vào đây để biết các lợi ích và thông tin chiến dịch)",
+  "str.item.faq": "Câu hỏi thường gặp",
+  "str.item.explain.rabbit": "Giải thích ứng dụng thành viên thỏ!",
+  "str.item.mining.che": "Hãy khai thác tiền CHE!",
+  "str.item.new.register": "– đăng ký –",
+  "str.item.register.step1": "1) Vui lòng nhập tên của người được đăng ký theo kiểu ký hiệu hộ chiếu.",
+  "str.item.register.step2": "2) Nhập địa chỉ email bạn muốn đăng ký.",
+  "str.item.register.step3": "3) Hoàn tất cài đặt Token Pocket, sao chép và dán địa chỉ gửi tiền của bạn và gửi.",
+  "str.item.link.tokenpoket": "→ Giải thích về túi mã thông báo trong 10 phút!",
+  "str.item.register.step4": "4) Nhập người giới thiệu của bạn.",
+
+  "btn.send": "Gửi"
+}
