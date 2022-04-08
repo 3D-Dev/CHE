@@ -1,0 +1,31 @@
+{
+  "alert.fieldRequired": "Bagian ini diperlukan.",
+  "form.item.name": "Nama",
+  "form.item.introduce.name": "Contoh Introducer",
+  "form.item.introduce.date": "Tanggal registrasi",
+  "form.item.coin.address": "Alamat setoran",
+  "form.item.email": "Alamat email",
+  "form.item.email.confirm": "Alamat email (alfanumerik setengah lebar) (wajib)",
+  "form.item.name.confirm": "SATO KEIKO (wajib) (Romanisasi Hepburn, huruf kapital, setengah lebar)",
+
+  "str.item.policy.confirm": "Saya setuju dengan syarat penggunaan.",
+  "str.item.policy": "→Syarat penggunaan",
+
+  "str.item.news.first": "Sekitar 5% pembakaran (insinerator) dan penambangan",
+  "str.item.news.second": "Karena jumlah orang baru telah meningkat, kami sekali lagi telah merangkum informasi dasar dari Rabbit Coin HBY&#x1f609;",
+  "str.item.news.third": "Untuk melindungi komunitas Rabbit Coin",
+  "str.item.asakusa": "Asakusa",
+  "str.item.explain.rabbit.club": "Jelaskan Klub Kelinci dalam 10 menit!",
+  "str.item.campaign.offer": "(Klik di sini untuk manfaat dan informasi kampanye)",
+  "str.item.faq": "Pertanyaan yang Sering Diajukan",
+  "str.item.explain.rabbit": "Jelaskan aplikasi anggota kelinci!",
+  "str.item.mining.che": "Ayo menambang koin CHE!",
+  "str.item.new.register": "– Daftar –",
+  "str.item.register.step1": "1) Harap masukkan nama orang yang akan didaftarkan dengan gaya notasi paspor.",
+  "str.item.register.step2": "2) Masukkan alamat email yang ingin Anda daftarkan.",
+  "str.item.register.step3": "3) Selesaikan instalasi Token Pocket, salin dan tempel alamat deposit Anda dan kirim.",
+  "str.item.link.tokenpoket": "→ Jelaskan kantong token dalam 10 menit!",
+  "str.item.register.step4": "4) Masukkan pengantar Anda.",
+
+  "btn.send": "Mengirim"
+}
