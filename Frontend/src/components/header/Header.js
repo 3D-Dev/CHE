@@ -24,24 +24,35 @@ export const Header = (props) => {
                   </button>
               </div>
               <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden" id="nav-content">
-                  <div className="text-sm lg:flex-grow">
+                  <div className="text-sm md:flex lg:flex">
                       <a href="#responsive-header"
-                         className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                          Docs
+                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
+                          <img src={require("../../assets/img/en.png")} height="24" width="24" alt="EN" />
+                          <span className="pl-2">EN</span>
+                      </a>
+
+                      <a href="#responsive-header"
+                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
+                          <img src={require("../../assets/img/id.png")} height="24" width="24" alt="ID" />
+                          <span className="pl-2">ID</span>
                       </a>
                       <a href="#responsive-header"
-                         className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
-                          Examples
+                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
+                          <img src={require("../../assets/img/ja.png")} height="24" width="24" alt="JA" />
+                          <span className="pl-2">JA</span>
                       </a>
+
                       <a href="#responsive-header"
-                         className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
-                          Blog
+                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
+                          <img src={require("../../assets/img/vi.png")} height="24" width="24" alt="VI" />
+                          <span className="pl-2">VI</span>
                       </a>
+
                   </div>
-                  <div>
-                      <a href="#"
-                         className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
-                  </div>
+                  {/*<div>*/}
+                  {/*    <a href="#"*/}
+                  {/*       className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>*/}
+                  {/*</div>*/}
               </div>
           </nav>
   )
