@@ -63899,4 +63899,7 @@ video {
         -webkit-transition-duration: 1000ms;
         transition-duration: 1000ms;
     }
+    div.outer {display:table;}
+    div.middle {display:table-row;}
+    div.inner {display:table-cell;}
 }
