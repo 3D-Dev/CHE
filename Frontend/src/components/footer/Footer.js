@@ -18,18 +18,22 @@ export const Footer = () => {
       <div>
         <img alt="" src={require('../../assets/images/footer_seperate.png')}/>
       </div>
+
       <div className="lg:px-32 lg: pt-8">
-        <a target="_blank" href="https://rabbitmember.com/" className="mx-8">
-          <LinkSpan>運営会社</LinkSpan>
-        </a>
-        <a target="_blank" href="https://rabbitmember.com/terms-of-service/" className="mx-8">
-          <LinkSpan>利用規約</LinkSpan>
-        </a>
-        <a href="https://rabbitmember.com/faq/" className="mx-8">
-              <LinkSpan>よくある質問</LinkSpan>
-        </a>
+          <div className="text-center">
+              <a target="_blank" href="https://rabbitmember.com/" className="lg:mx-10 p-2" >
+                  <LinkSpan>運営会社</LinkSpan>
+              </a>
+              <a target="_blank" href="https://rabbitmember.com/terms-of-service/" className="lg:mx-10 p-2">
+                  <LinkSpan>利用規約</LinkSpan>
+              </a>
+              <a target="_blank" href="https://rabbitmember.com/faq/" className="lg:mx-10 p-2">
+                  <LinkSpan>よくある質問</LinkSpan>
+              </a>
+          </div>
       </div>
-      <div className="text-right px-32 pt-2 pb-8">
+
+      <div className="text-center pt-2 pb-8">
         <CopyrightSpan>© 2022 Rabbit member.</CopyrightSpan>
       </div>
     </div>
