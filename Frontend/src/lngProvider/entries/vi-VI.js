@@ -1,11 +1,11 @@
-import antdEn from 'antd/lib/locale-provider/en_US'
-import enMessages from '../locales/en_US.json'
+import antdEn from 'antd/lib/locale-provider/vi_VN'
+import enMessages from '../locales/vi/translation.json'
 
 const EnLang = {
   messages: {
     ...enMessages
   },
   antd: antdEn,
-  locale: 'en-US'
+  locale: 'vi-VI'
 }
 export default EnLang

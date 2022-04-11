@@ -14,9 +14,39 @@ import './stylesheet/cocoon-master-style.css'
 import './stylesheet/cocoon-master-webfonts-icomoon-style.css'
 import './stylesheet/cocoon-master-skins-skin-colors-black-style.css'
 import {AppContainer} from "./components/container/AppContainer";
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import cookies from 'js-cookie'
+import classNames from 'classnames'
 
+const languages = [
+  {
+    code: 'en',
+    name: 'English',
+    country_code: 'gb',
+  },
+  {
+    code: 'ja',
+    name: 'Japanese',
+    country_code: 'ja',
+  },
+  {
+    code: 'id',
+    name: 'Indonesian',
+    country_code: 'id',
+  },
+  {
+    code: 'vi',
+    name: 'Vietnamese',
+    country_code: 'vi',
+  },
+]
 function App() {
-  let currentAppLocale = AppLocale['ja']
+  const currentLanguageCode = cookies.get('i18next') || 'en'
+  const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+  console.log('current language2', currentLanguage)
+  const { t } = useTranslation()
+  let currentAppLocale = AppLocale[currentLanguage.code]
   return (
     currentAppLocale &&
     <ConfigProvider locale={currentAppLocale.antd}>

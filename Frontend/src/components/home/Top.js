@@ -1,12 +1,43 @@
-import React, {Fragment, useRef, useState} from 'react';
+import React, {Fragment, useRef, useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
 import {Card, Checkbox, Col, Form, Input, Row} from "antd";
 import {FormInput} from "../form/FormInput";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
 import {FormLabel} from "../form/FormLabel";
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import cookies from 'js-cookie'
+import classNames from 'classnames'
 
+const languages = [
+    {
+        code: 'en',
+        name: 'English',
+        country_code: 'gb',
+    },
+    {
+        code: 'ja',
+        name: 'Japanese',
+        country_code: 'ja',
+    },
+    {
+        code: 'id',
+        name: 'Indonesian',
+        country_code: 'id',
+    },
+    {
+        code: 'vi',
+        name: 'Vietnamese',
+        country_code: 'vi',
+    },
+]
 export const Top = (props) => {
+    const currentLanguageCode = cookies.get('i18next') || 'en'
+    const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+    console.log('current language1', currentLanguage)
+    const { t } = useTranslation()
+
     let history = useHistory();
     const {loading, profile} = useAuthState();
     const formRef = useRef();
@@ -33,6 +64,12 @@ export const Top = (props) => {
     const onChange = (date, dateString) => {
         console.log(date, dateString);
     }
+
+    useEffect(() => {
+        console.log('Setting page stuff')
+        document.body.dir = currentLanguage.dir || 'ltr'
+        document.title = props.intl.formatMessage({id: 'app_title'})
+    }, [currentLanguage, t])
 
   return (
     <Fragment>
