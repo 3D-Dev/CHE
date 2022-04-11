@@ -30,9 +30,11 @@ class Login extends Component {
     login(formData)
       .then(response => {
         response.data.email = data.email
+        console.log('login', response.data)
         this.props.setSettings(response.data)
         if (response.status === 200) {
-          this.props.history.push('/admin/select')
+          this.props.setRole('SELECTED_USER')
+          this.props.history.push('/admin/')
         }
       })
   }
@@ -72,7 +74,7 @@ class Login extends Component {
             <br/>
             <br/>
             <div className="">
-              <h2>ログイン</h2>
+              <h2 style={{fontWeight: 'bold'}}>ログイン</h2>
             </div>
             <br/>
             <div className="gx-login-content" style={{width: '575px', height:'100%'}}>

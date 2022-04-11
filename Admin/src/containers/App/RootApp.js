@@ -90,10 +90,10 @@ class RootApp extends Component {
     return (
       <Switch>
         <Route exact path="/admin/login" component={Login}/>
-        <Route exact path="/admin/select" component={Select}/>
+        <Route exact path="/admin" component={MainApp}/>
+        {/*<Route exact path="/admin/select" component={Select}/>*/}
         <Route exact path="/404" component={Error404}/>
         <Route exact path="/500" component={Error500}/>
-        <Route exact path="/admin" component={MainApp}/>
         <Route path={match.url} component={MainApp}/>
       </Switch>
     )

@@ -179,15 +179,6 @@ class Agencies extends React.Component {
     this.fetchCSVData()
   }
 
-  onClickGoStoreLogin = (id) => {
-    loginCustomerFromAgency(id)
-      .then(response => {
-        if (response.status === 200) {
-          this.props.setRole(response.data.kind)
-          this.props.history.push('/admin/customers')
-        }
-      })
-  }
 
   onClickRegisterAgency = () => {
     this.props.history.push({

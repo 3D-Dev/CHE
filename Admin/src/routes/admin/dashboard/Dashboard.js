@@ -4,7 +4,7 @@ import { MenuCard } from '../../../components/'
 import _ from 'lodash'
 import PageConstant from '../../../constants/PageConstant'
 import { Button, Card, Col, Modal, Row, Select } from 'antd'
-import { getEmployees } from '../../../api/axiosAPIs'
+// import { getEmployees } from '../../../api/axiosAPIs'
 import { setEmployId, setTitleText } from '../../../appRedux/actions/Custom'
 import { connect } from 'react-redux'
 import { initSettings } from '../../../appRedux/actions/User'
@@ -57,20 +57,6 @@ class Dashboard extends React.Component {
 
   fetchMemberList() {
     const {employId} = this.props
-
-    getEmployees()
-      .then(response => {
-        if (!_.isEmpty(response.data)) {
-          const memberList = response.data
-          const data = memberList.find(item => item.id === employId)
-
-          this.setState({
-            members: memberList,
-            defaultValue: ((data) ? (data.emp_name) : ''),
-            selectedMember: ((data) ? (data.id) : -1)
-          })
-        }
-      })
   }
 
   changeMember = (value) => {

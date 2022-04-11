@@ -36,16 +36,6 @@ class SidebarContent extends Component {
                   </Link>
                 </Menu.Item>
                 }
-                {role === 'agency' &&
-                <Menu.Item key="admin/customers">
-                  <Link to="/admin/customers">
-                    <FormattedMessage id="menu.title.customers"/>
-                  </Link>
-                </Menu.Item>
-                }
-                {/*<Menu.Item key="logout">*/}
-                {/*  <LogoutMenu/>*/}
-                {/*</Menu.Item>*/}
               </Menu>
             </CustomScrollbars>
           </div>
