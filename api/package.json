@@ -18,7 +18,7 @@
     "multipart",
     "mysql"
   ],
-  "author": "bezkoder",
+  "author": "PROCW",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",

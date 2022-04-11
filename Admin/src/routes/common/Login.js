@@ -22,9 +22,12 @@ class Login extends Component {
   doLogin = (data) => {
     this.props.initSettings()
     this.props.initCustom()
+
+    console.log("!!!!!kuma ", data)
     let formData = new FormData()
     formData.append('email', data.email)
     formData.append('password', data.password)
+    console.log("!!!!!kuma ", formData)
 
     login(formData)
       .then(response => {

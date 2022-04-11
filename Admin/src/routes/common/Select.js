@@ -17,15 +17,15 @@ class Select extends Component {
     }
   }
 
-  doSelect = () => {
-    const {profile} = this.props
-    select(profile.permission_id)
-      .then(response => {
-        if (response.status === 200) {
-          this.props.history.push('/admin/agencies')
-        }
-      })
-  }
+  // doSelect = () => {
+  //   const {profile} = this.props
+  //   select(profile.permission_id)
+  //     .then(response => {
+  //       if (response.status === 200) {
+  //         this.props.history.push('/admin/agencies')
+  //       }
+  //     })
+  // }
 
   componentDidMount() {
     this.props.setRole('SELECTED_USER')
@@ -40,7 +40,9 @@ class Select extends Component {
   }
 
   onFinish = () => {
-    this.doSelect()
+    console.log("onfinish", this.props.name)
+    this.props.history.push('/admin/agencies')
+    //this.doSelect()
   }
 
   onFinishFailed = (errorInfo) => {
@@ -74,7 +76,7 @@ class Select extends Component {
                   initialValues={{
                     remember: true
                   }}
-                  onFinish={this.doSelect}
+                  onFinish={this.onFinish}
                 >
                   <div>
                     <label>{profile.email}</label>
@@ -88,11 +90,10 @@ class Select extends Component {
                     <label>アカウントを選択してください。</label>
                   </div>
                   <br/>
-
                   <Form.Item>
                     <Button type="primary" shape={'round'} htmlType="submit"
-                            className="login-form-button gx-btn-rounded-blue">
-                      {profile.name}
+                            className="">
+                      Select
                     </Button>
                   </Form.Item>
                 </Form>

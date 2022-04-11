@@ -76,8 +76,8 @@ class Agencies extends React.Component {
               rows: response.data.data
             })
           } else {
-            this.props.initSettings()
-            this.props.history.push('/admin/login')
+            //this.props.initSettings()
+            //this.props.history.push('/admin/login')
           }
         }
       })
