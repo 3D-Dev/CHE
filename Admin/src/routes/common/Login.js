@@ -23,11 +23,9 @@ class Login extends Component {
     this.props.initSettings()
     this.props.initCustom()
 
-    console.log("!!!!!kuma ", data)
     let formData = new FormData()
     formData.append('email', data.email)
     formData.append('password', data.password)
-    console.log("!!!!!kuma ", formData)
 
     login(formData)
       .then(response => {
@@ -65,19 +63,19 @@ class Login extends Component {
       <div className="gx-login-layout">
         <div className="gx-login-container">
           <div className="gx-text-center">
-            <div className="">
-              <Link to="/">
-                <img src={require('assets/images/logo.png')} alt={''} title={''}/>
-              </Link>
-            </div>
+            {/*<div className="">*/}
+            {/*  <Link to="/">*/}
+            {/*    <img src={require('assets/images/logo-rabtto.png')} alt={''} title={''}/>*/}
+            {/*  </Link>*/}
+            {/*</div>*/}
             <br/>
             <br/>
             <br/>
             <div className="">
-              <h2>ログイン認証</h2>
+              <h2>ログイン</h2>
             </div>
             <br/>
-            <div className="gx-login-content">
+            <div className="gx-login-content" style={{width: '575px', height:'100%'}}>
               <Spin spinning={loader} size="large">
                 <Form
                   name="normal_login"
@@ -136,11 +134,6 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        {/*<Footer>*/}
-        {/*  <div className="gx-layout-footer-content gx-align-items-center">*/}
-        {/*    {COPYRIGHT_COMPANY}*/}
-        {/*  </div>*/}
-        {/*</Footer>*/}
       </div>
 
     )
