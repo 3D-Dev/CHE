@@ -1,4 +1,5 @@
 {
+  "app_title": "CHE",
   "INVALID_PARAMS": "要求データが無効です。",
   "NOT_SUPPORT": "サポートされていません。",
   "alert.title": "アラート",
