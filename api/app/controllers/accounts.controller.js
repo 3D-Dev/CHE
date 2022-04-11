@@ -6,7 +6,7 @@ const Account = db.accounts
 
 exports.findAll = async (req, res) => {
   try {
-    // const userId = await isAuth(req, res)
+    const userId = await isAuth(req, res)
 
     const count = await Account.count()
     const limit = parseInt(req.query.limit)
