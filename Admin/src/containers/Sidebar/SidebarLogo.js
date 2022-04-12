@@ -16,9 +16,7 @@ class SidebarLogo extends Component {
     return (
       <div className="gx-layout-sider-header">
         <Link to="/" className="gx-site-logo">
-          {themeType === THEME_TYPE_LITE ?
-            <img alt="" src={require('assets/images/logo-white.png')}/> :
-            <img alt="" src={require('assets/images/logo.png')}/>}
+          <span style={{fontSize: '18px', fontWeight: "bold"}}>HBY & CHE</span>
         </Link>
       </div>
     )

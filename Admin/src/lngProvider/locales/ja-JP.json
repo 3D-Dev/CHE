@@ -129,6 +129,11 @@
   "menu.title.menuSelect": "メニュー選択",
   "menu.title.maintenance": "メンテナンス",
   "menu.title.employees": "スタッフ",
+
+  "menu.title.accountInfo": "ユーザー一覧",
+  "menu.title.transferInfo": "配布履歴一覧",
+
+
   "menu.card.healthCare": "健康管理",
   "menu.card.ccp": "CCP",
   "menu.card.hygiene": "一般衛生",
