@@ -52,7 +52,6 @@ exports.create = async (req, res) => {
       account: req.body.account,
       refer_id: refer_id,
       refer_email: req.body.refer_email,
-      account: req.body.account,
     }
 
     result = await Account.findOne({where: {email: account.email}})

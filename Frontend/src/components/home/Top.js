@@ -1,12 +1,44 @@
-import React, {Fragment, useRef, useState} from 'react';
+import React, {Fragment, useRef, useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
 import {Card, Checkbox, Col, Form, Input, Row} from "antd";
 import {FormInput} from "../form/FormInput";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
 import {FormLabel} from "../form/FormLabel";
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
+import cookies from 'js-cookie'
+import classNames from 'classnames'
+import {createAccout} from "../../api/axiosAPIs";
 
+const languages = [
+    {
+        code: 'en',
+        name: 'English',
+        country_code: 'gb',
+    },
+    {
+        code: 'ja',
+        name: 'Japanese',
+        country_code: 'ja',
+    },
+    {
+        code: 'id',
+        name: 'Indonesian',
+        country_code: 'id',
+    },
+    {
+        code: 'vi',
+        name: 'Vietnamese',
+        country_code: 'vi',
+    },
+]
 export const Top = (props) => {
+    const currentLanguageCode = cookies.get('i18next') || 'en'
+    const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+    console.log('current language1', currentLanguage)
+    const { t } = useTranslation()
+
     let history = useHistory();
     const {loading, profile} = useAuthState();
     const formRef = useRef();
@@ -26,13 +58,35 @@ export const Top = (props) => {
         setIsConfirm(e)
     }
 
-    const onFinish = (data) => {
+    const onFinish = async(data) => {
+        let formData = new FormData()
+        formData.append('name', data.name)
+        formData.append('email', data.email)
+        formData.append('account', data.account)
+        formData.append('refer_email', data.referEmail)
+        formData.append('createdAt', data.createdAt)
+        let response = {}
+        try {
+            response = await createAccout(formData)
+            if (response.status === 200) {
+                console.log("create_successfully!")
+
+            }
+        } catch (error) {
+            console.log(error)
+        }
 
     }
 
     const onChange = (date, dateString) => {
         console.log(date, dateString);
     }
+
+    useEffect(() => {
+        console.log('Setting page stuff')
+        document.body.dir = currentLanguage.dir || 'ltr'
+        document.title = props.intl.formatMessage({id: 'app_title'})
+    }, [currentLanguage, t])
 
   return (
     <Fragment>
@@ -228,7 +282,7 @@ export const Top = (props) => {
                       {/*氏名*/}
                       <FormInput
                           label={props.intl.formatMessage({id: 'form.item.name'})}
-                          name="inquiry_name"
+                          name={"name"}
                           placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}
                           intl={props.intl}
                           required={true}
@@ -242,7 +296,7 @@ export const Top = (props) => {
                       {/*メールアドレス*/}
                       <FormInput
                           label={props.intl.formatMessage({id: 'form.item.email'})}
-                          name="email"
+                          name={"email"}
                           placeholder={props.intl.formatMessage({id: 'form.item.email.confirm'})}
                           intl={props.intl}
                           required={true}
@@ -255,7 +309,7 @@ export const Top = (props) => {
                       </Col>
                       <FormInput
                           label={props.intl.formatMessage({id: 'form.item.coin.address'})}
-                          name="coin_address"
+                          name={"account"}
                           placeholder=""
                           intl={props.intl}
                           required={true}
@@ -276,7 +330,7 @@ export const Top = (props) => {
                       {/*氏名*/}
                       <FormInput
                           label={props.intl.formatMessage({id: 'form.item.introduce.name'})}
-                          name="inquiry_name"
+                          name={"refer_email"}
                           placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}
                           intl={props.intl}
                           required={false}
@@ -288,7 +342,7 @@ export const Top = (props) => {
                               <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.date'})} required={props.required}/>
                               <Col lg={12} className={"p-0 lg:ml-24"} >
                                   <Form.Item
-                                      name={props.name}
+                                      name={"createdAt"}
                                       rules={[{required: props.required, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
                                   >
                                       <Input type={"date"} size={"large"} placeholder={props.placeholder} readOnly={props.readOnly}/>

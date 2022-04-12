@@ -1,0 +1,36 @@
+{
+  "app_title": "CHE",
+  "alert.fieldRequired": "This field is required.",
+  "form.item.name": "Name",
+  "form.item.introduce.name": "Introducer",
+  "form.item.introduce.date": "Registration date",
+  "form.item.coin.address": "Deposit address",
+  "form.item.email": "E-mail address",
+  "form.item.email.confirm": "E-mail address (half-width alphanumerical)",
+  "form.item.name.confirm": "SATO KEIKO (required) (Hepburn romanization, capital letters, half-width)",
+
+  "str.item.policy.confirm": "I agree to the terms of use.",
+  "str.item.policy": "→Terms of use",
+
+
+
+
+
+  "str.item.news.first": "About 5% burn(incinerator) and mining",
+  "str.item.news.second": "Since the number of new people has increased, we have once again summarized the basic information of Rabbit Coin HBY &#x1f609;",
+  "str.item.news.third": "To protect the Rabbit Coin community",
+  "str.item.asakusa": "Asakusa",
+  "str.item.explain.rabbit.club": "Explain the Rabbit Club in 10 minutes!",
+  "str.item.campaign.offer": "(Click here for benefits and campaign information)",
+  "str.item.faq": "Frequently Asked Questions",
+  "str.item.explain.rabbit": "Explain the rabbit member app!",
+  "str.item.mining.che": "Let's mine CHE coins!",
+  "str.item.new.register": "– sign up –",
+  "str.item.register.step1": "1) Please enter the name of the person to be registered in the passport notation style.",
+  "str.item.register.step2": "2) Enter the email address you want to register.",
+  "str.item.register.step3": "3) Complete the installation of Token Pocket, copy and paste your deposit address and send.",
+  "str.item.link.tokenpoket": "→ Explain the token pocket in 10 minutes!",
+  "str.item.register.step4": "4) Enter your introducer.",
+
+  "btn.send": "Send"
+}

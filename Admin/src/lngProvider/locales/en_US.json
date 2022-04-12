@@ -1,0 +1,36 @@
+{
+  "INVALID_PARAMS": "Invalid request data.",
+  "NOT_SUPPORT": "Not supported.",
+  "alert.copied": "Data copied.",
+  "alert.emptyData": "Empty Data.",
+  "alert.invalidAddress": "Invalid address",
+  "alert.invalidData": "Invalid data",
+  "alert.invalidEmail": "Invalid email",
+  "alert.link.expired": "This link is expired.",
+  "auth.logout": "Logout",
+
+  "btn.search": "Search",
+  "btn.downloadCSV": "Download CSV",
+  "btn.back": "前の画⾯にもどる",
+
+  "label.record.time": "Record Time",
+
+  "menu.title.users": "Users",
+  "menu.title.stores": "Stores",
+  "menu.title.home": "Home,",
+  "menu.title.menuSelect": "Select menu",
+  "menu.title.maintenance": "Maintenance",
+
+  "page.title.users": "Users",
+  "page.title.records.ccp": "Records",
+
+  "table.header.userId": "User ID",
+  "table.header.userName": "User Name",
+  "table.header.lastUpdated": "Last Updated",
+  "table.header.edit": "Edit",
+  "table.header.delete": "Delete",
+  "table.header.mailAddress": "Mail Address",
+
+  "table.noData": "No Data"
+
+}

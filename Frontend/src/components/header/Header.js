@@ -1,4 +1,5 @@
-import React, {Fragment} from 'react';
+import React, { useEffect } from 'react'
+import i18next from 'i18next'
 
 
 export const Header = (props) => {
@@ -25,29 +26,46 @@ export const Header = (props) => {
               </div>
               <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden" id="nav-content">
                   <div className="text-sm md:flex lg:flex">
-                      <a href="#responsive-header"
-                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
-                          <img src={require("../../assets/img/en.png")} height="24" width="24" alt="EN" />
-                          <span className="pl-2">EN</span>
-                      </a>
+                      {/*{languages.map(({ code, name, country_code }) => (*/}
+                          <a href="#responsive-header"
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                             onClick={() => {
+                                 i18next.changeLanguage('en')
+                             }}
+                          >
+                              <img src={require("../../assets/img/en.png")} height="24" width="24" alt="EN" />
+                              <span className="pl-2">EN</span>
+                          </a>
 
-                      <a href="#responsive-header"
-                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
-                          <img src={require("../../assets/img/id.png")} height="24" width="24" alt="ID" />
-                          <span className="pl-2">ID</span>
-                      </a>
-                      <a href="#responsive-header"
-                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
-                          <img src={require("../../assets/img/ja.png")} height="24" width="24" alt="JA" />
-                          <span className="pl-2">JA</span>
-                      </a>
+                          <a href="#responsive-header"
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                             onClick={() => {
+                                 i18next.changeLanguage('id')
+                             }}
+                          >
+                              <img src={require("../../assets/img/id.png")} height="24" width="24" alt="ID" />
+                              <span className="pl-2">ID</span>
+                          </a>
+                          <a href="#responsive-header"
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                             onClick={() => {
+                                 i18next.changeLanguage('ja')
+                             }}
+                          >
+                              <img src={require("../../assets/img/ja.png")} height="24" width="24" alt="JA" />
+                              <span className="pl-2">JA</span>
+                          </a>
 
-                      <a href="#responsive-header"
-                         className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}>
-                          <img src={require("../../assets/img/vi.png")} height="24" width="24" alt="VI" />
-                          <span className="pl-2">VI</span>
-                      </a>
-
+                          <a href="#responsive-header"
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                             onClick={() => {
+                                 i18next.changeLanguage('vi')
+                             }}
+                          >
+                              <img src={require("../../assets/img/vi.png")} height="24" width="24" alt="VI" />
+                              <span className="pl-2">VI</span>
+                          </a>
+                      {/*))}*/}
                   </div>
                   {/*<div>*/}
                   {/*    <a href="#"*/}

@@ -1,0 +1,35 @@
+<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     id="el_q9TJh6D9M">
+  <style>@-webkit-keyframes el_R9UW4-P7ah_cFTtL09b-_Animation{0%{-webkit-transform: translate(50.609373807907104px,
+    50.12313608825207px) rotate(0deg) translate(-50.609373807907104px, -50.12313608825207px);transform:
+    translate(50.609373807907104px, 50.12313608825207px) rotate(0deg) translate(-50.609373807907104px,
+    -50.12313608825207px);}100%{-webkit-transform: translate(50.609373807907104px, 50.12313608825207px) rotate(360deg)
+    translate(-50.609373807907104px, -50.12313608825207px);transform: translate(50.609373807907104px,
+    50.12313608825207px) rotate(360deg) translate(-50.609373807907104px, -50.12313608825207px);}}@keyframes
+    el_R9UW4-P7ah_cFTtL09b-_Animation{0%{-webkit-transform: translate(50.609373807907104px, 50.12313608825207px)
+    rotate(0deg) translate(-50.609373807907104px, -50.12313608825207px);transform: translate(50.609373807907104px,
+    50.12313608825207px) rotate(0deg) translate(-50.609373807907104px, -50.12313608825207px);}100%{-webkit-transform:
+    translate(50.609373807907104px, 50.12313608825207px) rotate(360deg) translate(-50.609373807907104px,
+    -50.12313608825207px);transform: translate(50.609373807907104px, 50.12313608825207px) rotate(360deg)
+    translate(-50.609373807907104px, -50.12313608825207px);}}#el_q9TJh6D9M *{-webkit-animation-duration:
+    3s;animation-duration: 3s;-webkit-animation-iteration-count: infinite;animation-iteration-count:
+    infinite;-webkit-animation-timing-function: cubic-bezier(0, 0, 1, 1);animation-timing-function: cubic-bezier(0, 0,
+    1, 1);}#el_S-2d9yQa5L{stroke: none;stroke-width: 1;fill: none;}#el_R9UW4-P7ah{-webkit-transform: translate(12px,
+    6px);transform: translate(12px, 6px);fill: #BCBCBC;}#el_R9UW4-P7ah_cFTtL09b-{-webkit-animation-name: el_R9UW4-P7ah_cFTtL09b-_Animation;animation-name:
+    el_R9UW4-P7ah_cFTtL09b-_Animation;-webkit-transform: translate(50.609373807907104px, 50.12313608825207px)
+    rotate(0deg) translate(-50.609373807907104px, -50.12313608825207px);transform: translate(50.609373807907104px,
+    50.12313608825207px) rotate(0deg) translate(-50.609373807907104px, -50.12313608825207px);}
+  </style>
+  <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+  <title>both in one</title>
+  <desc>Created with Sketch.</desc>
+  <g id="el_S-2d9yQa5L" fill-rule="evenodd">
+    <g id="el_R9UW4-P7ah_cFTtL09b-" data-animator-group="true" data-animator-type="1">
+      <g id="el_R9UW4-P7ah" fill-rule="nonzero">
+        <path
+          d="M2.04181362,19.9352748 C3.07651646,18.0314216 14.0719587,0.344900949 38.4633538,0.165552455 C64.0550042,-0.0137960379 75.3539593,20.2525837 75.7333503,21.1217341 C77.4164669,25.0053188 76.699073,29.9925865 73.1327972,31.7722754 C69.0422719,33.814089 64.7655001,32.5862416 62.4822559,29.3579688 C57.7709089,22.7358705 57.2535575,14.3892676 45.1337381,9.44338797 C18.8660819,-1.29682757 0.965722656,21.8598221 2.02111956,19.9283768 L2.04181362,19.9352748 Z M75.1884068,68.3317759 C74.1675,70.2218331 63.1720578,87.9221498 38.7806627,88.0808043 C13.1890123,88.2532547 1.87626116,68.0075691 1.50376814,67.1108266 C-0.206940569,63.247936 0.517351423,58.2675663 4.06983119,56.4878774 C8.16725446,54.4460638 12.4509242,55.6808092 14.7272705,58.902184 C19.4455155,65.5380783 19.9559689,73.8708852 32.0826862,78.8236628 C58.3641385,89.5431843 76.2713958,66.4072287 75.1953048,68.338674 L75.1884068,68.3317759 Z"
+          id="el_j8B3lfKba6"/>
+      </g>
+    </g>
+  </g>
+</svg>
