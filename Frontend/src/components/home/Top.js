@@ -57,7 +57,14 @@ export const Top = (props) => {
         setIsConfirm(e)
     }
 
-    const onFinish = (data) => {
+    const onFinish = async(data) => {
+        let formData = new FormData()
+        formData.append('name', data.name)
+        formData.append('email', data.name)
+        formData.append('account', data.name)
+        formData.append('refer_email', data.name)
+        formData.append('', data.name)
+
 
     }
 
