@@ -181,7 +181,7 @@ const StyledTableRow = withStyles(theme => ({
   }
 }))(TableRow)
 
-class AgencyList extends Component {
+class UserList extends Component {
 
   /**
    * Handle function for change page
@@ -213,11 +213,11 @@ class AgencyList extends Component {
     const headers = [
       {
         id: 0,
-        title: intl.formatMessage({id: 'table.header.agencyId'})
+        title: intl.formatMessage({id: 'table.header.userId'})
       },
       {
         id: 1,
-        title: intl.formatMessage({id: 'table.header.agencyName'})
+        title: intl.formatMessage({id: 'table.header.userName'})
       },
       {
         id: 2,
@@ -302,4 +302,4 @@ class AgencyList extends Component {
   }
 }
 
-export default withStyles(styles)(injectIntl(AgencyList))
+export default withStyles(styles)(injectIntl(UserList))

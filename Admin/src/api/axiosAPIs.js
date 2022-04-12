@@ -52,34 +52,34 @@ export const select = (data) => {
 export const logout = () => {
   return axiosRequest('post', axiosConfig.LOGOUT_URL)
 }
-// Agency API
-export const getAgencyList = (data) => {
+// User API
+export const getUserList = (data) => {
   data.page = data.page + 1
   return axiosRequest('get', axiosConfig.USER_LIST, data)
 }
 
-export const getAgencyItem = (data) => {
-  return axiosRequest('get', axiosConfig.AGENCY_ITEM + '/' + data + '/edit')
+export const getUserItem = (data) => {
+  return axiosRequest('get', axiosConfig.USER_ITEM + '/' + data + '/edit')
 }
 
-export const addAgency = (data) => {
-  return axiosRequest('post', axiosConfig.AGENCY_ITEM, data)
+export const addUser = (data) => {
+  return axiosRequest('post', axiosConfig.USER_ITEM, data)
 }
 
-export const editAgency = (id, data) => {
-  return axiosRequest('put', axiosConfig.AGENCY_ITEM + '/' + id, data)
+export const editUser = (id, data) => {
+  return axiosRequest('put', axiosConfig.USER_ITEM + '/' + id, data)
 }
 
 export const getDownloadList = () => {
-  return axiosRequest('get', axiosConfig.AGENCY_DOWNLOAD_LIST)
+  return axiosRequest('get', axiosConfig.USER_DOWNLOAD_LIST)
 }
 
-export const deleteAgency = (id) => {
-  return axiosRequest('delete', axiosConfig.AGENCY_ITEM + '/' + id)
+export const deleteUser = (id) => {
+  return axiosRequest('delete', axiosConfig.USER_ITEM + '/' + id)
 }
 
-export const loginCustomerFromAgency = (id) => {
-  return axiosRequest('post', axiosConfig.LOGIN_CUSTOM_FROM_AGENCY + '/' + id)
+export const loginCustomerFromUser = (id) => {
+  return axiosRequest('post', axiosConfig.LOGIN_CUSTOM_FROM_USER + '/' + id)
 }
 
 

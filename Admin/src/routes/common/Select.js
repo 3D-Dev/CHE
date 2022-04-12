@@ -22,7 +22,7 @@ class Select extends Component {
   //   select(profile.permission_id)
   //     .then(response => {
   //       if (response.status === 200) {
-  //         this.props.history.push('/admin/agencies')
+  //         this.props.history.push('/admin/users')
   //       }
   //     })
   // }
@@ -41,7 +41,7 @@ class Select extends Component {
 
   onFinish = () => {
     console.log("onfinish", this.props.name)
-    this.props.history.push('/admin/agencies')
+    this.props.history.push('/admin/users')
     //this.doSelect()
   }
 

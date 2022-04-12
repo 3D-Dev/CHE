@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { AgencyItem } from '../../../components'
+import { UserItem } from '../../../components'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { addAgency } from '../../../api/axiosAPIs'
+import { addUser } from '../../../api/axiosAPIs'
 import PageConstant from '../../../constants/PageConstant'
 import { connect } from 'react-redux'
 import { openNotificationWithIcon } from '../../../components/common/Messages'
 
-class AddAgency extends Component {
+class AddUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -32,24 +32,24 @@ class AddAgency extends Component {
     }
   }
 
-  submitAddAgency = (data) => {
+  submitAddUser = (data) => {
     
     let formData = new FormData()
     formData.append('name', data.name)
     formData.append('staff_email', data.representative_email)
     formData.append('password', data.password)
-    addAgency(formData)
+    addUser(formData)
       .then(response => {
-        openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.newAgency'}))
-        this.goToAgencyList()
+        openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.newUser'}))
+        this.goToUserList()
       })
   }
 
   handleCancelBtn = () => {
-    this.goToAgencyList()
+    this.goToUserList()
   }
 
-  goToAgencyList() {
+  goToUserList() {
     this.props.history.push({
       pathname: PageConstant.AGENCIES,
       pageNumberState: parseInt(this.prevPageNum),
@@ -66,10 +66,10 @@ class AddAgency extends Component {
           <h2 className="title gx-mb-auto" style={{marginRight: '50px'}}><FormattedMessage
             id="card.title.customer.add"/></h2>
         </div>
-        <AgencyItem
+        <UserItem
           isAdd={isAdd}
           loader={loader}
-          submitAddInfo={this.submitAddAgency}
+          submitAddInfo={this.submitAddUser}
           handleCancelBtn={this.handleCancelBtn}
         />
       </div>
@@ -85,4 +85,4 @@ const mapStateToProps = ({progress}) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AddAgency))
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(AddUser))

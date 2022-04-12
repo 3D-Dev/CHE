@@ -29,7 +29,7 @@ class HorizontalNav extends Component {
         selectedKeys={[selectedKeys]}
         mode="horizontal">
         <Menu.Item key="agencies">
-          <Link to="/admin/agencies">
+          <Link to="/admin/users">
             <FormattedMessage id="menu.title.agencies"/>
           </Link>
         </Menu.Item>

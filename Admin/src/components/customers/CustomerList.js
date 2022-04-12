@@ -227,7 +227,7 @@ class CustomerList extends Component {
       },
       {
         id: 3,
-        title: intl.formatMessage({id: 'table.header.agencyName'})
+        title: intl.formatMessage({id: 'table.header.userName'})
       },
       {
         id: 4,
@@ -277,7 +277,7 @@ class CustomerList extends Component {
                   <StyledTableCell>{row.id}</StyledTableCell>
                   <StyledTableCell>{row.name}</StyledTableCell>
                   <StyledTableCell>{row.email}</StyledTableCell>
-                  <StyledTableCell>{row.agencyName}</StyledTableCell>
+                  <StyledTableCell>{row.userName}</StyledTableCell>
                   <StyledTableCell><Moment format="YYYY/MM/DD">{row.date}</Moment></StyledTableCell>
                   <StyledTableCell>
                     <p className="gx-text-primary gx-pointer gx-mb-0" type="primary"

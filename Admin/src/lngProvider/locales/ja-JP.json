@@ -19,7 +19,7 @@
 
   "btn.search": "検索",
   "btn.downloadCSV": "CSVダウンロード",
-  "btn.newRegisterAgency": "新規代理店登録",
+  "btn.newRegisterUser": "新規代理店登録",
   "btn.newRegisterCustomer": "新規ショップ登録",
   "btn.newRegisterEmployee": "新規登録",
   "btn.newRegisterImportantManagements": "新規登録",
@@ -49,8 +49,8 @@
   "btn.go.rush.out": "退勤",
   "btn.go.rush.report": "出退勤一覧",
 
-  "card.title.agency.add": "代理店登録",
-  "card.title.agency.edit": "代理店編集",
+  "card.title.user.add": "代理店登録",
+  "card.title.user.edit": "代理店編集",
   "card.title.customer.add": "新規ショップ作成",
   "card.title.customer.edit": "ショップ編集",
   "card.title.edit": "編集",
@@ -67,7 +67,7 @@
 
   "card.title.selectMember": "メンバーを選んでください",
 
-  "form.item.agency.name": "代理店名",
+  "form.item.user.name": "代理店名",
   "form.item.customer.name": "ショップ名",
   "form.item.staff.name": "スタッフ名",
   "form.item.staff.mailAddress": "スタッフメールアドレス",
@@ -135,8 +135,8 @@
   "menu.card.temperature": "温度管理",
   "menu.card.rush": "出退勤打刻",
 
-  "message.success.newAgency": "新規代理店を作成しました。",
-  "message.success.editAgency": "代理店情報を更新しました。",
+  "message.success.newUser": "新規代理店を作成しました。",
+  "message.success.editUser": "代理店情報を更新しました。",
   "message.success.newCustomer": "新規店舗を作成しました。",
   "message.success.editCustomer": "店舗情報を更新しました。",
 
@@ -188,8 +188,8 @@
   "table.header.managementDevicesCategory": "種別",
   "table.header.managementDevicesCommonName": "通称名称",
 
-  "table.header.agencyId": "代理店ID",
-  "table.header.agencyName": "代理店名",
+  "table.header.userId": "代理店ID",
+  "table.header.userName": "代理店名",
   "table.header.customerId": "ショップID",
   "table.header.customerName": "ショップ名",
   "table.header.lastUpdated": "最終更新日",

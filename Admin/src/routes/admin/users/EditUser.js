@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import { AgencyItem } from '../../../components'
+import { UserItem } from '../../../components'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import PageConstant from '../../../constants/PageConstant'
 import { connect } from 'react-redux'
-import { editAgency, getAgencyItem } from '../../../api/axiosAPIs'
+import { editUser, getUserItem } from '../../../api/axiosAPIs'
 import { getQueryVariable } from '../../../util/helpers'
 import _ from 'lodash'
 import { openNotificationWithIcon } from '../../../components/common/Messages'
 import { setTitleText } from '../../../appRedux/actions/Custom'
 
-class EditAgency extends Component {
+class EditUser extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +23,7 @@ class EditAgency extends Component {
 
   componentDidMount() {
     const {intl} = this.props
-    this.props.setTitleText(intl.formatMessage({id: `card.title.agency.edit`}))
+    this.props.setTitleText(intl.formatMessage({id: `card.title.user.edit`}))
 
     let url = window.location.pathname
     let id = url.split('/~').slice(-1)[0]
@@ -32,7 +32,7 @@ class EditAgency extends Component {
 
     this.selectedId = id
     
-    getAgencyItem(id)
+    getUserItem(id)
       .then(response => {
         if (!_.isEmpty(response.data)) {
           this.setState({
@@ -42,7 +42,7 @@ class EditAgency extends Component {
       })
   }
 
-  submitEditAgency = (data) => {
+  submitEditUser = (data) => {
     let formData = new FormData()
 
     formData.append('id', this.selectedId)
@@ -52,10 +52,10 @@ class EditAgency extends Component {
 
     if (!_.isNull(this.selectedId)) {
       let selectedItemId = this.selectedId
-      editAgency(selectedItemId, formData)
+      editUser(selectedItemId, formData)
         .then(response => {
-          openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.editAgency'}))
-          this.goToAgencyList()
+          openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.editUser'}))
+          this.goToUserList()
         })
     }
   }
@@ -68,10 +68,10 @@ class EditAgency extends Component {
   }
 
   handleCancelBtn = () => {
-    this.goToAgencyList()
+    this.goToUserList()
   }
 
-  goToAgencyList() {
+  goToUserList() {
     this.props.history.push({
       pathname: PageConstant.AGENCIES,
       pageNumberState: parseInt(this.prevPageNum),
@@ -86,14 +86,14 @@ class EditAgency extends Component {
     return (
       <div>
         <div className="gx-flex-row gx-align-items-center gx-mb-4">
-          <h2 className="title gx-mb-auto" style={{marginRight: '50px'}}><FormattedMessage id="card.title.agency.edit"/>
+          <h2 className="title gx-mb-auto" style={{marginRight: '50px'}}><FormattedMessage id="card.title.user.edit"/>
           </h2>
         </div>
-        <AgencyItem
+        <UserItem
           isAdd={isAdd}
           row={row}
           loader={loader}
-          submitEditInfo={this.submitEditAgency}
+          submitEditInfo={this.submitEditUser}
           handleCancelBtn={this.handleCancelBtn}
         />
       </div>
@@ -111,4 +111,4 @@ const mapStateToProps = ({progress}) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(EditAgency))
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(EditUser))

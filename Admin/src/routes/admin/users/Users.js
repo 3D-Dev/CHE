@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
-import { AgencyList } from '../../../components'
+import { UserList } from '../../../components'
 import { CSVLink } from 'react-csv'
-import { getAgencyList, getDownloadList, loginCustomerFromAgency } from '../../../api/axiosAPIs'
+import { getUserList, getDownloadList, loginCustomerFromUser } from '../../../api/axiosAPIs'
 import _ from 'lodash'
 import PageConstant from '../../../constants/PageConstant'
 import { Button, Card, Input, Spin } from 'antd'
 import { initSettings, setRole } from '../../../appRedux/actions/User'
 import { setTitleText } from '../../../appRedux/actions/Custom'
 
-class Agencies extends React.Component {
+class Users extends React.Component {
   constructor(props) {
     super(props)
 
@@ -49,7 +49,7 @@ class Agencies extends React.Component {
         rowsPerPage: rowsPerPageState
       })
     }
-    this.fetchAgencyList(data)
+    this.fetchUserList(data)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -59,7 +59,7 @@ class Agencies extends React.Component {
     }
   }
 
-  fetchAgencyList(data) {
+  fetchUserList(data) {
     const {asc, keyword} = this.state
 
     let params = {
@@ -67,7 +67,7 @@ class Agencies extends React.Component {
       keyword: keyword
     }
     Object.assign(params, data)
-    getAgencyList(params)
+    getUserList(params)
       .then(response => {
         if (!_.isEmpty(response.data)) {
           if (response.data.data) {
@@ -107,7 +107,7 @@ class Agencies extends React.Component {
       asc: asc,
       keyword: keyword
     }
-    getAgencyList(data)
+    getUserList(data)
       .then(response => {
         if (!_.isEmpty(response.data)) {
           this.setState({
@@ -131,7 +131,7 @@ class Agencies extends React.Component {
       keyword: keyword
     }
 
-    getAgencyList(data)
+    getUserList(data)
       .then(response => {
         if (!_.isEmpty(response.data)) {
           this.setState({
@@ -158,13 +158,13 @@ class Agencies extends React.Component {
       page: this.state.page,
       limit: this.state.rowsPerPage
     }
-    this.fetchAgencyList(data)
+    this.fetchUserList(data)
   }
 
   onClickEditButton = (id) => {
     if (!_.isEmpty(id) || id) {
       this.props.history.push({
-        pathname: PageConstant.EDIT_AGENCY + '/~' + id + '?num=' + this.state.page + '&limit=' + this.state.rowsPerPage
+        pathname: PageConstant.EDIT_USER + '/~' + id + '?num=' + this.state.page + '&limit=' + this.state.rowsPerPage
       })
     }
   }
@@ -180,9 +180,9 @@ class Agencies extends React.Component {
   }
 
 
-  onClickRegisterAgency = () => {
+  onClickRegisterUser = () => {
     this.props.history.push({
-      pathname: PageConstant.ADD_AGENCY,
+      pathname: PageConstant.ADD_USER,
       pageNumberState: this.state.page,
       rowsPerPageState: this.state.rowsPerPage
     })
@@ -202,8 +202,8 @@ class Agencies extends React.Component {
     return (
       <div>
         <div className="gx-flex-row gx-align-items-right gx-mb-3">
-          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickRegisterAgency}>
-            <FormattedMessage id="btn.newRegisterAgency"/>
+          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickRegisterUser}>
+            <FormattedMessage id="btn.newRegisterUser"/>
           </Button>
         </div>
         <div className="gx-flex-row gx-align-items-center gx-mb-4">
@@ -240,7 +240,7 @@ class Agencies extends React.Component {
               </div>
 
             </div>
-            <AgencyList
+            <UserList
               rows={rows}
               count={count}
               page={page}
@@ -269,4 +269,4 @@ const mapStateToProps = ({progress}) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Agencies))
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Users))

@@ -8,8 +8,8 @@ import LanguageMenu from './common/LanguageMenu'
 import LogoutMenu from './common/LogoutMenu'
 import TitleArea from './common/TitleArea'
 import MenuCard from './common/MenuCard'
-import AgencyList from './agencies/AgencyList'
-import AgencyItem from './agencies/AgencyItem'
+import UserList from './users/UserList'
+import UserItem from './users/UserItem'
 // import CustomerList from './customers/CustomerList'
 // import CustomerItem from './customers/CustomerItem'
 // import HygieneList from './contents/HygieneList'
@@ -26,8 +26,8 @@ import AgencyItem from './agencies/AgencyItem'
 // import ManagementDevicesList from './managementDevices/ManagementDevicesList'
 
 export {
-  AgencyList,
-  AgencyItem,
+  UserList,
+  UserItem,
   CustomScrollbars,
   LogoutMenu,
   LanguageMenu,

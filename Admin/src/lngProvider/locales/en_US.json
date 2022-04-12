@@ -24,8 +24,8 @@
   "page.title.agencies": "Agencies",
   "page.title.records.ccp": "Records",
 
-  "table.header.agencyId": "Agency ID",
-  "table.header.agencyName": "Agency Name",
+  "table.header.userId": "User ID",
+  "table.header.userName": "User Name",
   "table.header.lastUpdated": "Last Updated",
   "table.header.edit": "Edit",
   "table.header.delete": "Delete",

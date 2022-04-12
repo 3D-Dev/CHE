@@ -18,7 +18,7 @@ const formItemLayout = {
   }
 }
 
-class AgencyItem extends React.Component {
+class UserItem extends React.Component {
   formRef = React.createRef()
 
   onFinish = (values) => {
@@ -54,7 +54,7 @@ class AgencyItem extends React.Component {
             ref={this.formRef}
           >
             <Form.Item
-              label={intl.formatMessage({id: 'form.item.agency.name'})}
+              label={intl.formatMessage({id: 'form.item.user.name'})}
               name="name"
               initialValue={isAdd ? '' : !_.isEmpty(row.name) ? row.name : ''}
               rules={[{required: true, message: intl.formatMessage({id: 'alert.fieldRequired'})}]}
@@ -112,4 +112,4 @@ class AgencyItem extends React.Component {
 }
 
 
-export default injectIntl(AgencyItem)
+export default injectIntl(UserItem)
