@@ -28,9 +28,9 @@ class HorizontalNav extends Component {
         defaultOpenKeys={[defaultOpenKeys]}
         selectedKeys={[selectedKeys]}
         mode="horizontal">
-        <Menu.Item key="agencies">
+        <Menu.Item key="users">
           <Link to="/admin/users">
-            <FormattedMessage id="menu.title.agencies"/>
+            <FormattedMessage id="menu.title.users"/>
           </Link>
         </Menu.Item>
         <Menu.Item key="logout">

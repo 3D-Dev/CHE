@@ -11,9 +11,8 @@ import { LANGUAGES } from '../../constants/AppConfigs'
 
 const INIT_STATE = {
   profile: {
-    name: '',
-    email: '',
-    permission_id: 0
+    adminAccessToken: '',
+    email: ''
   },
   role: 'NO_USER',
   locale: LANGUAGES[0].code,

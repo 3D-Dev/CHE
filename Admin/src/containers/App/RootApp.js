@@ -6,7 +6,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import { hideLoader, showLoader } from '../../appRedux/actions/Progress'
 import { openNotificationWithIcon } from '../../components/common/Messages'
-import { initSettings } from '../../appRedux/actions/User'
+import {initSettings, setSettings} from '../../appRedux/actions/User'
 import MainApp from './MainApp'
 import Login from '../../routes/common/Login'
 import Select from '../../routes/common/Select'
@@ -87,6 +87,9 @@ class RootApp extends Component {
   render() {
     const {match} = this.props
 
+
+    console.log("!!!!", this.props.setSettings())
+
     return (
       <Switch>
         <Route exact path="/admin/login" component={Login}/>
@@ -101,7 +104,7 @@ class RootApp extends Component {
 }
 
 const mapDispatchToProps = {
-  hideLoader, showLoader, initSettings
+  setSettings, hideLoader, showLoader, initSettings
 }
 
 const mapStateToProps = ({settings}) => {

@@ -4,7 +4,7 @@
 
 require('dotenv').config()
 
-export const BASE_URL = 'http://localhost:5000/api/'
+export const BASE_URL = 'http://192.168.1.141:5000/api/'
 
 export const LOGIN_URL = `admin_login`
 export const SELECT_URL = `authorize_api`

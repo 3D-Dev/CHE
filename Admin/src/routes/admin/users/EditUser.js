@@ -73,7 +73,7 @@ class EditUser extends Component {
 
   goToUserList() {
     this.props.history.push({
-      pathname: PageConstant.AGENCIES,
+      pathname: PageConstant.USERS,
       pageNumberState: parseInt(this.prevPageNum),
       rowsPerPageState: parseInt(this.prevPageLimit)
     })

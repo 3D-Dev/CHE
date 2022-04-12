@@ -4,9 +4,9 @@
 
 require('dotenv').config()
 
-export const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:5000/'
+export const BASE_URL = 'http://192.168.1.141:5000/api'
 
-export const CREATE = `create`
+export const CREATE = `/users/`
 // export const SIGNUP = `signup`
 // export const SIGNUP_CONFIRM = `signup_confirm`
 // export const LOGIN = `login`

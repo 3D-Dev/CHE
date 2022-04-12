@@ -122,7 +122,7 @@
   "label.manage.record.ng.msg2": "問題があった場合は、デフォルトから選択するか、任意で入力し下さい。",
 
   "menu.title.accountSelect": "アカウント切り替え",
-  "menu.title.agencies": "代理店一覧",
+  "menu.title.users": "代理店一覧",
   "menu.title.stores": "ショップ一覧",
   "menu.title.customers": "ショップ管理",
   "menu.title.home": "ホーム",
@@ -145,7 +145,7 @@
   "message.success.newCustomer": "新規店舗を作成しました。",
   "message.success.editCustomer": "店舗情報を更新しました。",
 
-  "page.title.agencies": "代理店一覧",
+  "page.title.users": "代理店一覧",
   "page.title.customers": "ショップ一覧",
   "page.title.maintenance": "メンテナンス画面",
   "page.title.maintenance1": "従業員登録",

@@ -43,31 +43,31 @@ export const axiosRequest = (method, url, reqData = null, needLoader = true) => 
 export const createAccout = (data) => {
   return axiosRequest('post', axiosConfig.CREATE, data)
 }
-export const signup = (data) => {
-  return axiosRequest('post', axiosConfig.SIGNUP, data)
-}
+// export const signup = (data) => {
+//   return axiosRequest('post', axiosConfig.SIGNUP, data)
+// }
+//
+// export const signupConfirm = (data) => {
+//   return axiosRequest('post', axiosConfig.SIGNUP_CONFIRM, data)
+// }
 
-export const signupConfirm = (data) => {
-  return axiosRequest('post', axiosConfig.SIGNUP_CONFIRM, data)
-}
-
-export const login = (data) => {
-  return axiosRequest('post', axiosConfig.LOGIN, data)
-}
-
-export const logout = () => {
-  return axiosRequest('delete', axiosConfig.LOGOUT)
-}
-
-export const forgetPasswordSendMail = (data) => {
-  return axiosRequest('post', axiosConfig.PASSWORD_RESETS, data)
-}
-
-export const resetPassword = (id, data) => {
-  return axiosRequest('put', axiosConfig.PASSWORD_RESETS + '/' + id, data)
-}
-
-export const sendInquiry = (data) => {
-  return axiosRequest('post', axiosConfig.INQUIRY, data)
-}
+// export const login = (data) => {
+//   return axiosRequest('post', axiosConfig.LOGIN, data)
+// }
+//
+// export const logout = () => {
+//   return axiosRequest('delete', axiosConfig.LOGOUT)
+// }
+//
+// export const forgetPasswordSendMail = (data) => {
+//   return axiosRequest('post', axiosConfig.PASSWORD_RESETS, data)
+// }
+//
+// export const resetPassword = (id, data) => {
+//   return axiosRequest('put', axiosConfig.PASSWORD_RESETS + '/' + id, data)
+// }
+//
+// export const sendInquiry = (data) => {
+//   return axiosRequest('post', axiosConfig.INQUIRY, data)
+// }
 

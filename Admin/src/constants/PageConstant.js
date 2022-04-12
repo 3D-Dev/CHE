@@ -3,7 +3,7 @@ import { BASE_URL } from '../api/axiosConfig'
 
 const PAGE_PREFIX = '/admin'
 const PageConstant = {
-  AGENCIES: PAGE_PREFIX + '/users',
+  USERS: PAGE_PREFIX + '/users',
   ADD_USER: PAGE_PREFIX + '/users/add',
   EDIT_USER: PAGE_PREFIX + '/users/edit',
   CUSTOMERS: PAGE_PREFIX + '/customers',

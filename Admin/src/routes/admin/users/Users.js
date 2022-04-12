@@ -31,7 +31,7 @@ class Users extends React.Component {
 
   componentDidMount() {
     const {intl} = this.props
-    this.props.setTitleText(intl.formatMessage({id: `page.title.agencies`}))
+    this.props.setTitleText(intl.formatMessage({id: `page.title.users`}))
 
     let {pageNumberState, rowsPerPageState} = this.props.location
     const {page, rowsPerPage} = this.state
@@ -207,7 +207,7 @@ class Users extends React.Component {
           </Button>
         </div>
         <div className="gx-flex-row gx-align-items-center gx-mb-4">
-          <h2 className="title gx-mb-auto gx-page-title"><FormattedMessage id="page.title.agencies"/></h2>
+          <h2 className="title gx-mb-auto gx-page-title"><FormattedMessage id="page.title.users"/></h2>
         </div>
         <Card className="gx-card">
           <Spin spinning={loader} size="large">

@@ -32,7 +32,7 @@ class SidebarContent extends Component {
                 {role === 'NO_USER' &&
                 <Menu.Item key="admin/users">
                   <Link to="/admin/users">
-                    <FormattedMessage id="menu.title.agencies"/>
+                    <FormattedMessage id="menu.title.users"/>
                   </Link>
                 </Menu.Item>
                 }
@@ -50,7 +50,7 @@ class SidebarContent extends Component {
                 {role === 'NO_USER' &&
                     <Menu.Item key="admin/users">
                       <Link to="/admin/users">
-                        <FormattedMessage id="menu.title.agencies"/>
+                        <FormattedMessage id="menu.title.users"/>
                       </Link>
                     </Menu.Item>
                 }
