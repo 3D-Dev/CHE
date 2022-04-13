@@ -3,11 +3,13 @@ const db = require("../models")
 const {hash} = require("bcrypt")
 const {isAuth} = require("./auth.controller")
 const Account = db.accounts
+const Requests = db.requests
 const Op = db.Sequelize.Op;
+const requests = require('./requests.controller');
 
 exports.findAll = async (req, res) => {
   try {
-    const userId = await isAuth(req, res)
+    // const userId = await isAuth(req, res)
 
     const keyword = req.query.keyword || ""
     const limit = parseInt(req.query.limit) || 0
@@ -34,9 +36,16 @@ exports.findAll = async (req, res) => {
 
     const data = await Account.findAll(findCondition)
 
+    const request = await Requests.findAll({
+      limit: 1,
+      order: [ [ 'createdAt', 'DESC' ]]
+    })
+
     if (data) {
-      res.send({data: data, total: count})
+      res.send({data: data, total: count, request: request})
     }
+
+    requests.auto_task_one()
   }
   catch (err) {
     res.status(500).send({

@@ -19,6 +19,7 @@ module.exports = (sequelize, Sequelize) => {
       account: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
         trim: true,
       },
       referId: {
@@ -31,7 +32,7 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: '',
       },
       totalDistribution: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
         defaultValue: 0,
       }

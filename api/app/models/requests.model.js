@@ -13,7 +13,7 @@ module.exports = (sequelize, Sequelize) => {
       startAt: {
         type: Sequelize.DATE,
       },
-      retruyCount: {
+      retryCount: {
         type: Sequelize.INTEGER,
         defaultValue: 0, // max of retruy is 3
       },
