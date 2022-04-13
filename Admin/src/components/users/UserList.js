@@ -225,18 +225,22 @@ class UserList extends Component {
       },
       {
         id: 3,
-        title: intl.formatMessage({id: 'table.header.referAddress'})
+        title: intl.formatMessage({id: 'table.header.account'})
       },
       {
         id: 4,
-        title: intl.formatMessage({id: 'table.header.totalDistribution'})
+        title: intl.formatMessage({id: 'table.header.referAddress'})
       },
       {
         id: 5,
-        title: intl.formatMessage({id: 'table.header.createdAt'})
+        title: intl.formatMessage({id: 'table.header.totalDistribution'})
       },
       {
         id: 6,
+        title: intl.formatMessage({id: 'table.header.createdAt'})
+      },
+      {
+        id: 7,
         title: intl.formatMessage({id: 'table.header.lastUpdatedAt'})
       }
       // {

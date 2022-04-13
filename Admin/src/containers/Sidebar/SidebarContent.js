@@ -29,13 +29,6 @@ class SidebarContent extends Component {
                     <span className="menu-item-label"><FormattedMessage id="menu.title.accountInfo"/></span>
                   </Link>
                 </Menu.Item>
-                {role === 'NO_USER' &&
-                <Menu.Item key="admin/users">
-                  <Link to="/admin/users">
-                    <FormattedMessage id="menu.title.users"/>
-                  </Link>
-                </Menu.Item>
-                }
               </Menu>
               <Menu
                   defaultOpenKeys={[defaultOpenKeys]}
@@ -43,17 +36,10 @@ class SidebarContent extends Component {
                   theme={'dark'}
                   mode="inline">
                 <Menu.Item key="admin/select">
-                  <Link to="/admin/select">
-                    <FormattedMessage id="menu.title.accountInfo"/>
+                  <Link to="/admin">
+                    <FormattedMessage id="menu.title.users"/>
                   </Link>
                 </Menu.Item>
-                {role === 'NO_USER' &&
-                    <Menu.Item key="admin/users">
-                      <Link to="/admin/users">
-                        <FormattedMessage id="menu.title.users"/>
-                      </Link>
-                    </Menu.Item>
-                }
               </Menu>
             </CustomScrollbars>
           </div>

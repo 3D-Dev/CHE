@@ -64,11 +64,9 @@ export const Top = (props) => {
         formData.append('name', data.name)
         formData.append('email', data.email)
         formData.append('account', data.account)
-        formData.append('refer_id', '')
-        formData.append('refer_email', data.referEmail)
+        formData.append('referId', '')
+        formData.append('referEmail', data.referEmail? data.referEmail : '')
         formData.append('createdAt', data.createdAt)
-        console.log("refer_email", data.referEmail)
-
         let response = {}
         try {
             response = await createAccout(formData)
