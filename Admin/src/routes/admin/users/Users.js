@@ -203,7 +203,7 @@ class Users extends React.Component {
       <div>
         <div className="gx-flex-row gx-align-items-right gx-mb-3">
           <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickRegisterUser}>
-            <FormattedMessage id="btn.newRegisterUser"/>
+            <FormattedMessage id="btn.sendAllUsers"/>
           </Button>
         </div>
         <div className="gx-flex-row gx-align-items-center gx-mb-4">

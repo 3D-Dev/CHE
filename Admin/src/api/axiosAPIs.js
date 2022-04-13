@@ -2,7 +2,8 @@ import axios from 'axios'
 import * as axiosConfig from './axiosConfig'
 
 export const axiosRequest = (method, url, reqData = null, needLoader = true) => {
-  const auth = localStorage.getItem('token') ? `Bearer ${localStorage.getItem('token')}` : undefined
+  const user = JSON.parse(localStorage.getItem("persist:root")).user
+  const auth = JSON.parse(user).profile.adminAccessToken ? `Bearer ${JSON.parse(user).profile.adminAccessToken}` : undefined
   const getHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json; charset=utf-8',
@@ -44,8 +45,8 @@ export const login = (data) => {
   return axiosRequest('post', axiosConfig.LOGIN_URL, data)
 }
 
-export const select = (data) => {
-  const url = axiosConfig.SELECT_URL + '?permission_id=' + data
+export const findAll = (data) => {
+  const url = axiosConfig.FINDALL_URL + data
   return axiosRequest('get', url)
 }
 

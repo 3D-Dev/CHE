@@ -25,7 +25,7 @@ class SidebarContent extends Component {
                 theme={'dark'}
                 mode="inline">
                 <Menu.Item key="admin/select">
-                  <Link to="/admin/select">
+                  <Link to="/admin/">
                     <span className="menu-item-label"><FormattedMessage id="menu.title.accountInfo"/></span>
                   </Link>
                 </Menu.Item>

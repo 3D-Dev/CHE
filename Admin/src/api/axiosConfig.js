@@ -7,7 +7,7 @@ require('dotenv').config()
 export const BASE_URL = 'http://192.168.1.141:5000/api/'
 
 export const LOGIN_URL = `admin_login`
-export const SELECT_URL = `authorize_api`
+export const FINDALL_URL = `users`
 export const LOGOUT_URL = `signout`
 export const USER_LIST = 'users'
 export const LOGIN_CUSTOM_FROM_USER = 'admin/authorize_pretend_to_user'

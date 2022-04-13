@@ -65,6 +65,7 @@ export const Top = (props) => {
         formData.append('account', data.account)
         formData.append('refer_email', data.referEmail)
         formData.append('createdAt', data.createdAt)
+        console.log("refer_email", data.referEmail)
         let response = {}
         try {
             response = await createAccout(formData)
@@ -330,7 +331,7 @@ export const Top = (props) => {
                       {/*氏名*/}
                       <FormInput
                           label={props.intl.formatMessage({id: 'form.item.introduce.name'})}
-                          name={"refer_email"}
+                          name={"referEmail"}
                           placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}
                           intl={props.intl}
                           required={false}
@@ -343,7 +344,7 @@ export const Top = (props) => {
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"createdAt"}
-                                      rules={[{required: props.required, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
+                                      rules={[{required: true, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
                                   >
                                       <Input type={"date"} size={"large"} placeholder={props.placeholder} readOnly={props.readOnly}/>
                                   </Form.Item>

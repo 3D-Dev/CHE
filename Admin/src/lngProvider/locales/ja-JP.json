@@ -19,7 +19,7 @@
 
   "btn.search": "検索",
   "btn.downloadCSV": "CSVダウンロード",
-  "btn.newRegisterUser": "新規代理店登録",
+  "btn.sendAllUsers": "自動配布",
   "btn.newRegisterCustomer": "新規ショップ登録",
   "btn.newRegisterEmployee": "新規登録",
   "btn.newRegisterImportantManagements": "新規登録",
@@ -122,7 +122,7 @@
   "label.manage.record.ng.msg2": "問題があった場合は、デフォルトから選択するか、任意で入力し下さい。",
 
   "menu.title.accountSelect": "アカウント切り替え",
-  "menu.title.users": "代理店一覧",
+  "menu.title.users": "ユーザー一覧",
   "menu.title.stores": "ショップ一覧",
   "menu.title.customers": "ショップ管理",
   "menu.title.home": "ホーム",
@@ -132,7 +132,11 @@
 
   "menu.title.accountInfo": "ユーザー一覧",
   "menu.title.transferInfo": "配布履歴一覧",
-
+  "menu.title.users": "ユーザー一覧",
+  "page.title.users": "ユーザー一覧",
+  "table.header.userId": "ID",
+  "table.header.userName": "ユーザー名",
+  "table.header.mailAddress": "メールアドレス",
 
   "menu.card.healthCare": "健康管理",
   "menu.card.ccp": "CCP",
@@ -145,7 +149,7 @@
   "message.success.newCustomer": "新規店舗を作成しました。",
   "message.success.editCustomer": "店舗情報を更新しました。",
 
-  "page.title.users": "代理店一覧",
+
   "page.title.customers": "ショップ一覧",
   "page.title.maintenance": "メンテナンス画面",
   "page.title.maintenance1": "従業員登録",
@@ -193,14 +197,12 @@
   "table.header.managementDevicesCategory": "種別",
   "table.header.managementDevicesCommonName": "通称名称",
 
-  "table.header.userId": "代理店ID",
-  "table.header.userName": "代理店名",
+
   "table.header.customerId": "ショップID",
   "table.header.customerName": "ショップ名",
   "table.header.lastUpdated": "最終更新日",
   "table.header.edit": "編集",
   "table.header.delete": "削除",
-  "table.header.mailAddress": "メールアドレス",
   "table.header.date": "⽇付",
   "table.header.confirmAcceptance": "原材料の受⼊確認",
   "table.header.checkTemperature": "庫内温度の確認（冷蔵庫・冷凍庫）",
