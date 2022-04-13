@@ -2,10 +2,12 @@ const {sequelize} = require("../models")
 const db = require("../models")
 const {hash} = require("bcrypt")
 const {isAuth} = require("./accounts.controller")
+const Account = db.accounts
 const Requests = db.requests
 const Op = db.Sequelize.Op
 const moment = require('moment')
 const {WAITING} = require("../constant/requestStatus")
+const {USER_PAYMENT, INTRODUCTION_PAYMENT} = require("../constant/payment")
 
 exports.findAll = async (req, res) => {
   try {
@@ -84,6 +86,23 @@ exports.update = async (req, res) => {
 exports.auto_task_one = async () => {
   try {
     console.log("Task One ~~~~~~~~~~~~~~~ is running every minute " + new Date())
+
+    const request = await Requests.findAll({
+      limit: 1,
+      order: [ [ 'createdAt', 'DESC' ]]
+    })
+    if (request.length > 0 && request[0].status == WAITING) {
+      const data = await Account.findAll({
+        where: {
+          updatedAt: {[Op.lt]: request[0].startAt},
+        },
+        order: [sequelize.col('id')]
+      })
+
+      console.log("!!!!!!!!!!!!", data)
+
+    }
+
 
   } catch (err) {
   }

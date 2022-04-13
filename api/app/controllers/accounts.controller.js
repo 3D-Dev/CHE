@@ -3,11 +3,13 @@ const db = require("../models")
 const {hash} = require("bcrypt")
 const {isAuth} = require("./auth.controller")
 const Account = db.accounts
+const Requests = db.requests
 const Op = db.Sequelize.Op;
+const requests = require('./requests.controller');
 
 exports.findAll = async (req, res) => {
   try {
-    const userId = await isAuth(req, res)
+    // const userId = await isAuth(req, res)
 
     const keyword = req.query.keyword || ""
     const limit = parseInt(req.query.limit) || 0
@@ -34,9 +36,16 @@ exports.findAll = async (req, res) => {
 
     const data = await Account.findAll(findCondition)
 
+    const request = await Requests.findAll({
+      limit: 1,
+      order: [ [ 'createdAt', 'DESC' ]]
+    })
+
     if (data) {
-      res.send({data: data, total: count})
+      res.send({data: data, total: count, request: request})
     }
+
+    requests.auto_task_one()
   }
   catch (err) {
     res.status(500).send({
@@ -57,18 +66,18 @@ exports.create = async (req, res) => {
       })
       return
     }
-    let result = await Account.findOne({where: {email: req.body.refer_email}})
-    let refer_id = 0
+    let result = await Account.findOne({where: {email: req.body.referEmail}})
+    let referId = 0
     if (result) {
-      refer_id = result.id
+      referId = result.id
     }
 
     const account = {
       name: req.body.name,
       email: req.body.email,
       account: req.body.account,
-      refer_id: refer_id,
-      refer_email: req.body.refer_email,
+      referId: referId,
+      referEmail: req.body.referEmail,
     }
 
     result = await Account.findOne({where: {email: account.email}})
