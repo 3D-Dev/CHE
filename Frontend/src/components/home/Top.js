@@ -223,7 +223,7 @@ export const Top = (props) => {
       </div>
 
       <div className={"pt-4 pb-20 bg-home-theme body"}>
-          <div className={"flex justify-center pt-16 sm:px-8 md:mx-64 lg:mx-64"}>
+          <div className={"flex justify-center pt-16 sm:px-8 md:mx-32 lg:mx-64"}>
               <a target="_blank"
                  href={"https://rabbitmember.com/usagi-10minute/"}
                  className={"flex items-center justify-center bg-yellow btn-secondary-round h-75px text-white text-xl cursor-pointer"}
@@ -232,10 +232,10 @@ export const Top = (props) => {
                   <img alt="" src={require('../../assets/images/circle_arrow_blue.png')}/>
               </a>
           </div>
-          <div className={"flex justify-center pt-16 sm:px-8 md:mx-64 lg:mx-64"}>
+          <div className={"flex justify-center pt-16 sm:px-8 md:mx-32 lg:mx-64"}>
               <span className={"mr-8"}>{props.intl.formatMessage({id: 'str.item.campaign.offer'})}</span>
           </div>
-          <div className={"flex justify-center pt-16 sm:px-8 md:mx-64 lg:mx-64"}>
+          <div className={"flex justify-center pt-16 sm:px-8 md:mx-32 lg:mx-64"}>
               <a target="_blank"
                  href={"https://rabbitmember.com/faq/"}
                  className={"flex items-center justify-center bg-yellow btn-secondary-round h-75px text-white text-xl cursor-pointer"}
@@ -244,7 +244,7 @@ export const Top = (props) => {
                   <img alt="" src={require('../../assets/images/circle_arrow_blue.png')}/>
               </a>
           </div>
-          <div className={"flex justify-center pt-16 sm:px-8 md:mx-64 lg:mx-64"}>
+          <div className={"flex justify-center pt-16 sm:px-8 md:mx-32 lg:mx-64"}>
               <a target="_blank"
                  href={"https://rabbitmember.com/member-apps/"}
                  className={"flex items-center justify-center bg-yellow btn-secondary-round h-75px text-white text-xl cursor-pointer"}
@@ -253,7 +253,7 @@ export const Top = (props) => {
                   <img alt="" src={require('../../assets/images/circle_arrow_blue.png')}/>
               </a>
           </div>
-          <div className={"flex justify-center pt-16 sm:px-8 md:mx-64 lg:mx-64"}>
+          <div className={"flex justify-center pt-16 sm:px-8 md:mx-32 lg:mx-64"}>
               <a target="_blank"
                  href={"https://rabbitmember.com/che-kaisetu/"}
                  className={"flex items-center justify-center bg-yellow btn-secondary-round h-75px text-white text-xl cursor-pointer"}
@@ -263,7 +263,7 @@ export const Top = (props) => {
               </a>
           </div>
       </div>
-      <div className={"pt-4 lg:pb-20 sm:px-0 lg:px-56 bg-yellow-light"}>
+      <div className={"pt-4 lg:pb-20 sm:px-0 md:px-8 lg:px-30 xl:px-56 bg-yellow-light"}>
           <div className={"lg:px-32 lg:pb-12"}>
               <div className={"flex items-center justify-center lg:m-10"}>
                   <span className={"blue-color text-3xl font-bold"}>{props.intl.formatMessage({id: 'str.item.new.register'})}</span>
@@ -336,11 +336,11 @@ export const Top = (props) => {
                           required={false}
                           readOnly={false}
                       />
-                      {/*電話番号*/}
+
                       <Fragment>
                           <div>
                               <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.date'})} required={props.required}/>
-                              <Col lg={12} className={"p-0 lg:ml-24"} >
+                              <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"createdAt"}
                                       rules={[{required: props.required, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
