@@ -3,20 +3,37 @@ const db = require("../models")
 const {hash} = require("bcrypt")
 const {isAuth} = require("./auth.controller")
 const Account = db.accounts
+const Op = db.Sequelize.Op;
 
 exports.findAll = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
 
-    const count = await Account.count()
-    const limit = parseInt(req.query.limit)
-    const offset = limit * (parseInt(req.query.page)-1)
+    const keyword = req.query.keyword || ""
+    const limit = parseInt(req.query.limit) || 0
+    const offset = limit * ((parseInt(req.query.page || 1)) - 1)
 
-    const data = await Account.findAll({
-      offset: offset,
-      limit: limit,
+    const condition = {
+      [Op.or]: [
+        {name: {[Op.like]: '%' + keyword + '%'}},
+        {email: {[Op.like]: '%' + keyword + '%'}},
+        {account: {[Op.like]: '%' + keyword + '%'}},
+      ]
+    }
+
+    const count = await Account.count({where: condition})
+
+    const findCondition = {
+      where: condition,
       order: [sequelize.col('id')]
-    })
+    }
+    if (limit > 0) {
+      findCondition.offset = offset
+      findCondition.limit = limit
+    }
+
+    const data = await Account.findAll(findCondition)
+
     if (data) {
       res.send({data: data, total: count})
     }

@@ -10,7 +10,10 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         defaultValue: 2, // 0: fail, 1: success, 2: waiting
       },
-      retruy_count: {
+      startAt: {
+        type: Sequelize.DATE,
+      },
+      retruyCount: {
         type: Sequelize.INTEGER,
         defaultValue: 0, // max of retruy is 3
       },

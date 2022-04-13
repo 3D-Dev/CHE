@@ -40,9 +40,13 @@ app.get("/", (req, res) => {
 require("./app/routes/accounts.routes")(app)
 require("./app/routes/requests.routes")(app)
 
-cron.schedule('* * * * *', async () => {
-  await requests.auto_task()
-});
+// cron.schedule('* * * * *', async () => {
+//   await requests.auto_task_one()
+// });
+
+// cron.schedule('*/2 * * * *', async () => {
+//   await requests.auto_task_two()
+// });
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5000
