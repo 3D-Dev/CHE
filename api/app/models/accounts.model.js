@@ -21,16 +21,16 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
         trim: true,
       },
-      refer_id: {
+      referId: {
         type: Sequelize.INTEGER,
+        defaultValue: 0,
       },
-      refer_email: {
+      referEmail: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true,
         trim: true,
+        defaultValue: '',
       },
-      total_distribution: {
+      totalDistribution: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0,

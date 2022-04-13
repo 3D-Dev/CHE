@@ -81,9 +81,17 @@ exports.update = async (req, res) => {
 }
 
 
-exports.auto_task = async () => {
+exports.auto_task_one = async () => {
   try {
-    console.log("Task is running every minute " + new Date())
+    console.log("Task One ~~~~~~~~~~~~~~~ is running every minute " + new Date())
+
+  } catch (err) {
+  }
+}
+
+exports.auto_task_two = async () => {
+  try {
+    console.log("Task Two  @@@@@@@@@@@@@@@@@@@ is running 2 minute " + new Date())
 
   } catch (err) {
   }
