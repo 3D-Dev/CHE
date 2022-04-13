@@ -277,7 +277,7 @@ export const Top = (props) => {
                   >
                       <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
-                              <span className={"text-base ml-2"}>{props.intl.formatMessage({id: 'str.item.register.step1'})}</span>
+                              <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step1'})}</span>
                           </div>
                       </Col>
                       {/*氏名*/}
@@ -291,7 +291,7 @@ export const Top = (props) => {
                       />
                       <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
-                              <span className={"text-base ml-2"}>{props.intl.formatMessage({id: 'str.item.register.step2'})}</span>
+                              <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step2'})}</span>
                           </div>
                       </Col>
                       {/*メールアドレス*/}
@@ -305,7 +305,7 @@ export const Top = (props) => {
                       />
                       <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
-                              <span className={"text-base ml-2"}>{props.intl.formatMessage({id: 'str.item.register.step3'})}</span>
+                              <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step3'})}</span>
                           </div>
                       </Col>
                       <FormInput
@@ -318,14 +318,14 @@ export const Top = (props) => {
                       />
                       <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
-                              <span className={"text-base ml-2"}>
+                              <span className={"text-base"}>
                                 <a href= "https://rabbitmember.com/token-pocket-kaisetu/" target="_blank" >{props.intl.formatMessage({id: 'str.item.link.tokenpoket'})}</a>
                               </span>
                           </div>
                       </Col>
                       <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
-                              <span className={"text-base ml-2"}>{props.intl.formatMessage({id: 'str.item.register.step4'})}</span>
+                              <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step4'})}</span>
                           </div>
                       </Col>
                       {/*氏名*/}
@@ -362,7 +362,7 @@ export const Top = (props) => {
                               </div>
                           </div>
                           <div className={"flex items-center mb-5"}>
-                                  <span className={"text-base whitespace-no-wrap ml-2"}>
+                                  <span className={"text-base whitespace-no-wrap"}>
                                     <a href= "https://rabbitmember.com/terms-of-service/" target="_blank" >{props.intl.formatMessage({id: 'str.item.policy'})}</a>
                                   </span>
                           </div>
