@@ -7,7 +7,7 @@ export const FormInput = (props) => {
     <Fragment>
       <div>
         <FormLabel label={props.label} required={props.required}/>
-        <Col lg={12} className={"p-0 lg:ml-24"} >
+        <Col lg={16} className={"p-0 lg:ml-24"} >
           <Form.Item
             name={props.name}
             rules={[{required: props.required, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
