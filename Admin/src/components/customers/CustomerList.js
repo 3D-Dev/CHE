@@ -231,7 +231,7 @@ class CustomerList extends Component {
       },
       {
         id: 4,
-        title: intl.formatMessage({id: 'table.header.lastUpdated'})
+        title: intl.formatMessage({id: 'table.header.lastUpdatedAt'})
       },
       {
         id: 5,

@@ -225,16 +225,28 @@ class UserList extends Component {
       },
       {
         id: 3,
-        title: intl.formatMessage({id: 'table.header.lastUpdated'})
+        title: intl.formatMessage({id: 'table.header.referAddress'})
       },
       {
         id: 4,
-        title: intl.formatMessage({id: 'table.header.edit'})
+        title: intl.formatMessage({id: 'table.header.totalDistribution'})
       },
       {
         id: 5,
-        title: ''
+        title: intl.formatMessage({id: 'table.header.createdAt'})
+      },
+      {
+        id: 6,
+        title: intl.formatMessage({id: 'table.header.lastUpdatedAt'})
       }
+      // {
+      //   id: 7,
+      //   title: intl.formatMessage({id: 'table.header.edit'})
+      // },
+      // {
+      //   id: 8,
+      //   title: ''
+      // }
     ]
     return (
       <div className={classes.tableWrapper}>
@@ -260,6 +272,7 @@ class UserList extends Component {
               </StyledTableRow>
             }
             {rows.map((row, key) => {
+              console.log('Data!!!', row)
               return (
                 <StyledTableRow
                   hover
@@ -267,19 +280,23 @@ class UserList extends Component {
                   <StyledTableCell>{row.id}</StyledTableCell>
                   <StyledTableCell>{row.name}</StyledTableCell>
                   <StyledTableCell>{row.email}</StyledTableCell>
-                  <StyledTableCell><Moment format="YYYY/MM/DD">{row.date}</Moment></StyledTableCell>
-                  <StyledTableCell>
-                    <p className="gx-text-primary gx-pointer gx-mb-0" type="primary"
-                       onClick={() => this.props.onClickEditButton(row.id)}>
-                      <FormattedMessage id="btn.edit"/>
-                    </p>
-                  </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <Button className="gx-mb-0 gx-btn-rounded-blue1" type="primary"
-                            onClick={() => this.props.onClickGoStoreLogin(row.id)}>
-                      <FormattedMessage id="btn.goStoreLogin"/>
-                    </Button>
-                  </StyledTableCell>
+                  <StyledTableCell>{row.account}</StyledTableCell>
+                  <StyledTableCell>{row.referEmail}</StyledTableCell>
+                  <StyledTableCell>{row.totalDistribution}</StyledTableCell>
+                  <StyledTableCell><Moment format="YYYY/MM/DD">{row.createdAt}</Moment></StyledTableCell>
+                  <StyledTableCell><Moment format="YYYY/MM/DD">{row.updatedAt}</Moment></StyledTableCell>
+                  {/*<StyledTableCell>*/}
+                  {/*  <p className="gx-text-primary gx-pointer gx-mb-0" type="primary"*/}
+                  {/*     onClick={() => this.props.onClickEditButton(row.id)}>*/}
+                  {/*    <FormattedMessage id="btn.edit"/>*/}
+                  {/*  </p>*/}
+                  {/*</StyledTableCell>*/}
+                  {/*<StyledTableCell align="center">*/}
+                  {/*  <Button className="gx-mb-0 gx-btn-rounded-blue1" type="primary"*/}
+                  {/*          onClick={() => this.props.onClickGoStoreLogin(row.id)}>*/}
+                  {/*    <FormattedMessage id="btn.goStoreLogin"/>*/}
+                  {/*  </Button>*/}
+                  {/*</StyledTableCell>*/}
                 </StyledTableRow>
               )
             })}

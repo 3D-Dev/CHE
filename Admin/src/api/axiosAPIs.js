@@ -45,18 +45,13 @@ export const login = (data) => {
   return axiosRequest('post', axiosConfig.LOGIN_URL, data)
 }
 
-export const findAll = (data) => {
-  const url = axiosConfig.FINDALL_URL + data
-  return axiosRequest('get', url)
-}
-
 export const logout = () => {
   return axiosRequest('post', axiosConfig.LOGOUT_URL)
 }
 // User API
 export const getUserList = (data) => {
   data.page = data.page + 1
-  return axiosRequest('get', axiosConfig.USER_LIST, data)
+  return axiosRequest('get', axiosConfig.FINDALL_URL, data)
 }
 
 export const getUserItem = (data) => {

@@ -8,7 +8,7 @@ import {Spin} from "antd";
 import {useAuthState} from "../../context";
 
 export const AppContainer = (props) => {
-  const {loading, profile} = useAuthState();
+  const {loading} = useAuthState();
   const { pathname } = useLocation();
 
   useEffect(() => {

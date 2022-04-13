@@ -10,6 +10,8 @@
   "alert.invalidEmail": "無効なメール",
   "alert.fieldRequired": "このフィールドは必須です。",
   "alert.min.length.Required": "パスワードの最小長は6です。",
+  "alert.fieldReferEmailConfirm": "紹介者と同じメールアドレスを利用できません。",
+
   "alert.fieldPasswordConfirm": "パスワード一致しません。",
   "alert.fieldJapaneseCode": "ひらがなカタカナは入力出来ません。",
   "alert.deleteConfirm": "削除しますか？",
@@ -94,6 +96,9 @@
   "message.success.newReservation": "新規予約を作成しました。",
   "message.success.editReservation": "予約情報を更新しました。",
   "message.success.cancelReservation": "予約をキャンセルしました。",
+  "message.success.user": "ユーザー登録に成功しました。",
+  "message.error.serverSide": "サーバー接続に失敗しました。 もう一度試してください。",
+  "message.error.userSide": "登録情報が正確ではありません。 もう一度試してください。",
 
   "str.today.month": "今月",
   "str.prev.month": "前月",
