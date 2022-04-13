@@ -32,7 +32,7 @@ exports.findAll = async (req, res) => {
 exports.create = async (req, res) => {
   // Validate request
   try {
-    const userId = await isAuth(req, res)
+    // const userId = await isAuth(req, res)
 
     if (!req.body.email) {
       res.status(400).send({

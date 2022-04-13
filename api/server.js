@@ -1,6 +1,8 @@
 require('dotenv/config')
 const express = require("express")
 const cors = require("cors")
+const cron = require('node-cron');
+const requests = require('./app/controllers/requests.controller');
 
 const app = express()
 const whitelist = ['http://localhost:3000', 'http://localhost:3001']
@@ -37,6 +39,10 @@ app.get("/", (req, res) => {
 
 require("./app/routes/accounts.routes")(app)
 require("./app/routes/requests.routes")(app)
+
+cron.schedule('* * * * *', async () => {
+  await requests.auto_task()
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5000

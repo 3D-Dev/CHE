@@ -79,3 +79,12 @@ exports.update = async (req, res) => {
     })
   }
 }
+
+
+exports.auto_task = async () => {
+  try {
+    console.log("Task is running every minute " + new Date())
+
+  } catch (err) {
+  }
+}
