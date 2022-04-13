@@ -7,7 +7,7 @@ const Op = db.Sequelize.Op;
 
 exports.findAll = async (req, res) => {
   try {
-    // const userId = await isAuth(req, res)
+    const userId = await isAuth(req, res)
 
     const keyword = req.query.keyword || ""
     const limit = parseInt(req.query.limit) || 0
