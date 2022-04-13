@@ -13,11 +13,35 @@ import axios from "axios";
 import {HIDE_LOADING, SHOW_LOADING} from "../../constants/ActionType";
 import {PageConstant} from "../../constants/PageConstant";
 import {isLogined, updateProfile} from "../../helper/utils";
-import _ from "lodash";
 import {ERROR, openNotificationWithIcon} from "../common/Messages";
 import {initialProfile} from "../../context/reducer";
+import {injectIntl} from "react-intl";
+import i18next from "i18next";
+import HttpApi from "i18next-http-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+import {initReactI18next} from "react-i18next";
 
-const AppRoutes = ({component: Component, path, isPrivate, ...rest}) => {
+i18next
+    .use(HttpApi)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+      supportedLngs: ['en', 'id', 'ja', 'vi'],
+      fallbackLng: 'ja',
+      debug: false,
+      // Options for language detector
+      detection: {
+        order: ['path', 'cookie', 'htmlTag'],
+        caches: ['cookie'],
+      },
+      react: { useSuspense: false },
+      backend: {
+        loadPath: "../../lngProvider/locales/translation.json",
+      },
+    })
+
+
+const AppRoutes = ({component: Component, path, isPrivate, intl, ...rest}) => {
   const {profile} = useAuthState();
   const dispatch = useAuthDispatch();
 
@@ -29,16 +53,19 @@ const AppRoutes = ({component: Component, path, isPrivate, ...rest}) => {
         case HTTP_BAD_REQUEST:
         case HTTP_NOT_FOUND:
         case HTTP_INTERNAL_SERVER_ERROR:
+          openNotificationWithIcon(ERROR, intl.formatMessage({ id: "message.error.serverSide"}))
           break
         case HTTP_CONFLICT:
-          msg = data
+          openNotificationWithIcon(ERROR, intl.formatMessage({ id: "message.error.userSide"}))
+          //msg = data
         case HTTP_UNAUTHORIZED:
           updateProfile(dispatch, initialProfile, profile.remember)
       }
     }
-    if (!_.isEmpty(msg)) {
-      openNotificationWithIcon(ERROR, msg)
-    }
+    // if (!_.isEmpty(msg)) {
+    //   console.log("processError!!!", msg)
+    //   //openNotificationWithIcon(ERROR, msg)
+    // }
   }
 
   useEffect(() => {
@@ -72,8 +99,6 @@ const AppRoutes = ({component: Component, path, isPrivate, ...rest}) => {
     }
   }, []);
 
-  console.log("/***** profile ******/ ", profile)
-
   return (
     <Route
       path={path}
@@ -88,4 +113,4 @@ const AppRoutes = ({component: Component, path, isPrivate, ...rest}) => {
   );
 };
 
-export default AppRoutes;
+export default injectIntl(AppRoutes);

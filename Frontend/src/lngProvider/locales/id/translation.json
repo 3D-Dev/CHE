@@ -1,6 +1,7 @@
 {
   "app_title": "CHE",
   "alert.fieldRequired": "Bagian ini diperlukan.",
+  "alert.fieldReferEmailConfirm": "Anda tidak dapat menggunakan alamat email yang sama dengan pengantar.",
   "form.item.name": "Nama",
   "form.item.introduce.name": "Contoh Introducer",
   "form.item.introduce.date": "Tanggal registrasi",
@@ -9,9 +10,12 @@
   "form.item.email.confirm": "Alamat email (alfanumerik setengah lebar) (wajib)",
   "form.item.name.confirm": "SATO KEIKO (wajib) (Romanisasi Hepburn, huruf kapital, setengah lebar)",
 
+  "message.success.user": "Pendaftaran pengguna berhasil.",
+  "message.error.serverSide": "Koneksi server gagal. Silakan coba lagi.",
+  "message.error.userSide": "Informasi pendaftaran tidak akurat. Silakan coba lagi.",
+
   "str.item.policy.confirm": "Saya setuju dengan syarat penggunaan.",
   "str.item.policy": "→Syarat penggunaan",
-
   "str.item.news.first": "Sekitar 5% pembakaran (insinerator) dan penambangan",
   "str.item.news.second": "Karena jumlah orang baru telah meningkat, kami sekali lagi telah merangkum informasi dasar dari Rabbit Coin HBY&#x1f609;",
   "str.item.news.third": "Untuk melindungi komunitas Rabbit Coin",

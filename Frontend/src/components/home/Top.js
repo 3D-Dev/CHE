@@ -1,6 +1,6 @@
 import React, {Fragment, useRef, useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
-import {Card, Checkbox, Col, Form, Input, Row} from "antd";
+import {Card, Checkbox, Col, Form, Input} from "antd";
 import {FormInput} from "../form/FormInput";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
@@ -8,9 +8,11 @@ import {FormLabel} from "../form/FormLabel";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
-import classNames from 'classnames'
 import {createAccout} from "../../api/axiosAPIs";
-
+import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
+import {
+    HTTP_SUCCESS,
+} from "../../constants/ResponseCode";
 const languages = [
     {
         code: 'en',
@@ -42,7 +44,6 @@ export const Top = (props) => {
     let history = useHistory();
     const {loading, profile} = useAuthState();
     const formRef = useRef();
-    const [isModalVisible, setIsModalVisible] = useState(false);
     const [isConfirm, setIsConfirm] = useState(false);
     const [initFormValue] = useState(isLogined(profile) ? {
         inquiry_name: profile.name,
@@ -63,15 +64,17 @@ export const Top = (props) => {
         formData.append('name', data.name)
         formData.append('email', data.email)
         formData.append('account', data.account)
+        formData.append('refer_id', '')
         formData.append('refer_email', data.referEmail)
         formData.append('createdAt', data.createdAt)
         console.log("refer_email", data.referEmail)
+
         let response = {}
         try {
             response = await createAccout(formData)
-            if (response.status === 200) {
+            if (response.status === HTTP_SUCCESS) {
                 console.log("create_successfully!")
-
+                openNotificationWithIcon(SUCCESS, props.intl.formatMessage({id: 'message.success.user'}))
             }
         } catch (error) {
             console.log(error)
@@ -328,16 +331,29 @@ export const Top = (props) => {
                               <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step4'})}</span>
                           </div>
                       </Col>
-                      {/*氏名*/}
-                      <FormInput
-                          label={props.intl.formatMessage({id: 'form.item.introduce.name'})}
-                          name={"referEmail"}
-                          placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}
-                          intl={props.intl}
-                          required={false}
-                          readOnly={false}
-                      />
-
+                      {/*紹介者*/}
+                      <Fragment>
+                          <div>
+                              <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.name'})}/>
+                              <Col lg={16} className={"p-0 lg:ml-24"} >
+                                  <Form.Item
+                                      name={"referEmail"}
+                                      rules={[
+                                          ({getFieldValue}) => ({
+                                              validator(_, value) {
+                                                  if (getFieldValue("email") !== value) {
+                                                      return Promise.resolve()
+                                                  }
+                                                  return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
+                                              }
+                                          })
+                                      ]}
+                                  >
+                                      <Input size={"large"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
+                                  </Form.Item>
+                              </Col>
+                          </div>
+                      </Fragment>
                       <Fragment>
                           <div>
                               <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.date'})} required={props.required}/>

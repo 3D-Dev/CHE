@@ -1,6 +1,7 @@
 {
   "app_title": "CHE",
   "alert.fieldRequired": "This field is required.",
+  "alert.fieldReferEmailConfirm": "You cannot use the same email address as the introducer.",
   "form.item.name": "Name",
   "form.item.introduce.name": "Introducer",
   "form.item.introduce.date": "Registration date",
@@ -12,9 +13,9 @@
   "str.item.policy.confirm": "I agree to the terms of use.",
   "str.item.policy": "→Terms of use",
 
-
-
-
+  "message.success.user": "User registration was successful.",
+  "message.error.serverSide": "Server connection failed. Please try again.",
+  "message.error.userSide": "The registration information is not accurate. Please try again.",
 
   "str.item.news.first": "About 5% burn(incinerator) and mining",
   "str.item.news.second": "Since the number of new people has increased, we have once again summarized the basic information of Rabbit Coin HBY &#x1f609;",

@@ -122,7 +122,6 @@
   "label.manage.record.ng.msg2": "問題があった場合は、デフォルトから選択するか、任意で入力し下さい。",
 
   "menu.title.accountSelect": "アカウント切り替え",
-  "menu.title.users": "ユーザー一覧",
   "menu.title.stores": "ショップ一覧",
   "menu.title.customers": "ショップ管理",
   "menu.title.home": "ホーム",
@@ -137,6 +136,12 @@
   "table.header.userId": "ID",
   "table.header.userName": "ユーザー名",
   "table.header.mailAddress": "メールアドレス",
+  "table.header.referId": "紹介ID",
+  "table.header.referAddress": "紹介者",
+  "table.header.totalDistribution": "補償額",
+  "table.header.createdAt": "報酬開始日",
+  "table.header.lastUpdatedAt": "最終更新日",
+  "table.header.edit": "編集",
 
   "menu.card.healthCare": "健康管理",
   "menu.card.ccp": "CCP",
@@ -198,10 +203,7 @@
   "table.header.managementDevicesCommonName": "通称名称",
 
 
-  "table.header.customerId": "ショップID",
-  "table.header.customerName": "ショップ名",
-  "table.header.lastUpdated": "最終更新日",
-  "table.header.edit": "編集",
+
   "table.header.delete": "削除",
   "table.header.date": "⽇付",
   "table.header.confirmAcceptance": "原材料の受⼊確認",
