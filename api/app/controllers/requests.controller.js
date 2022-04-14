@@ -1,22 +1,33 @@
-const {sequelize} = require("../models")
+const {sequelize, requests} = require("../models")
 const db = require("../models")
 const {hash} = require("bcrypt")
-const {isAuth} = require("./accounts.controller")
+const {isAuth} = require("./auth.controller")
 const Account = db.accounts
-const Requests = db.requests
+const Request = db.requests
 const Op = db.Sequelize.Op
 const moment = require('moment')
-const {WAITING} = require("../constant/requestStatus")
+const {WAITING, SUCCESS, FAIL} = require("../constant/requestStatus")
 const {USER_PAYMENT, INTRODUCTION_PAYMENT} = require("../constant/payment")
 
 exports.findAll = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
 
-    const data = await Requests.findAll({
+    const limit = parseInt(req.query.limit) || 0
+    const offset = limit * ((parseInt(req.query.page || 1)) - 1)
+    const findCondition = {
       order: [sequelize.col('id')]
-    })
-    res.send({data: data})
+    }
+
+    const count = await Request.count(findCondition)
+
+    if (limit > 0) {
+      findCondition.offset = offset
+      findCondition.limit = limit
+    }
+    const data = await Request.findAll(findCondition)
+
+    res.send({data: data, total: count})
   } catch (err) {
     console.log("findAll", err)
     res.status(500).send({
@@ -29,11 +40,10 @@ exports.findAll = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
-    const Request = {
+    const data = await Request.create({
+      startAt: db.sequelize.fn('NOW'),
       status: WAITING,
-    }
-
-    const data = await Request.create(Request)
+    })
     res.send(data)
   } catch (err) {
     res.status(500).send({
@@ -82,29 +92,94 @@ exports.update = async (req, res) => {
   }
 }
 
+const copyUser = (record) => {
+  return {
+    name: record.name,
+    email: record.email,
+    account: record.account,
+    referId: record.referId,
+    referEmail: record.referEmail,
+    totalDistribution: record.totalDistribution,
+    name: record.name,
+  }
+}
+
+const copyRequest = (record) => {
+  return {
+    status: record.status,
+    startAt: record.startAt,
+    retryCount: record.retryCount,
+  }
+}
+
+const updateUserInfo = async (record) => {
+  // update user
+  const newRecord = copyUser(record)
+  newRecord.totalDistribution += USER_PAYMENT
+  const result = await Account.update(newRecord, { where: { id: record.id } })
+
+  // update refer
+  if (record.referId > 0) {
+    const referRecord = await Account.findByPk(record.referId)
+    const newReferRecord = copyUser(referRecord)
+    newReferRecord.totalDistribution += INTRODUCTION_PAYMENT
+    const referResult = await Account.update(newReferRecord, { where: { id: referRecord.id } })
+  }
+}
+
+const updateRequestRetryCount = async (record) => {
+  const newRecord = copyRequest(record)
+  newRecord.retryCount += 1
+  await Request.update(newRecord, { where: { id: record.id } })
+}
+
+const updateRequestToSuccess = async (record, status) => {
+  const newRecord = copyRequest(record)
+  newRecord.status = status
+  await Request.update(newRecord, { where: { id: record.id } })
+}
 
 exports.auto_task_one = async () => {
   try {
     console.log("Task One ~~~~~~~~~~~~~~~ is running every minute " + new Date())
 
-    const request = await Requests.findAll({
+    const request = await Request.findAll({
       limit: 1,
       order: [ [ 'createdAt', 'DESC' ]]
     })
-    if (request.length > 0 && request[0].status == WAITING) {
-      const data = await Account.findAll({
-        where: {
-          updatedAt: {[Op.lt]: request[0].startAt},
-        },
-        order: [sequelize.col('id')]
-      })
+    if (request.length > 0) {
+      if (request[0].retryCount < 3  && request[0].status == WAITING) {
+        // update request
+        await updateRequestRetryCount(request[0])
 
-      console.log("!!!!!!!!!!!!", data)
+        const data = await Account.findAll({
+          where: {
+            updatedAt: {[Op.lt]: request[0].startAt},
+          },
+          order: [sequelize.col('id')]
+        })
 
+        let isSuccess = true
+        for (index in data) {
+          try {
+            const record = data[index]
+            await updateUserInfo(record)
+          } catch (err) {
+            isSuccess = false
+            console.log("auto_task_one::updateUserInfo", err)
+          }
+        }
+        if (isSuccess) {
+          await updateRequestToSuccess(request[0], SUCCESS)
+        }
+      }
+      else if (request[0].retryCount >= 3  && request[0].status == WAITING) {
+        await updateRequestToSuccess(request[0], FAIL)
+      }
     }
 
-
   } catch (err) {
+    console.log("auto_task_one", err)
   }
 }
 

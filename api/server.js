@@ -40,9 +40,9 @@ app.get("/", (req, res) => {
 require("./app/routes/accounts.routes")(app)
 require("./app/routes/requests.routes")(app)
 
-// cron.schedule('* * * * *', async () => {
-//   await requests.auto_task_one()
-// });
+cron.schedule('* * * * *', async () => {
+  await requests.auto_task_one()
+});
 
 // cron.schedule('*/2 * * * *', async () => {
 //   await requests.auto_task_two()
