@@ -52,7 +52,11 @@ class Users extends React.Component {
         rowsPerPage: rowsPerPageState
       })
     }
+    //this.timer = setInterval(this.fetchUserList(), 1000)
     this.fetchUserList(data)
+  }
+  componentWillUnmount() {
+    clearInterval(this.timer)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -78,6 +82,18 @@ class Users extends React.Component {
               count: response.data.total,
               rows: response.data.data
             })
+            const data = JSON.stringify(response.data)
+            const request = JSON.parse(data).request[0].status
+            switch (request) {
+              case 0:
+              case 1:
+                this.setState({btnActive: true})
+                clearInterval(this.timer)
+                break
+              case 2:
+                this.setState({btnActive: false})
+                break
+            }
           } else {
             //this.props.initSettings()
             //this.props.history.push('/admin/login')
@@ -97,7 +113,6 @@ class Users extends React.Component {
     getDownloadList(params)
       .then(response => {
         if (!_.isEmpty(response.data)) {
-          console.log('CSV!!!!', JSON.stringify(response.data))
           this.setState({downloadRows: response.data.data}, () => {
             // click the CSVLink component to trigger the CSV download
             this.csvLink.current.link.click()
@@ -202,10 +217,10 @@ class Users extends React.Component {
   onClickSendRequest = () => {
     addRequest()
         .then(response => {
-          console.log("onClickSendRequest!!!!", response)
           if (response.status === HTTP_SUCCESS) {
             openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.Request'}))
             this.setState({btnActive: false})
+            this.timer = setInterval(() => this.fetchUserList(), 5000)
           }
         })
   }
