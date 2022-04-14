@@ -6,10 +6,11 @@ const Account = db.accounts
 const Requests = db.requests
 const Op = db.Sequelize.Op;
 const requests = require('./requests.controller');
+const Request = db.requests
 
 exports.findAll = async (req, res) => {
   try {
-    // const userId = await isAuth(req, res)
+    const userId = await isAuth(req, res)
 
     const keyword = req.query.keyword || ""
     const limit = parseInt(req.query.limit) || 0
@@ -45,7 +46,6 @@ exports.findAll = async (req, res) => {
       res.send({data: data, total: count, request: request})
     }
 
-    requests.auto_task_one()
   }
   catch (err) {
     res.status(500).send({
