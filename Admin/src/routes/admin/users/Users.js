@@ -83,16 +83,18 @@ class Users extends React.Component {
               rows: response.data.data
             })
             const data = JSON.stringify(response.data)
-            const request = JSON.parse(data).request[0].status
-            switch (request) {
-              case 0:
-              case 1:
-                this.setState({btnActive: true})
-                clearInterval(this.timer)
-                break
-              case 2:
-                this.setState({btnActive: false})
-                break
+            if(JSON.parse(data).request.length > 0) {
+              const request = JSON.parse(data).request[0].status
+              switch (request) {
+                case 0:
+                case 1:
+                  this.setState({btnActive: true})
+                  clearInterval(this.timer)
+                  break
+                case 2:
+                  this.setState({btnActive: false})
+                  break
+              }
             }
           } else {
             //this.props.initSettings()
