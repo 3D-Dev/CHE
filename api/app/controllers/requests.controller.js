@@ -18,13 +18,16 @@ exports.findAll = async (req, res) => {
     const findCondition = {
       order: [sequelize.col('id')]
     }
+
+    const count = await Request.count({where: findCondition})
+
     if (limit > 0) {
       findCondition.offset = offset
       findCondition.limit = limit
     }
     const data = await Request.findAll(findCondition)
 
-    res.send({data: data})
+    res.send({data: data, total: count})
   } catch (err) {
     console.log("findAll", err)
     res.status(500).send({
