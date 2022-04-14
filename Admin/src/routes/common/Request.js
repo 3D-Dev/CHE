@@ -10,6 +10,7 @@ import _ from "lodash";
 import {CSVLink} from "react-csv";
 import {UserList} from "../../components";
 import {setTitleText} from "../../appRedux/actions/Custom";
+import RequestList from "../../components/users/RequestList";
 
 const {Footer} = Layout
 
@@ -149,11 +150,6 @@ class Request extends React.Component {
     const {profile} = this.props
     return (
         <div>
-          <div className="gx-flex-row gx-align-items-right gx-mb-3">
-            <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickRegisterUser}>
-              <FormattedMessage id="btn.sendAllUsers"/>
-            </Button>
-          </div>
           <div className="gx-flex-row gx-align-items-center gx-mb-4">
             <h2 className="title gx-mb-auto gx-page-title"><FormattedMessage id="menu.title.users"/></h2>
           </div>
@@ -164,16 +160,10 @@ class Request extends React.Component {
                     className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-12 ant-col-lg-18 ant-col-xl-20 ant-col-xxl-20 gx-mb-2">
                   <div
                       className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-12 ant-col-xxl-8 gx-no-padding">
-                    <div className="gx-no-flex-wrap-flow">
-                      <Input placeholder="ユーザー名、メールアドレス、入金アドレス。。。" className="gx-mr-2" onChange={this.onChangeKeyword}/>
-                      <Button className="ant-btn-primary gx-mb-0 gx-btn-rounded-blue1" onClick={this.onClickSearchButton}>
-                        <FormattedMessage id="btn.search"/>
-                      </Button>
-                    </div>
                   </div>
                 </div>
               </div>
-              <UserList
+              <RequestList
                   rows={rows}
                   count={count}
                   page={page}

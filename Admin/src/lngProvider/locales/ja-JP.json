@@ -145,6 +145,11 @@
   "table.header.createdAt": "報酬開始日",
   "table.header.lastUpdatedAt": "最終更新日",
   "table.header.edit": "編集",
+  "table.header.retryCount": "再試行回数",
+  "table.header.result": "結果",
+  "table.header.result.success": "成功",
+  "table.header.result.fail": "失敗",
+  "table.header.result.wait": "進行中",
 
   "message.success.Request": "リクエストいただきました。少々お待ちください。",
   "message.error.Request": "リクエストが失敗しました。もう一度試してください。",
