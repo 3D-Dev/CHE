@@ -144,6 +144,9 @@
   "table.header.lastUpdatedAt": "最終更新日",
   "table.header.edit": "編集",
 
+  "message.success.Request": "リクエストいただきました。少々お待ちください。",
+  "message.error.Request": "リクエストが失敗しました。もう一度試してください。",
+
   "menu.card.healthCare": "健康管理",
   "menu.card.ccp": "CCP",
   "menu.card.hygiene": "一般衛生",

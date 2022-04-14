@@ -3,12 +3,14 @@ import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { UserList } from '../../../components'
 import { CSVLink } from 'react-csv'
-import { getUserList, getDownloadList, loginCustomerFromUser } from '../../../api/axiosAPIs'
+import {getUserList, getDownloadList, loginCustomerFromUser, addRequest} from '../../../api/axiosAPIs'
 import _ from 'lodash'
 import PageConstant from '../../../constants/PageConstant'
 import { Button, Card, Input, Spin } from 'antd'
 import { initSettings, setRole } from '../../../appRedux/actions/User'
 import { setTitleText } from '../../../appRedux/actions/Custom'
+import {HTTP_BAD_REQUEST, HTTP_SUCCESS} from "../../../constants/ResponseCode";
+import {openNotificationWithIcon} from "../../../components/common/Messages";
 
 class Users extends React.Component {
   constructor(props) {
@@ -201,12 +203,20 @@ class Users extends React.Component {
   }
 
 
-  onClickRegisterUser = () => {
-    this.props.history.push({
-      pathname: PageConstant.ADD_USER,
-      pageNumberState: this.state.page,
-      rowsPerPageState: this.state.rowsPerPage
-    })
+  onClickSendRequest = () => {
+    addRequest()
+        .then(response => {
+          console.log("onClickSendRequest!!!!", response)
+          if (response.status === HTTP_SUCCESS) {
+            openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.Request'}))
+            // this.setState({
+            //   page: 0,
+            //   rowsPerPage: event.target.value,
+            //   count: response.data.total,
+            //   rows: response.data.data
+            // })
+          }
+        })
   }
 
   render() {
@@ -223,7 +233,7 @@ class Users extends React.Component {
     return (
       <div>
         <div className="gx-flex-row gx-align-items-right gx-mb-3">
-          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickRegisterUser}>
+          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickSendRequest}>
             <FormattedMessage id="btn.sendAllUsers"/>
           </Button>
         </div>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as axiosConfig from './axiosConfig'
-import {FINDALL_URL} from "./axiosConfig";
+import {FINDALL_URL, REQUEST_FINDALL_URL} from "./axiosConfig";
 
 export const axiosRequest = (method, url, reqData = null, needLoader = true) => {
   const user = JSON.parse(localStorage.getItem("persist:root")).user
@@ -53,6 +53,15 @@ export const logout = () => {
 export const getUserList = (data) => {
   data.page = data.page + 1
   return axiosRequest('get', axiosConfig.FINDALL_URL, data)
+}
+
+export const addRequest = () => {
+  return axiosRequest('post', axiosConfig.REQUEST_FINDALL_URL)
+}
+
+export const getRequestList = (data) => {
+  data.page = data.page + 1
+  return axiosRequest('get', axiosConfig.REQUEST_FINDALL_URL, data)
 }
 
 export const getUserItem = (data) => {

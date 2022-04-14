@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import {Button, Card, Form, Input, Layout, Spin} from 'antd'
 import {initSettings, setRole} from '../../appRedux/actions/User'
-import {getUserList, select} from '../../api/axiosAPIs'
+import {getRequestList, getUserList, select} from '../../api/axiosAPIs'
 import { COPYRIGHT_COMPANY } from '../../constants/AppConfigs'
 import _ from "lodash";
 import {CSVLink} from "react-csv";
@@ -29,16 +29,6 @@ class Request extends React.Component {
       downloadRows: []
     }
   }
-
-  // doSelect = () => {
-  //   const {profile} = this.props
-  //   select(profile.permission_id)
-  //     .then(response => {
-  //       if (response.status === 200) {
-  //         this.props.history.push('/admin/users')
-  //       }
-  //     })
-  // }
 
   componentDidMount() {
     const {intl} = this.props
@@ -71,7 +61,7 @@ class Request extends React.Component {
       keyword: keyword
     }
     Object.assign(params, data)
-    getUserList(params)
+    getRequestList(params)
         .then(response => {
           if (!_.isEmpty(response.data)) {
             if (response.data.data) {
@@ -95,7 +85,7 @@ class Request extends React.Component {
       asc: asc,
       keyword: keyword
     }
-    getUserList(data)
+    getRequestList(data)
         .then(response => {
           if (!_.isEmpty(response.data)) {
             this.setState({
@@ -116,7 +106,7 @@ class Request extends React.Component {
       keyword: keyword
     }
 
-    getUserList(data)
+    getRequestList(data)
         .then(response => {
           if (!_.isEmpty(response.data)) {
             this.setState({
@@ -165,7 +155,7 @@ class Request extends React.Component {
             </Button>
           </div>
           <div className="gx-flex-row gx-align-items-center gx-mb-4">
-            <h2 className="title gx-mb-auto gx-page-title"><FormattedMessage id="page.title.users"/></h2>
+            <h2 className="title gx-mb-auto gx-page-title"><FormattedMessage id="menu.title.users"/></h2>
           </div>
           <Card className="gx-card">
             <Spin spinning={loader} size="large">

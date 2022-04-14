@@ -7,6 +7,7 @@ import { initSettings, setRole, setSettings } from '../../appRedux/actions/User'
 import { initCustom } from '../../appRedux/actions/Custom'
 import { login } from '../../api/axiosAPIs'
 import { COPYRIGHT_COMPANY } from '../../constants/AppConfigs'
+import {HTTP_SUCCESS} from "../../constants/ResponseCode";
 
 const {Footer} = Layout
 
@@ -32,7 +33,7 @@ class Login extends Component {
         response.data.email = data.email
         console.log('login', response.data)
         this.props.setSettings(response.data)
-        if (response.status === 200) {
+        if (response.status === HTTP_SUCCESS) {
           this.props.setRole('SELECTED_USER')
           this.props.history.push('/admin/')
         }
