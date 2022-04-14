@@ -142,7 +142,7 @@
   "table.header.referAddress": "紹介者",
   "table.header.account": "入金アドレス",
   "table.header.totalDistribution": "補償額",
-  "table.header.createdAt": "報酬開始日",
+  "table.header.startAt": "報酬開始日",
   "table.header.lastUpdatedAt": "最終更新日",
   "table.header.edit": "編集",
   "table.header.retryCount": "再試行回数",

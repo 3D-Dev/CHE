@@ -238,7 +238,7 @@ class UserList extends Component {
       },
       {
         id: 1,
-        title: intl.formatMessage({id: 'table.header.createdAt'})
+        title: intl.formatMessage({id: 'table.header.startAt'})
       },
       {
         id: 2,
