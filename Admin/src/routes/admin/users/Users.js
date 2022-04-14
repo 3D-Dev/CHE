@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { UserList } from '../../../components'
@@ -9,7 +9,7 @@ import PageConstant from '../../../constants/PageConstant'
 import { Button, Card, Input, Spin } from 'antd'
 import { initSettings, setRole } from '../../../appRedux/actions/User'
 import { setTitleText } from '../../../appRedux/actions/Custom'
-import {HTTP_BAD_REQUEST, HTTP_SUCCESS} from "../../../constants/ResponseCode";
+import {HTTP_SUCCESS} from "../../../constants/ResponseCode";
 import {openNotificationWithIcon} from "../../../components/common/Messages";
 
 class Users extends React.Component {
@@ -26,6 +26,7 @@ class Users extends React.Component {
       rowsPerPageOptions: [5, 10, 20, 50, 100, 500],
       asc: 'desc',
       keyword: '',
+      btnActive: true,
       downloadRows: []
     }
     this.csvLink = React.createRef()
@@ -192,11 +193,6 @@ class Users extends React.Component {
     }
   }
 
-  onClickDeleteButton = (id) => {
-
-    // this.showDeleteConfirmModal(id)
-  }
-
   onClickDownloadCSV = () => {
 
     this.fetchCSVData()
@@ -209,12 +205,7 @@ class Users extends React.Component {
           console.log("onClickSendRequest!!!!", response)
           if (response.status === HTTP_SUCCESS) {
             openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.Request'}))
-            // this.setState({
-            //   page: 0,
-            //   rowsPerPage: event.target.value,
-            //   count: response.data.total,
-            //   rows: response.data.data
-            // })
+            this.setState({btnActive: false})
           }
         })
   }
@@ -226,15 +217,19 @@ class Users extends React.Component {
       count,
       page,
       rowsPerPage,
-      rowsPerPageOptions
+      rowsPerPageOptions,
+      btnActive
     } = this.state
 
     const today = new Date()
     return (
       <div>
         <div className="gx-flex-row gx-align-items-right gx-mb-3">
-          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" onClick={this.onClickSendRequest}>
-            <FormattedMessage id="btn.sendAllUsers"/>
+          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" disabled={!btnActive} onClick={this.onClickSendRequest}>
+            {
+              btnActive === true ? <FormattedMessage id="btn.sendAllUsers"/>:<FormattedMessage id="btn.waitingRequest"/>
+            }
+
           </Button>
         </div>
         <div className="gx-flex-row gx-align-items-center gx-mb-4">

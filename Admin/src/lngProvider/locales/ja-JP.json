@@ -20,6 +20,8 @@
   "btn.search": "検索",
   "btn.downloadCSV": "CSVダウンロード",
   "btn.sendAllUsers": "自動配布",
+  "btn.waitingRequest": "配布中",
+
   "btn.newRegisterCustomer": "新規ショップ登録",
   "btn.newRegisterEmployee": "新規登録",
   "btn.newRegisterImportantManagements": "新規登録",
