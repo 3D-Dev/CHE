@@ -52,7 +52,7 @@ class Users extends React.Component {
         rowsPerPage: rowsPerPageState
       })
     }
-    //this.timer = setInterval(this.fetchUserList(), 1000)
+    this.timer = setInterval(()=>this.fetchUserList(), 5000)
     this.fetchUserList(data)
   }
   componentWillUnmount() {
