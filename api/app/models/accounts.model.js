@@ -31,6 +31,10 @@ module.exports = (sequelize, Sequelize) => {
         trim: true,
         defaultValue: '',
       },
+      distributed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
       totalDistribution: {
         type: Sequelize.BIGINT,
         allowNull: false,

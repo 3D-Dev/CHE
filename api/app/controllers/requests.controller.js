@@ -99,6 +99,7 @@ const copyUser = (record) => {
     account: record.account,
     referId: record.referId,
     referEmail: record.referEmail,
+    distributed: record.distributed,
     totalDistribution: record.totalDistribution,
     name: record.name,
   }
@@ -115,15 +116,16 @@ const copyRequest = (record) => {
 const updateUserInfo = async (record) => {
   // update user
   const newRecord = copyUser(record)
+  newRecord.distributed = true
   newRecord.totalDistribution += USER_PAYMENT
-  const result = await Account.update(newRecord, { where: { id: record.id } })
+  await Account.update(newRecord, { where: { id: record.id } })
 
   // update refer
   if (record.referId > 0) {
     const referRecord = await Account.findByPk(record.referId)
     const newReferRecord = copyUser(referRecord)
     newReferRecord.totalDistribution += INTRODUCTION_PAYMENT
-    const referResult = await Account.update(newReferRecord, { where: { id: referRecord.id } })
+    await Account.update(newReferRecord, { where: { id: referRecord.id } })
   }
 }
 
@@ -154,6 +156,7 @@ exports.auto_task_one = async () => {
 
         const data = await Account.findAll({
           where: {
+            distributed: false,
             updatedAt: {[Op.lt]: request[0].startAt},
           },
           order: [sequelize.col('id')]
