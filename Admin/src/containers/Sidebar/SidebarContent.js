@@ -24,7 +24,7 @@ class SidebarContent extends Component {
                 selectedKeys={[selectedKeys]}
                 theme={'dark'}
                 mode="inline">
-                <Menu.Item key="admin/select">
+                <Menu.Item key="users">
                   <Link to="/admin/">
                     <span className="menu-item-label"><FormattedMessage id="menu.title.accountInfo"/></span>
                   </Link>
@@ -35,8 +35,8 @@ class SidebarContent extends Component {
                   selectedKeys={[selectedKeys]}
                   theme={'dark'}
                   mode="inline">
-                <Menu.Item key="admin/select">
-                  <Link to="/admin">
+                <Menu.Item key="admin">
+                  <Link to="/admin/request">
                     <FormattedMessage id="menu.title.users"/>
                   </Link>
                 </Menu.Item>

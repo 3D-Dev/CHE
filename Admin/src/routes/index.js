@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { AddUser, Users, EditUser } from './admin/users'
 import { Dashboard } from './admin/dashboard'
+import Request from "./common/Request";
 
 
 const AppRoute = ({match}) => (
@@ -10,6 +11,7 @@ const AppRoute = ({match}) => (
       <Route exact path={`${match.url}admin/dashboard`} component={Dashboard}/>
       <Route exact path={`${match.url}/`} component={Users}/>
       <Route exact path={`${match.url}admin/users`} component={Users}/>
+      <Route exact path={`${match.url}admin/request`} component={Request}/>
       <Route exact path={`${match.url}admin/users/add`} component={AddUser}/>
       <Route exact path={`${match.url}admin/users/edit/~:id`} component={EditUser}/>
       <Route exact path={`${match.url}admin/home`} component={Users}/>
