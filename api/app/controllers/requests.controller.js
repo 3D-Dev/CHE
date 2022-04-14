@@ -1,7 +1,7 @@
 const {sequelize, requests} = require("../models")
 const db = require("../models")
 const {hash} = require("bcrypt")
-const {isAuth} = require("./accounts.controller")
+const {isAuth} = require("./auth.controller")
 const Account = db.accounts
 const Request = db.requests
 const Op = db.Sequelize.Op
@@ -19,7 +19,7 @@ exports.findAll = async (req, res) => {
       order: [sequelize.col('id')]
     }
 
-    const count = await Request.count({where: findCondition})
+    const count = await Request.count(findCondition)
 
     if (limit > 0) {
       findCondition.offset = offset
