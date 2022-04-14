@@ -10,7 +10,6 @@ export const LOGIN_URL = `admin_login`
 export const FINDALL_URL = `users`
 export const LOGOUT_URL = `signout`
 export const LOGIN_CUSTOM_FROM_USER = 'admin/authorize_pretend_to_user'
-export const USER_DOWNLOAD_LIST = 'admin/export_users'
 export const USER_ITEM = 'admin/users'
 // export const CUSTOMER_LIST = 'user/customers'
 // export const CUSTOMER_ITEM = 'user/customers'

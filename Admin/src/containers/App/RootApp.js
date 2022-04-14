@@ -9,7 +9,6 @@ import { openNotificationWithIcon } from '../../components/common/Messages'
 import {initSettings, setSettings} from '../../appRedux/actions/User'
 import MainApp from './MainApp'
 import Login from '../../routes/common/Login'
-import Select from '../../routes/common/Select'
 import Error404 from '../../routes/common/Error404'
 import Error500 from '../../routes/common/Error500'
 import { ERROR } from '../../constants/AppConfigs'
@@ -94,7 +93,6 @@ class RootApp extends Component {
       <Switch>
         <Route exact path="/admin/login" component={Login}/>
         <Route exact path="/admin" component={MainApp}/>
-        {/*<Route exact path="/admin/select" component={Select}/>*/}
         <Route exact path="/404" component={Error404}/>
         <Route exact path="/500" component={Error500}/>
         <Route path={match.url} component={MainApp}/>
