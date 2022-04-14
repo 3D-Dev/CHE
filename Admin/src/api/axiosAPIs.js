@@ -1,5 +1,6 @@
 import axios from 'axios'
 import * as axiosConfig from './axiosConfig'
+import {FINDALL_URL} from "./axiosConfig";
 
 export const axiosRequest = (method, url, reqData = null, needLoader = true) => {
   const user = JSON.parse(localStorage.getItem("persist:root")).user
@@ -66,8 +67,8 @@ export const editUser = (id, data) => {
   return axiosRequest('put', axiosConfig.USER_ITEM + '/' + id, data)
 }
 
-export const getDownloadList = () => {
-  return axiosRequest('get', axiosConfig.USER_DOWNLOAD_LIST)
+export const getDownloadList = (data) => {
+  return axiosRequest('get', axiosConfig.FINDALL_URL, data)
 }
 
 export const deleteUser = (id) => {

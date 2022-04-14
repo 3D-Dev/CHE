@@ -84,10 +84,17 @@ class Users extends React.Component {
   }
 
   fetchCSVData() {
+    const {asc, keyword} = this.state
 
-    getDownloadList()
+    let params = {
+      asc: asc,
+      keyword: keyword
+    }
+
+    getDownloadList(params)
       .then(response => {
         if (!_.isEmpty(response.data)) {
+          console.log('CSV!!!!', JSON.stringify(response.data))
           this.setState({downloadRows: response.data.data}, () => {
             // click the CSVLink component to trigger the CSV download
             this.csvLink.current.link.click()
@@ -95,6 +102,20 @@ class Users extends React.Component {
         }
       })
   }
+
+  getItemCSVWithName() {
+    return [
+      { label: 'ID', key: "id" },
+      { label: 'ユーザー名', key: "name" },
+      { label: 'メールアドレス', key: "email" },
+      { label: '入金アドレス', key: "account" },
+      { label: '紹介者ID', key: "referId" },
+      { label: '紹介者', key: "referEmail" },
+      { label: '補償額', key: "totalDistribution" },
+      { label: '報酬開始日', key: "createdAt" },
+      { label: '最終更新日', key: "updatedAt" },
+    ];
+  };
 
   /**
    * Handle function for change page
@@ -217,7 +238,7 @@ class Users extends React.Component {
                 <div
                   className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-24 ant-col-lg-24 ant-col-xl-12 ant-col-xxl-8 gx-no-padding">
                   <div className="gx-no-flex-wrap-flow">
-                    <Input placeholder="代理店名" className="gx-mr-2" onChange={this.onChangeKeyword}/>
+                    <Input placeholder="ユーザー名、メールアドレス、入金アドレス。。。" className="gx-mr-2" onChange={this.onChangeKeyword}/>
                     <Button className="ant-btn-primary gx-mb-0 gx-btn-rounded-blue1" onClick={this.onClickSearchButton}>
                       <FormattedMessage id="btn.search"/>
                     </Button>
@@ -232,7 +253,8 @@ class Users extends React.Component {
                 </Button>
                 <CSVLink
                   data={this.state.downloadRows}
-                  filename={"store_list_" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ".csv"}
+                  headers={this.getItemCSVWithName()}
+                  filename={"CHE_list_" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ".csv"}
                   className="hidden"
                   ref={this.csvLink}
                   target="_blank"
