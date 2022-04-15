@@ -215,6 +215,21 @@ class Users extends React.Component {
     this.fetchCSVData()
   }
 
+  changeStatusTimer = (btnActive) => {
+    console.log('@@@changeStatusTimer_btn@@@@',btnActive)
+    console.log('@@@@@@changeStatusTimer@########',this.state.btnActive)
+    //this.timer = setInterval(()=>this.fetchUserList(), 5000)
+    if(btnActive === true){
+      console.log("####changeStatusTimer#####@@@@", this.state.timer)
+      this.state.timer.setState(clearInterval())
+      console.log("####changeStatusTimer#####@@@@", this.state.timer)
+      return <FormattedMessage id="btn.sendAllUsers"/>
+    }
+    else {
+      this.state.timer.setState(setInterval(()=>this.fetchUserList(), 5000))
+      return <FormattedMessage id="btn.waitingRequest"/>
+    }
+  }
 
   onClickSendRequest = () => {
     addRequest()
@@ -243,10 +258,9 @@ class Users extends React.Component {
       <div>
         <div className="gx-flex-row gx-align-items-right gx-mb-3">
           <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" disabled={!btnActive} onClick={this.onClickSendRequest}>
-            {
-              btnActive === true ? <FormattedMessage id="btn.sendAllUsers"/>:<FormattedMessage id="btn.waitingRequest"/>
-            }
-
+          {
+            this.changeStatusTimer(btnActive)
+          }
           </Button>
         </div>
         <div className="gx-flex-row gx-align-items-center gx-mb-4">
