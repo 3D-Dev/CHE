@@ -216,17 +216,10 @@ class Users extends React.Component {
   }
 
   changeStatusTimer = (btnActive) => {
-    console.log('@@@changeStatusTimer_btn@@@@',btnActive)
-    console.log('@@@@@@changeStatusTimer@########',this.state.btnActive)
-    //this.timer = setInterval(()=>this.fetchUserList(), 5000)
     if(btnActive === true){
-      console.log("####changeStatusTimer#####@@@@", this.state.timer)
-      this.state.timer.setState(clearInterval())
-      console.log("####changeStatusTimer#####@@@@", this.state.timer)
       return <FormattedMessage id="btn.sendAllUsers"/>
     }
     else {
-      this.state.timer.setState(setInterval(()=>this.fetchUserList(), 5000))
       return <FormattedMessage id="btn.waitingRequest"/>
     }
   }
