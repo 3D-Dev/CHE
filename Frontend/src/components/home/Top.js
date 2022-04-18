@@ -270,7 +270,7 @@ export const Top = (props) => {
               <div className={"flex items-center justify-center lg:m-10"}>
                   <span className={"blue-color text-3xl font-bold"}>{props.intl.formatMessage({id: 'str.item.new.register'})}</span>
               </div>
-              <Card className={"flex items-center justify-center lg:px-32 lg:rounded-lg-20"}>
+              <Card className={"flex items-center justify-center"}>
                   <Form
                       ref={formRef}
                       onFinish={onFinish}
