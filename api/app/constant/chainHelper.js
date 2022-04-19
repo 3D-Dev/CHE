@@ -20,10 +20,7 @@ const contractAbiFragment = [
   }
 ];
 
-const provider = new ethers.providers.InfuraProvider("homestead", {
-  projectId: process.env.INFURA_PROJECT_ID,
-  projectSecret: process.env.INFURA_PROJECT_SECRET
-})
+const provider = new ethers.providers.JsonRpcProvider(process.env.HECO_PROVIDER)
 
 let hbyAdminWallet = new ethers.Wallet(process.env.HBY_ADMIN_PRIV_KEY)
 hbyAdminWallet = hbyAdminWallet.connect(provider)
