@@ -296,14 +296,19 @@ export const Top = (props) => {
                           </div>
                       </Col>
                       {/*メールアドレス*/}
-                      <FormInput
-                          label={props.intl.formatMessage({id: 'form.item.email'})}
-                          name={"email"}
-                          placeholder={props.intl.formatMessage({id: 'form.item.email.confirm'})}
-                          intl={props.intl}
-                          required={true}
-                          readOnly={false}
-                      />
+                      <Fragment>
+                          <div>
+                              <FormLabel label={props.intl.formatMessage({id: 'form.item.email'})} required={true}/>
+                              <Col lg={16} className={"p-0 lg:ml-24"} >
+                                  <Form.Item
+                                      name={"email"}
+                                      rules={[{required: true, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
+                                  >
+                                      <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.email.confirm'})}/>
+                                  </Form.Item>
+                              </Col>
+                          </div>
+                      </Fragment>
                       <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
                               <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step3'})}</span>
@@ -336,18 +341,9 @@ export const Top = (props) => {
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"referEmail"}
-                                      rules={[
-                                          ({getFieldValue}) => ({
-                                              validator(_, value) {
-                                                  if (getFieldValue("email") !== value) {
-                                                      return Promise.resolve()
-                                                  }
-                                                  return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
-                                              }
-                                          })
-                                      ]}
+                                      rules={[{required: true, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
                                   >
-                                      <Input size={"large"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
+                                      <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
                                   </Form.Item>
                               </Col>
                           </div>
