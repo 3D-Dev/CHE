@@ -30,9 +30,9 @@ const contract = new ethers.Contract(process.env.HBY_TOKEN_ADDRESS, contractAbiF
 // param: amount, example '1.0'
 const transferHBYFromAdmin = async (toAddress, amount) => {
   contract.transfer(toAddress, ethers.utils.parseUnits(amount, "ether")).then((result) => {
-    console.log(result)
+    console.log('transferHBYFromAdmin_result: ',result)
   }).catch((error) => {
-    console.log(error)
+    console.log('transferHBYFromAdmin_error: ',error)
   })
 }
 
