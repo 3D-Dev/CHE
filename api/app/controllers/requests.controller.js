@@ -8,7 +8,7 @@ const Op = db.Sequelize.Op
 const moment = require('moment')
 const {WAITING, SUCCESS, FAIL} = require("../constant/requestStatus")
 const {USER_PAYMENT, INTRODUCTION_PAYMENT, FEE_PERCENT} = require("../constant/payment")
-const {transferHBYFromAdmin} = require("../constant/chainHelper");
+const {transferHBYFromAdmin} = require("../constant/chainHelper")
 
 exports.findAll = async (req, res) => {
   try {
@@ -120,8 +120,7 @@ const updateUserInfo = async (record) => {
   newRecord.distributed = true
   newRecord.totalDistribution += USER_PAYMENT
 
-  await transferHBYFromAdmin(newRecord.account, USER_PAYMENT * FEE_PERCENT)
-
+  await transferHBYFromAdmin(newRecord.account, (USER_PAYMENT * FEE_PERCENT).toString())
   await Account.update(newRecord, { where: { id: record.id } })
 
   // update refer
@@ -129,7 +128,7 @@ const updateUserInfo = async (record) => {
     const referRecord = await Account.findByPk(record.referId)
     const newReferRecord = copyUser(referRecord)
     newReferRecord.totalDistribution += INTRODUCTION_PAYMENT
-    await transferHBYFromAdmin(newReferRecord.account, INTRODUCTION_PAYMENT * FEE_PERCENT)
+    await transferHBYFromAdmin(newReferRecord.account, (INTRODUCTION_PAYMENT * FEE_PERCENT).toString())
 
     await Account.update(newReferRecord, { where: { id: referRecord.id } })
   }
