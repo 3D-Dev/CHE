@@ -341,7 +341,16 @@ export const Top = (props) => {
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"referEmail"}
-                                      rules={[{required: true, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
+                                      rules={[
+                                          ({getFieldValue}) => ({
+                                              validator(_, value) {
+                                                  if (getFieldValue("email") !== value) {
+                                                      return Promise.resolve()
+                                                  }
+                                                  return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
+                                              }
+                                          })
+                                      ]}
                                   >
                                       <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
                                   </Form.Item>
