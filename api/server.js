@@ -5,9 +5,8 @@ const cron = require('node-cron');
 const requests = require('./app/controllers/requests.controller');
 
 const app = express()
-const whitelist = ['http://192.168.1.114:3000', 'http://192.168.1.114:3001']
 //const whitelist = ['http://localhost:3000', 'http://localhost:3001']
-//const whitelist = ['http://35.78.212.16', 'http://35.78.212.16:3000']
+const whitelist = ['http://35.78.212.16', 'http://35.78.212.16:3000']
 global.__basedir = __dirname
 
 var corsOptions = {
