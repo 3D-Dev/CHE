@@ -14,7 +14,7 @@ import Error500 from '../../routes/common/Error500'
 import { ERROR } from '../../constants/AppConfigs'
 import {
   HTTP_BAD_REQUEST, HTTP_CONFLICT,
-  HTTP_INTERNAL_SERVER_ERROR,
+  HTTP_INTERNAL_SERVER_ERROR, HTTP_NO_CONTENT,
   HTTP_NOT_FOUND,
   HTTP_UNAUTHORIZED
 } from '../../constants/ResponseCode'
@@ -30,6 +30,7 @@ class RootApp extends Component {
         case HTTP_BAD_REQUEST:
         case HTTP_UNAUTHORIZED:
         case HTTP_NOT_FOUND:
+        case HTTP_NO_CONTENT:
         case HTTP_INTERNAL_SERVER_ERROR:
           this.props.initSettings()
           this.props.history.push('/admin/login')
