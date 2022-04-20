@@ -60,11 +60,16 @@ exports.create = async (req, res) => {
   try {
     // const userId = await isAuth(req, res)
 
+    // if (!req.body.email) {
+    //   res.status(400).send({
+    //     message: "Content can not be empty!"
+    //   })
+    //   return
+    // }
     if (!req.body.email) {
-      res.status(400).send({
+      return res.status(400).json({
         message: "Content can not be empty!"
-      })
-      return
+      });
     }
     let result = await Account.findOne({where: {email: req.body.referEmail}})
     let referId = 0
