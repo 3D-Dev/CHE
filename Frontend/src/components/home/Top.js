@@ -8,6 +8,7 @@ import {FormLabel} from "../form/FormLabel";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
+import validator from 'validator'
 import {createAccout} from "../../api/axiosAPIs";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
 import {
@@ -302,7 +303,20 @@ export const Top = (props) => {
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"email"}
-                                      rules={[{required: true, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
+                                      rules={[
+                                          ({getFieldValue}) => ({
+                                          validator(_, value) {
+                                          if (validator.isEmpty(value)) {
+                                            return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldRequired'})))
+                                          }
+                                          else if(!validator.isEmail(value)) {
+                                            return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
+                                          }
+                                          return Promise.resolve()
+                                      }
+                                      })
+                                      ]}
+
                                   >
                                       <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.email.confirm'})}/>
                                   </Form.Item>
@@ -344,10 +358,13 @@ export const Top = (props) => {
                                       rules={[
                                           ({getFieldValue}) => ({
                                               validator(_, value) {
-                                                  if (getFieldValue("email") !== value) {
-                                                      return Promise.resolve()
+                                                  if (getFieldValue("email") == value) {
+                                                      return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailDuplicate'})))
                                                   }
-                                                  return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
+                                                  if(!validator.isEmail(value) && !validator.isEmpty(value)) {
+                                                      return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
+                                                  }
+                                                  return Promise.resolve()
                                               }
                                           })
                                       ]}
@@ -359,7 +376,7 @@ export const Top = (props) => {
                       </Fragment>
                       <Fragment>
                           <div>
-                              <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.date'})} required={props.required}/>
+                              <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.date'})} required={true}/>
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"createdAt"}

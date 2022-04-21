@@ -1,7 +1,8 @@
 {
   "app_title": "CHE",
   "alert.fieldRequired": "Trường này là bắt buộc.",
-  "alert.fieldReferEmailConfirm": "Bạn không thể sử dụng cùng một địa chỉ email với người giới thiệu.",
+  "alert.fieldReferEmailDuplicate": "Bạn không thể sử dụng cùng một địa chỉ email với người giới thiệu.",
+  "alert.fieldReferEmailConfirm": "Địa chỉ email không chính xác.",
   "form.item.name": "Tên Ví dụ",
   "form.item.introduce.name": "người giới thiệu",
   "form.item.introduce.date": "Ngày đăng kí",

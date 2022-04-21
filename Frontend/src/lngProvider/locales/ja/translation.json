@@ -10,8 +10,8 @@
   "alert.invalidEmail": "無効なメール",
   "alert.fieldRequired": "このフィールドは必須です。",
   "alert.min.length.Required": "パスワードの最小長は6です。",
-  "alert.fieldReferEmailConfirm": "紹介者と同じメールアドレスを利用できません。",
-
+  "alert.fieldReferEmailDuplicate": "紹介者と同じメールアドレスを利用できません。",
+  "alert.fieldReferEmailConfirm": "メールアドレスが正しくありません。",
   "alert.fieldPasswordConfirm": "パスワード一致しません。",
   "alert.fieldJapaneseCode": "ひらがなカタカナは入力出来ません。",
   "alert.deleteConfirm": "削除しますか？",

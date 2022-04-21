@@ -1,7 +1,8 @@
 {
   "app_title": "CHE",
   "alert.fieldRequired": "This field is required.",
-  "alert.fieldReferEmailConfirm": "You cannot use the same email address as the introducer.",
+  "alert.fieldReferEmailDuplicate": "You cannot use the same email address as the introducer.",
+  "alert.fieldReferEmailConfirm": "The email address is incorrect.",
   "form.item.name": "Name",
   "form.item.introduce.name": "Introducer",
   "form.item.introduce.date": "Registration date",
