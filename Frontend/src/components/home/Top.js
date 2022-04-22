@@ -8,7 +8,7 @@ import {FormLabel} from "../form/FormLabel";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
-import validator from 'validator'
+import validation from 'validator'
 import {createAccout} from "../../api/axiosAPIs";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
 import {
@@ -303,20 +303,9 @@ export const Top = (props) => {
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"email"}
-                                      rules={[
-                                          ({getFieldValue}) => ({
-                                          validator(_, value) {
-                                          if (validator.isEmpty(value)) {
-                                            return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldRequired'})))
-                                          }
-                                          else if(!validator.isEmail(value)) {
-                                            return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
-                                          }
-                                          return Promise.resolve()
-                                      }
-                                      })
-                                      ]}
-
+                                      rules={[{required: true, 
+                                        type: "email",
+                                        message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
                                   >
                                       <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.email.confirm'})}/>
                                   </Form.Item>
@@ -355,19 +344,32 @@ export const Top = (props) => {
                               <Col lg={16} className={"p-0 lg:ml-24"} >
                                   <Form.Item
                                       name={"referEmail"}
-                                      rules={[
-                                          ({getFieldValue}) => ({
-                                              validator(_, value) {
-                                                  if (getFieldValue("email") == value) {
-                                                      return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailDuplicate'})))
-                                                  }
-                                                  if(!validator.isEmail(value) && !validator.isEmpty(value)) {
-                                                      return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
-                                                  }
-                                                  return Promise.resolve()
-                                              }
-                                          })
-                                      ]}
+                                      rules={[{required: false, 
+                                        type: "email",
+                                        message: props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})}]}
+                                    //   rules={[
+                                    //       ({getFieldValue}) => ({
+                                    //           validator(_, value) {
+                                    //               if(validation.isEmpty(value)) {
+                                    //                   console.log('#############')
+                                    //                 return Promise.resolve()
+                                    //               }
+                                    //               if (getFieldValue("email") == value) {
+                                    //                 console.log('@@@@@@@@@@@')
+                                    //                   return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailDuplicate'})))
+                                    //               }
+                                    //               if(validation.isEmail(value)) {
+                                    //                 console.log('!!!!!!!!!!')
+                                    //                 return Promise.resolve()  
+                                    //               }
+                                    //               else {
+                                    //                 console.log('&&&&&&&&&&&&')
+                                    //                 return Promise.reject(new Error(props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})))
+                                    //               }
+                                    //               //return Promise.resolve()
+                                    //           }
+                                    //       })
+                                    //   ]}
                                   >
                                       <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
                                   </Form.Item>
