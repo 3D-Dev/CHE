@@ -2,10 +2,12 @@ const { sequelize } = require("../models")
 const db = require("../models")
 const {hash} = require("bcrypt")
 const {isAuth} = require("./auth.controller")
+const {sendEmail} = require("../helper/mailer")
 const Account = db.accounts
 const Requests = db.requests
 const Op = db.Sequelize.Op;
 const uuid = require("uuid")
+const moment = require('moment')
 
 
 exports.findAll = async (req, res) => {
@@ -112,6 +114,42 @@ exports.create = async (req, res) => {
   }
 }
 
+exports.userActivate = async (req, res) => {
+  try {
+    // const userId = await isAuth(req, res)
+    const code = req.params.id
+
+    const data = await Account.findOne({where: {code: code}})
+    if (data) {
+      // const createDate = moment(data.createdAt)
+      // const diff = moment().diff(createDate, 'hour')
+      if (true) {
+      // if (diff <= 8) {
+        const result = await Account.update({ activated: true }, { where: { code: code } })
+        if (result[0] === 1) {
+          res.send({
+            message: "account was activated successfully."
+          })
+        }
+      } else {
+        res.send({
+          message: "account activation link was expired."
+        })
+      }
+    } else {
+      res.send({
+        message: "account is not existed."
+      })
+    }
+
+
+  } catch(err) {
+    res.status(500).send({
+      message: "Error userActivate"
+    })
+  }
+}
+
 exports.publicUpdate = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
@@ -129,7 +167,7 @@ exports.publicUpdate = async (req, res) => {
     }
   } catch(err) {
     res.status(500).send({
-      message: "Error updating isPublic with id=" + id
+      message: "Error publicUpdate" 
     })
   }
 }
@@ -177,44 +215,12 @@ exports.findOneByCode = async (req, res) => {
 
 exports.test = async (req, res) => {
   try {
-    // const userId = await isAuth(req, res)
 
-    const name = "test8"
-    const email = "test8gmail.com"
-    const referEmail = "test3gmail.com"
-    const password = "1234567890"
-    const accountstring = "acount8"
+    await sendEmail()
 
-    let result = await Account.findOne({where: {email: referEmail}})
-    let referId = 0
-    if (result) {
-      referId = result.id
-    }
 
-    const account = {
-      name: name,
-      email: email,
-      password: await hash(password, 10),
-      account: accountstring,
-      code: await generateCode(),
-      referId: referId,
-      referEmail: referEmail,
-      isIntroducer: req.body.isIntroducer || true,
-      companyName: req.body.companyName || "sample company name",
-    }
 
-    result = await Account.findOne({where: {email: account.email}})
-    if (result) {
-      res.status(409).send({
-        message:
-          "既に存在するユーザーです。"
-      })
-    } else {
-      const data = await Account.create(account)
-      if (data) {
-        res.send(data)
-      }
-    }
+
   } catch(err) {
     res.status(500).send({
       message:

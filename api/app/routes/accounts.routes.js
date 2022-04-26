@@ -12,6 +12,7 @@ module.exports = app => {
   router.get("/users", upload.none(), account.findAll)
   // router.get("/users/:id", upload.none(), account.findOne)
   router.get("/conpany_name_by_code/:id", upload.none(), account.findOneByCode)
+  router.put("/user_activate/:id", upload.none(), account.userActivate)
   router.put("/user_public/:id", upload.none(), account.publicUpdate)
 
   router.get("/test", upload.none(), account.test)

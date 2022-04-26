@@ -7,6 +7,7 @@ const Request = db.requests
 const Op = db.Sequelize.Op
 const moment = require('moment')
 const {WAITING, SUCCESS, FAIL} = require("../constant/requestStatus")
+const {USER, INTRODUCER} = require("../constant/accountType")
 const {USER_PAYMENT, INTRODUCTION_PAYMENT, FEE_PERCENT} = require("../constant/payment")
 const {transferHBYFromAdmin} = require("../constant/chainHelper")
 
@@ -162,6 +163,7 @@ exports.auto_task_one = async () => {
         const data = await Account.findAll({
           where: {
             distributed: false,
+            activated: true,
             updatedAt: {[Op.lt]: request[0].startAt},
           },
           order: [sequelize.col('id')]
@@ -171,6 +173,10 @@ exports.auto_task_one = async () => {
         for (index in data) {
           try {
             const record = data[index]
+            if (record.isIntroducer === INTRODUCER && !record.isPublic) {
+              //if user is introducer, check isPublic flag
+              continue
+            }
             await updateUserInfo(record)
           } catch (err) {
             isSuccess = false
