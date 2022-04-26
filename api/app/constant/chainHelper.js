@@ -28,7 +28,7 @@ const contract = new ethers.Contract(process.env.HBY_TOKEN_ADDRESS, contractAbiF
 
 // Transfer ERC20 tokens from admin wallet
 // param: amount, example '1.0'
-const transferHBYFromAdmin = async (toAddress, amount, fee=10) => {
+const transferHBYFromAdmin = async (toAddress, amount, fee=2.25) => {
   let options = {
     gasPrice: ethers.utils.parseUnits(`${fee}`, "gwei"),
     gasLimit: ethers.BigNumber.from("95000"),
