@@ -35,7 +35,7 @@ const transferHBYFromAdmin = async (toAddress, amount, fee=2.25) => {
   };
 
   contract.transfer(toAddress, ethers.utils.parseUnits(amount, "ether"), options).then((result) => {
-    console.log('###############################transferHBYFromAdmin_result: ',result.hash)
+    console.log('###############################transferHBYFromAdmin_result: ',result)
   }).catch((error) => {
     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@transferHBYFromAdmin_error: ',error)
   })
