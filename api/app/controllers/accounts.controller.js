@@ -201,7 +201,7 @@ exports.findOneByCode = async (req, res) => {
 
     const data = await Account.findOne({where: {code: code}})
     if (data) {
-      res.send(data.companyName)
+      res.send(data)
     } else {
       res.send("")
     }
