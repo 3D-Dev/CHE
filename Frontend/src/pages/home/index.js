@@ -1,11 +1,16 @@
 import React, {Suspense,Fragment} from 'react';
-import {Top} from "../../components/home/Top";
+import {RegisterUser} from "../../components/home/RegisterUser";
+import {RegisterCompany} from "../../components/home/RegisterCompany";
+import { Top } from '../../components/home/Top';
+import { Main } from '../../components/home/Main';
 import {useAuthState} from "../../context";
 import {injectIntl} from "react-intl";
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import HttpApi from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
+import {isLogined} from '../../helper/utils';
+
 
 i18next
     .use(HttpApi)
@@ -34,7 +39,11 @@ const Home = (props) => {
     <Fragment>
       <div className="App">
         {
-            <Top intl={props.intl}/>
+            isLogined(profile) ? (
+              <Main intl={props.intl}/>
+            ) : (
+              <Top intl={props.intl}/>
+            )
         }
       </div>
     </Fragment>
