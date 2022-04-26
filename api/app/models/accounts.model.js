@@ -5,6 +5,12 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true
       },
+      code: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        trim: true,
+      },
       name: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -16,10 +22,31 @@ module.exports = (sequelize, Sequelize) => {
         unique: true,
         trim: true,
       },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       account: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+        trim: true,
+      },
+      activated: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      isIntroducer: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
+      isPublic: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      companyName: {
+        type: Sequelize.STRING,
+        defaultValue: '',
         trim: true,
       },
       referId: {

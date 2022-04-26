@@ -4,8 +4,9 @@ const {adminDB} = require("../auth/adminDB.js")
 const {createAccessToken, sendAccessToken} = require("../auth/tokens.js")
 const {isAuth} = require("../auth/isAuth.js")
 const {verify} = require("jsonwebtoken")
+const Account = db.accounts
 
-exports.login = async (req, res) => {
+exports.adminLogin = async (req, res) => {
   const {email, password} = req.body
 
   try {
@@ -20,6 +21,29 @@ exports.login = async (req, res) => {
     // Could also use different version numbers instead.
     // 5. Send token. RefreshToken as a cookie and accessToken as a regular response
     sendAccessToken(res, req, accessToken, '', 'admin')
+  } catch (err) {
+    res.send({
+      error: `${err.message}`,
+    })
+  }
+}
+
+exports.login = async (req, res) => {
+  const {email, password} = req.body
+  try {
+    // 1. Find user in array. If not exist send error
+    const user = await Account.findOne({where: {email: email}})
+    if (!user) throw new Error('ユーザーが存在しません。')
+    // 2. Compare crypted password and see if it checks out. Send error if not
+    const valid = await compare(password, user.password)
+    if (!valid) throw new Error('パスワードが一致しません。')
+    if (!user.activated) throw new Error('メール認証されていないユーザーです。')
+    // 3. Create Refresh- and AccessToken
+    const accessToken = createAccessToken(user.id)
+    // 4. Store RefreshToken with user in "db"
+    // Could also use different version numbers instead.
+    // 5. Send token. RefreshToken as a cookie and accessToken as a regular response
+    sendAccessToken(res, req, accessToken, user.code)
   } catch (err) {
     res.send({
       error: `${err.message}`,

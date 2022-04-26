@@ -5,8 +5,8 @@ const {isAuth} = require("./auth.controller")
 const Account = db.accounts
 const Requests = db.requests
 const Op = db.Sequelize.Op;
-const requests = require('./requests.controller');
-const Request = db.requests
+const uuid = require("uuid")
+
 
 exports.findAll = async (req, res) => {
   try {
@@ -55,6 +55,14 @@ exports.findAll = async (req, res) => {
   }
 }
 
+generateCode = async () => {
+  let code = uuid.v4().replace(/-/g, '')
+  while ( await Account.findOne({where: {code: code}}) ) {
+    code = uuid.v4().replace(/-/g, '')
+  }
+  return code
+}
+
 exports.create = async (req, res) => {
   // Validate request
   try {
@@ -73,11 +81,15 @@ exports.create = async (req, res) => {
     }
 
     const account = {
-      name: req.body.name,
+      name: req.body.name || "",
       email: req.body.email,
-      account: req.body.account,
+      password: await hash(req.body.password, 10),
+      account: req.body.account || "",
+      code: await generateCode(),
       referId: referId,
       referEmail: req.body.referEmail,
+      isIntroducer: req.body.isIntroducer || false,
+      companyName: req.body.companyName || "",
     }
 
     result = await Account.findOne({where: {email: account.email}})
@@ -100,23 +112,113 @@ exports.create = async (req, res) => {
   }
 }
 
-exports.update = async (req, res) => {
+exports.publicUpdate = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
     const id = req.params.id
-    const result = await Account.update(req.body, { where: { id: id } })
+    const isPublic = req.params.isPublic
+    const result = await Account.update({ isPublic: isPublic}, { where: { id: id } })
     if (result[0] === 1) {
       res.send({
         message: "account was updated successfully."
       })
     } else {
       res.send({
-        message: `Cannot update account with id=${id}. Maybe account was not found or req.body is empty!`
+        message: `Cannot update account with id=${id}. Maybe account was not found or isPublic is empty!`
       })
     }
   } catch(err) {
     res.status(500).send({
-      message: "Error updating account with id=" + id
+      message: "Error updating isPublic with id=" + id
+    })
+  }
+}
+
+
+exports.findOne = async (req, res) => {
+  try {
+    const userId = await isAuth(req, res)
+
+    const id = req.params.id
+
+    const data = await Course.findByPk(id)
+    if (data) {
+      res.send(data)
+    } else {
+      res.send("")
+    }
+  } catch (err) {
+    console.log("findOne", err)
+    res.status(500).send({
+      message: "Error retrieving account with id=" + id
+    })
+  }
+}
+
+exports.findOneByCode = async (req, res) => {
+  try {
+    // const userId = await isAuth(req, res)
+
+    const code = req.params.id
+
+    const data = await Account.findOne({where: {code: code}})
+    if (data) {
+      res.send(data.companyName)
+    } else {
+      res.send("")
+    }
+  } catch (err) {
+    console.log("findOneByCode", err)
+    res.status(500).send({
+      message: "Error retrieving account with id=" + code
+    })
+  }
+}
+
+exports.test = async (req, res) => {
+  try {
+    // const userId = await isAuth(req, res)
+
+    const name = "test8"
+    const email = "test8gmail.com"
+    const referEmail = "test3gmail.com"
+    const password = "1234567890"
+    const accountstring = "acount8"
+
+    let result = await Account.findOne({where: {email: referEmail}})
+    let referId = 0
+    if (result) {
+      referId = result.id
+    }
+
+    const account = {
+      name: name,
+      email: email,
+      password: await hash(password, 10),
+      account: accountstring,
+      code: await generateCode(),
+      referId: referId,
+      referEmail: referEmail,
+      isIntroducer: req.body.isIntroducer || true,
+      companyName: req.body.companyName || "sample company name",
+    }
+
+    result = await Account.findOne({where: {email: account.email}})
+    if (result) {
+      res.status(409).send({
+        message:
+          "既に存在するユーザーです。"
+      })
+    } else {
+      const data = await Account.create(account)
+      if (data) {
+        res.send(data)
+      }
+    }
+  } catch(err) {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while creating of user."
     })
   }
 }
