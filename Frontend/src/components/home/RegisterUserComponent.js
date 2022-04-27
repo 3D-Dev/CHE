@@ -36,7 +36,7 @@ const languages = [
         country_code: 'vi',
     },
 ]
-export const Top = (props) => {
+export const RegisterUserComponent = (props) => {
     const currentLanguageCode = cookies.get('i18next') || 'en'
     const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
     console.log('current language1', currentLanguage)

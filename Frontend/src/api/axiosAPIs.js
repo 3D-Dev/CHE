@@ -43,17 +43,17 @@ export const axiosRequest = (method, url, reqData = null, needLoader = true) => 
 export const createAccout = (data) => {
   return axiosRequest('post', axiosConfig.CREATE, data)
 }
-// export const signup = (data) => {
-//   return axiosRequest('post', axiosConfig.SIGNUP, data)
-// }
+export const signup = (data) => {
+  return axiosRequest('post', axiosConfig.SIGNUP, data)
+}
 //
 // export const signupConfirm = (data) => {
 //   return axiosRequest('post', axiosConfig.SIGNUP_CONFIRM, data)
 // }
 
-// export const login = (data) => {
-//   return axiosRequest('post', axiosConfig.LOGIN, data)
-// }
+export const login = (data) => {
+  return axiosRequest('post', axiosConfig.LOGIN, data)
+}
 //
 // export const logout = () => {
 //   return axiosRequest('delete', axiosConfig.LOGOUT)

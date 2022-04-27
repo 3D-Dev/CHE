@@ -65,12 +65,16 @@ export const Header = (props) => {
                               <img src={require("../../assets/img/vi.png")} height="24" width="24" alt="VI" />
                               <span className="pl-2">VI</span>
                           </a>
-                      {/*))}*/}
+                          <a href="#responsive-header"
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                             onClick={() => {
+                                 i18next.changeLanguage('vi')
+                             }}
+                          >
+                              <span className="pl-2">Home</span>
+                          </a>
                   </div>
-                  {/*<div>*/}
-                  {/*    <a href="#"*/}
-                  {/*       className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>*/}
-                  {/*</div>*/}
+
               </div>
           </nav>
   )
