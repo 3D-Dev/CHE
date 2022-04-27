@@ -30,12 +30,13 @@
   "str.item.faq": "Câu hỏi thường gặp",
   "str.item.explain.rabbit": "Giải thích ứng dụng thành viên thỏ!",
   "str.item.mining.che": "Hãy khai thác tiền CHE!",
-  "str.item.new.register": "– đăng ký –",
+  "str.item.new.register": "– Đăng ký người dùng –",
+  "str.item.new.company.register": "– Đăng ký thành viên –",
   "str.item.register.step1": "1) Vui lòng nhập tên của người được đăng ký theo kiểu ký hiệu hộ chiếu.",
   "str.item.register.step2": "2) Nhập địa chỉ email bạn muốn đăng ký.",
   "str.item.register.step3": "3) Hoàn tất cài đặt Token Pocket, sao chép và dán địa chỉ gửi tiền của bạn và gửi.",
   "str.item.link.tokenpoket": "→ Giải thích về túi mã thông báo trong 10 phút!",
-  "str.item.register.step4": "4) Nhập người giới thiệu của bạn.",
-
+  "str.item.register.step4": "4) Vui lòng nhập mật khẩu của bạn.",
+  "str.item.register.step5": "5) Vui lòng chọn câu lạc bộ bạn thuộc về.",
   "btn.send": "Gửi"
 }

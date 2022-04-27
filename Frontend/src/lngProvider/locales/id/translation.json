@@ -30,12 +30,13 @@
   "str.item.faq": "Pertanyaan yang Sering Diajukan",
   "str.item.explain.rabbit": "Jelaskan aplikasi anggota kelinci!",
   "str.item.mining.che": "Ayo menambang koin CHE!",
-  "str.item.new.register": "– Daftar –",
+  "str.item.new.register": "– Pendaftaran pengguna –",
+  "str.item.new.company.register": "– Pendaftaran anggota –",
   "str.item.register.step1": "1) Harap masukkan nama orang yang akan didaftarkan dengan gaya notasi paspor.",
   "str.item.register.step2": "2) Masukkan alamat email yang ingin Anda daftarkan.",
   "str.item.register.step3": "3) Selesaikan instalasi Token Pocket, salin dan tempel alamat deposit Anda dan kirim.",
   "str.item.link.tokenpoket": "→ Jelaskan kantong token dalam 10 menit!",
-  "str.item.register.step4": "4) Masukkan pengantar Anda.",
-
+  "str.item.register.step4": "4) Silakan masukkan kata sandi Anda.",
+  "str.item.register.step5": "5) Silakan pilih klub yang Anda ikuti.",
   "btn.send": "Mengirim"
 }
