@@ -5,6 +5,7 @@ import {FormInput} from "../form/FormInput";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
 import {FormLabel} from "../form/FormLabel";
+import {FormList} from "../form/FormList";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
@@ -119,7 +120,15 @@ export const RegisterCompanyComponent = (props) => {
                           </div>
                       </Col>
                       {/*紹介者*/}
-                      <Fragment>
+                      <FormList
+                        label={props.intl.formatMessage({id: 'form.item.club.name'})}
+                        name={"name"}
+                        placeholder={props.intl.formatMessage({id: 'form.item.club.name.confirm'})}
+                        intl={props.intl}
+                        required={true}
+                        readOnly={false}
+                      />
+                      {/* <Fragment>
                           <div>
                               <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.name'})}/>
                               <Col lg={16} className={"p-0 lg:ml-24"} >
@@ -129,11 +138,11 @@ export const RegisterCompanyComponent = (props) => {
                                         type: "email",
                                         message: props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})}]}
                                   >
-                                      <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
+                                      <List size={"large"} type={"string"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
                                   </Form.Item>
                               </Col>
                           </div>
-                      </Fragment>
+                      </Fragment> */}
                       <Col className={"lg:ml-24"}>
                             <div className={"flex items-center mt-5 mb-5"}>
                                 <img alt="" src={require('../../assets/images/require.png')}/>

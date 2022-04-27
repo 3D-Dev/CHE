@@ -50,12 +50,14 @@
   "btn.require": "必須",
 
   "form.item.name": "氏名",
+  "form.item.club.name": "倶楽部名",
   "form.item.introduce.name": "紹介者",
   "form.item.introduce.date": "登録日",
   "form.item.coin.address": "入金アドレス",
   "form.item.email": "メールアドレス",
   "form.item.email.confirm": "メールアドレス（英数半角）(必須)",
   "form.item.name.confirm": "SATO KEIKO (必須) （ヘボン式ローマ字・大文字・半角）",
+  "form.item.club.name.confirm": "倶楽部を選択",
   "form.item.init.password": "パスワード",
 
 
