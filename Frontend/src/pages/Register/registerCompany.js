@@ -1,6 +1,5 @@
 import React, {Suspense,Fragment} from 'react';
-import { Top } from '../../components/home/Top';
-import { Main } from '../../components/home/Main';
+import { RegisterCompanyComponent} from "../../components/home/RegisterCompanyComponent";
 import {useAuthState} from "../../context";
 import {injectIntl} from "react-intl";
 import i18next from 'i18next'
@@ -30,18 +29,14 @@ i18next
     })
 
 
-const Home = (props) => {
+const RegisterCompany = (props) => {
   const {profile} = useAuthState();
 
   return (
     <Fragment>
       <div className="App">
         {
-            isLogined(profile) ? (
-              <Main intl={props.intl}/>
-            ) : (
-              <Top intl={props.intl}/>
-            )
+            <RegisterCompanyComponent intl={props.intl}/>
         }
       </div>
     </Fragment>
@@ -49,4 +44,4 @@ const Home = (props) => {
   )
 }
 
-export default injectIntl(Home)
+export default injectIntl(RegisterCompany)

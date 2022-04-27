@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import i18next from 'i18next'
-
+import {Link} from 'react-router-dom';
+import {PageConstant} from "../../constants/PageConstant";
 
 export const Header = (props) => {
 
@@ -65,12 +66,28 @@ export const Header = (props) => {
                               <img src={require("../../assets/img/vi.png")} height="24" width="24" alt="VI" />
                               <span className="pl-2">VI</span>
                           </a>
-                      {/*))}*/}
+                          <a href={PageConstant.HOME}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">ホーム</span>
+                          </a>
+                          <a href={PageConstant.LOGIN}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">ログイン</span>
+                          </a>
+                          <a href={PageConstant.SIGNUP}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">会員登録</span>
+                          </a>
+                          <a href={PageConstant.SIGNUP_COMPANY}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">ユーザー登録</span>
+                          </a>
                   </div>
-                  {/*<div>*/}
-                  {/*    <a href="#"*/}
-                  {/*       className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>*/}
-                  {/*</div>*/}
+
               </div>
           </nav>
   )

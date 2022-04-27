@@ -12,7 +12,7 @@ export const FormInput = (props) => {
             name={props.name}
             rules={[{required: props.required, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
           >
-            <Input size={"large"} placeholder={props.placeholder} readOnly={props.readOnly}/>
+            <Input style={{padding:'6px'}} size={"large"} placeholder={props.placeholder} readOnly={props.readOnly}/>
           </Form.Item>
         </Col>
       </div>

@@ -1,5 +1,9 @@
 {
   "app_title": "CHE",
+  "app_nav_home": "ホーム",
+  "app_nav_login": "ログイン",
+  "app_nav_signup": "ユーザー登録",
+  "app_nav_signupCompany": "会社登録",
   "INVALID_PARAMS": "要求データが無効です。",
   "NOT_SUPPORT": "サポートされていません。",
   "alert.title": "アラート",
@@ -52,7 +56,7 @@
   "form.item.email": "メールアドレス",
   "form.item.email.confirm": "メールアドレス（英数半角）(必須)",
   "form.item.name.confirm": "SATO KEIKO (必須) （ヘボン式ローマ字・大文字・半角）",
-
+  "form.item.init.password": "パスワード",
 
 
 
@@ -68,12 +72,14 @@
   "str.item.faq": "よくある質問",
   "str.item.explain.rabbit": "ラビットメンバーアプリを解説！",
   "str.item.mining.che": "CHEコインをマイニングしよう！",
-  "str.item.new.register": "– 新規登録 –",
+  "str.item.new.register": "– ユーザー登録 –",
+  "str.item.new.company.register": "– 会員登録 –",
   "str.item.register.step1": "1)登録されるご本人の氏名をパスポート表記スタイルで入力してください。",
   "str.item.register.step2": "2)登録するメールアドレスを入力してください。",
   "str.item.register.step3": "3)トークンポケットのインストールを完了し、ご自身の入金アドレスをコピーペーストして送信してください。",
   "str.item.link.tokenpoket": "→ トークンポケットを10分で解説！",
-  "str.item.register.step4": "4)あなたの紹介者を入力してください。",
+  "str.item.register.step4": "4)パスワードを入力してください。",
+  "str.item.register.step5": "5)所属の倶楽部を選択してください。",
 
 
   "btn.send": "送信する",
