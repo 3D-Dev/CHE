@@ -97,12 +97,6 @@ function LoginBase(props) {
                 <span>ログイン</span>
               </button>
             </div>
-            <div className={"flex justify-center my-5"}>
-              <Link to={PageConstant.FORGET_PASSWORD}><span className="underline">パスワードを忘れた方</span></Link>
-            </div>
-            <div className={"flex items-center"}>
-              <span>MIETANの会員登録がお済みでない場合は、<Link to={"/signup"}><span className="underline">こちら</span></Link>で新規会員登録できます。</span>
-            </div>
           </Form>
         </div>
       </div>
