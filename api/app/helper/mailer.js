@@ -1,14 +1,17 @@
 const sgMail = require('@sendgrid/mail')
+const {adminDB} = require("../auth/adminDB.js")
 
-exports.sendEmail = async () => {
+exports.sendEmail = async (emailFrom, emailTo, title, textContent, htmlContent) => {
   try {
+    
+
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const msg = {
-      to: 'test@example.com', // Change to your recipient
-      from: 'test@example.com', // Change to your verified sender
-      subject: 'Sending with SendGrid is Fun',
-      text: 'and easy to do anywhere, even with Node.js',
-      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+      to: emailTo, // Change to your recipient
+      from: emailFrom, // Change to your verified sender
+      subject: title,
+      text: textContent,
+      html: htmlContent,
     }
     sgMail
       .send(msg)
