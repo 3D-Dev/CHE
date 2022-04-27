@@ -1,5 +1,9 @@
 {
   "app_title": "CHE",
+  "app_nav_home": "ホーム",
+  "app_nav_login": "ログイン",
+  "app_nav_signup": "ユーザー登録",
+  "app_nav_signupCompany": "会社登録",
   "INVALID_PARAMS": "要求データが無効です。",
   "NOT_SUPPORT": "サポートされていません。",
   "alert.title": "アラート",

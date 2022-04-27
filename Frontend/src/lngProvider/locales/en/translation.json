@@ -1,5 +1,9 @@
 {
   "app_title": "CHE",
+  "app_nav_home": "Home",
+  "app_nav_login": "Login",
+  "app_nav_signup": "SignUp",
+  "app_nav_signupCompany": "Company SignUp",
   "alert.fieldRequired": "This field is required.",
   "alert.fieldReferEmailDuplicate": "You cannot use the same email address as the introducer.",
   "alert.fieldReferEmailConfirm": "The email address is incorrect.",

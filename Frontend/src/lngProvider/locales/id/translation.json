@@ -1,5 +1,9 @@
 {
   "app_title": "CHE",
+  "app_nav_home": "Rumah",
+  "app_nav_login": "Gabung",
+  "app_nav_signup": "Registrasi pengguna",
+  "app_nav_signupCompany": "Pendaftaran perusahaan",
   "alert.fieldRequired": "Bagian ini diperlukan.",
   "alert.fieldReferEmailDuplicate": "Anda tidak dapat menggunakan alamat email yang sama dengan pengantar.",
   "alert.fieldReferEmailConfirm": "Alamat email salah.",

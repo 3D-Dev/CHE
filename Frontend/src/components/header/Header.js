@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import i18next from 'i18next'
-
+import {Link} from 'react-router-dom';
+import {PageConstant} from "../../constants/PageConstant";
 
 export const Header = (props) => {
 
@@ -65,13 +66,25 @@ export const Header = (props) => {
                               <img src={require("../../assets/img/vi.png")} height="24" width="24" alt="VI" />
                               <span className="pl-2">VI</span>
                           </a>
-                          <a href="#responsive-header"
+                          <a href={PageConstant.HOME}
                              className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
-                             onClick={() => {
-                                 i18next.changeLanguage('vi')
-                             }}
                           >
-                              <span className="pl-2">Home</span>
+                              <span className="pl-2">ホーム</span>
+                          </a>
+                          <a href={PageConstant.LOGIN}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">ログイン</span>
+                          </a>
+                          <a href={PageConstant.SIGNUP}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">会員登録</span>
+                          </a>
+                          <a href={PageConstant.SIGNUP_COMPANY}
+                             className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
+                          >
+                              <span className="pl-2">ユーザー登録</span>
                           </a>
                   </div>
 

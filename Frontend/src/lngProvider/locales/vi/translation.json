@@ -1,5 +1,9 @@
 {
   "app_title": "CHE",
+  "app_nav_home": "Trang Chủ",
+  "app_nav_login": "Đăng nhập",
+  "app_nav_signup": "Đăng ký người dùng",
+  "app_nav_signupCompany": "Đăng ký công ty",
   "alert.fieldRequired": "Trường này là bắt buộc.",
   "alert.fieldReferEmailDuplicate": "Bạn không thể sử dụng cùng một địa chỉ email với người giới thiệu.",
   "alert.fieldReferEmailConfirm": "Địa chỉ email không chính xác.",
