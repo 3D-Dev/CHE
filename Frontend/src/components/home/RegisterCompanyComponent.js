@@ -122,7 +122,7 @@ export const RegisterCompanyComponent = (props) => {
                       {/*紹介者*/}
                       <FormList
                         label={props.intl.formatMessage({id: 'form.item.club.name'})}
-                        name={"name"}
+                        name={"clubName"}
                         placeholder={props.intl.formatMessage({id: 'form.item.club.name.confirm'})}
                         intl={props.intl}
                         required={true}

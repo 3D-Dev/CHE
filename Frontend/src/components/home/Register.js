@@ -115,7 +115,7 @@ export const Register = (props) => {
             placeholder=""
             intl={props.intl}
             required={true}
-            readOnl={false}
+            readOnly={false}
         />
         <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
             <div className={"flex items-center mt-2"}>
