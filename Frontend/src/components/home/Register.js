@@ -10,6 +10,7 @@ import i18next from 'i18next'
 import cookies from 'js-cookie'
 import validation from 'validator'
 import {createAccout} from "../../api/axiosAPIs";
+import {FormInputPassword} from "../../components/form/FormInputPassword";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
 import {
     HTTP_SUCCESS,
@@ -128,7 +129,13 @@ export const Register = (props) => {
                 <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step4'})}</span>
             </div>
         </Col>
-        
+        <FormInputPassword
+              label={props.intl.formatMessage({id: 'form.item.init.password'})}
+              name="password"
+              placeholder={props.intl.formatMessage({id: 'form.item.init.password'})}
+              intl={props.intl}
+              required={true}
+        />
         <Fragment>
             <div>
                 <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.date'})} required={true}/>
@@ -137,7 +144,7 @@ export const Register = (props) => {
                         name={"createdAt"}
                         rules={[{required: true, message: props.intl.formatMessage({id: 'alert.fieldRequired'})}]}
                     >
-                        <Input type={"date"} size={"large"} placeholder={props.placeholder} readOnly={props.readOnly}/>
+                        <Input style={{padding:'6px'}} type={"date"} size={"large"} placeholder={props.placeholder} readOnly={props.readOnly}/>
                     </Form.Item>
                 </Col>
             </div>

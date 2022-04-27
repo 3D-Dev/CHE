@@ -14,6 +14,7 @@
   "form.item.email": "Địa chỉ e-mail",
   "form.item.email.confirm": "Địa chỉ e-mail (nửa chiều rộng chữ và số) (bắt buộc)",
   "form.item.name.confirm": "SATO KEIKO (bắt buộc) (chữ La tinh Hepburn, chữ in hoa, nửa chiều rộng)",
+  "form.item.init.password": "Mật khẩu",
 
   "message.success.user": "Đăng ký người dùng đã thành công.",
   "message.error.serverSide": "Kết nối máy chủ không thành công. Vui lòng thử lại.",

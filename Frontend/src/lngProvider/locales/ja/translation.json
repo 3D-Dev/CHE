@@ -56,7 +56,7 @@
   "form.item.email": "メールアドレス",
   "form.item.email.confirm": "メールアドレス（英数半角）(必須)",
   "form.item.name.confirm": "SATO KEIKO (必須) （ヘボン式ローマ字・大文字・半角）",
-
+  "form.item.init.password": "パスワード",
 
 
 

@@ -14,6 +14,7 @@
   "form.item.email": "E-mail address",
   "form.item.email.confirm": "E-mail address (half-width alphanumerical)",
   "form.item.name.confirm": "SATO KEIKO (required) (Hepburn romanization, capital letters, half-width)",
+  "form.item.init.password": "Password",
 
   "str.item.policy.confirm": "I agree to the terms of use.",
   "str.item.policy": "→Terms of use",

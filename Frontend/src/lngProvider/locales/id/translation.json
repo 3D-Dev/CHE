@@ -14,6 +14,7 @@
   "form.item.email": "Alamat email",
   "form.item.email.confirm": "Alamat email (alfanumerik setengah lebar) (wajib)",
   "form.item.name.confirm": "SATO KEIKO (wajib) (Romanisasi Hepburn, huruf kapital, setengah lebar)",
+  "form.item.init.password": "kata sandi",
 
   "message.success.user": "Pendaftaran pengguna berhasil.",
   "message.error.serverSide": "Koneksi server gagal. Silakan coba lagi.",
