@@ -9,7 +9,6 @@ const Op = db.Sequelize.Op;
 const uuid = require("uuid")
 const moment = require('moment')
 
-
 exports.findAll = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
@@ -65,6 +64,38 @@ generateCode = async () => {
   return code
 }
 
+sendEmail = async (data) => {
+  const code = data.code
+  const activateLink = process.env.FRONTEND_HOST + "/register/" + code
+
+  const title = "新規登録認証メール"
+
+  const text = "この度は 新規登録いただきまして、有難うございます。\
+  以下のURLをクリックし、メールアドレスの認証を行うことで\
+  会員登録が完了いたします。\
+  \
+  " + activateLink + "\
+  \
+  会員登録を開始された覚えのない場合は、\
+  このメールを破棄してくださいますようお願いたします。\
+  \
+  株式会社"
+
+  const html = "<p>この度は 新規登録いただきまして、有難うございます。</p>\
+  <br/>\
+  <p>以下のURLをクリックし、メールアドレスの認証を行うことで</p>\
+  <p>会員登録が完了いたします。</p>\
+  <br/>\
+  <p><a href=\"" + activateLink + "\">" + activateLink + "</a></p>\
+  <br/>\
+  <p>※会員登録を開始された覚えのない場合は、</p>\
+  <p>このメールを破棄してくださいますようお願いたします。</p>\
+  <br/>\
+  <p>株式会社</p>"
+
+  await sendEmail(adminDB[0].email, data.email, title, text, html)
+}
+
 exports.create = async (req, res) => {
   // Validate request
   try {
@@ -103,6 +134,7 @@ exports.create = async (req, res) => {
     } else {
       const data = await Account.create(account)
       if (data) {
+        await sendEmail(data)
         res.send(data)
       }
     }
@@ -216,15 +248,10 @@ exports.findOneByCode = async (req, res) => {
 exports.test = async (req, res) => {
   try {
 
-    await sendEmail()
-
-
-
-
   } catch(err) {
     res.status(500).send({
       message:
-        err.message || "Some error occurred while creating of user."
+        err.message || "Some error occurred test."
     })
   }
 }
