@@ -1,15 +1,15 @@
 import React, {Fragment, useRef, useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
-import {Card, Checkbox, Col, Form, Input} from "antd";
-import {FormInput} from "../form/FormInput";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
-import {FormLabel} from "../form/FormLabel";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
 import validation from 'validator'
 import {createAccout} from "../../api/axiosAPIs";
+import {Input, Modal} from "antd";
+import {ProgramShare} from "../modal/ProgramShare";
+import {PageConstant} from "../../constants/PageConstant";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
 import {
     HTTP_SUCCESS,
@@ -56,8 +56,46 @@ export const Main = (props) => {
         {to: '', label: 'お問い合わせ'},
     ]
 
-    const onChangeInputConfirm = e => {
-        setIsConfirm(e)
+    const QRCode = require('qrcode.react');
+    const [sharedState, setSharedState] = useState({isVisible: false, bCopied: false, key: ''});
+    const onItemDetailClick = (e, item) => {
+        e.preventDefault()
+        history.push(PageConstant.PROGRAM_DETAIL, {data: item})
+      }
+    const onDownload = (e) => {
+        const canvas = document.getElementById("program-share-qr-code");
+        const pngUrl = canvas
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream");
+        const link = document.createElement("a");
+        link.href = pngUrl;
+        link.setAttribute("download", "qrcode.png"); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+    }
+    const getUrl = () => {
+        return window.location.host + PageConstant.SHARED_PROGRAM + "/" + sharedState.key
+    }
+    
+    const onCopyUrl = (url) => {
+        navigator.clipboard.writeText(url).catch(console.error)
+        setSharedState({isVisible: sharedState.isVisible, bCopied: true, key: sharedState.key})
+    }
+    const onItemShareClick = (e, item) => {
+        e.preventDefault()
+        let formData = new FormData()
+        formData.append('program_id', item.id)
+        // addSharedProgramUrl(formData).then(response => {
+        //     if (!_.isEmpty(response.data)) {
+        //       if (response.data.key) {
+        //         setSharedState({
+        //           isVisible: true,
+        //           bCopied: false,
+        //           key: response.data.key,
+        //         })
+        //       }
+        //     }
+        // })
     }
 
     const onFinish = async(data) => {
@@ -81,10 +119,6 @@ export const Main = (props) => {
 
     }
 
-    const onChange = (date, dateString) => {
-        console.log(date, dateString);
-    }
-
     useEffect(() => {
         console.log('Setting page stuff')
         document.body.dir = currentLanguage.dir || 'ltr'
@@ -98,6 +132,15 @@ export const Main = (props) => {
           <img alt="" src={require('../../assets/img/HBY-logo2-1.png')} style={{width: '100%', height: '100%'}}/>
         </div>
       </div>
+      <ProgramShare
+        isModalVisible={sharedState.isVisible}
+        intl={props.intl}
+        bCopied={sharedState.bCopied}
+        onCopyUrl={onCopyUrl}
+        url={getUrl()}
+        size={400}
+        handleCancel={() => setSharedState({isVisible: false, bCopied: false, key: sharedState.key})}
+      />
     </Fragment>
   )
 }
