@@ -4,6 +4,7 @@ const {adminDB} = require("../auth/adminDB.js")
 const {createAccessToken, sendAccessToken} = require("../auth/tokens.js")
 const {isAuth} = require("../auth/isAuth.js")
 const {verify} = require("jsonwebtoken")
+const {compare, hash} = require("bcrypt")
 const Account = db.accounts
 
 exports.adminLogin = async (req, res) => {
