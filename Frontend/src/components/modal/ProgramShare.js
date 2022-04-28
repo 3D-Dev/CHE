@@ -19,7 +19,7 @@ export const ProgramShare = (props) => {
   return (
     <Fragment>
         <div className={"px-4 py-4"}>
-          {(props.isVisible === 1)? 
+          {props.isVisible === 1? 
           <div>
             <div className={"flex items-center pb-4"}>
               <img alt={""} style={{width: 22.6, height: 24.65, marginTop: -6}}
@@ -45,13 +45,14 @@ export const ProgramShare = (props) => {
               <div className={"pb-8"}>
                 <Input size={"large"} readOnly style={{width: '100%'}} value={props.url}/>
               </div>
-              <div className={"flex items-center"}>
+              <div className={"flex items-center justify-center"}>
                 <QRCode
                   id={"program-share-qr-code"}
                   value={props.url}
                   size={128}
                 />
-                <div className={"ml-8"}>
+              </div>
+              <div className={"pt-8 flex items-center"}>
                   <button
                     className={"flex items-center justify-center bg-yellow btn-secondary-semi-round text-black font-bold text-sm h-50px"}
                     style={{width: 315}}
@@ -59,7 +60,6 @@ export const ProgramShare = (props) => {
                   >
                     <span>QRコードをダウンロード</span>
                   </button>
-                </div>
               </div>
             </div>
           </div>
