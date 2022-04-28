@@ -70,9 +70,11 @@ export const RegisterCompanyComponent = (props) => {
         formData.append('account', data.account)
         formData.append('referId', '')
         formData.append('referEmail', data.referEmail? data.referEmail : '')
+        formData.append('password', data.password)
+        formData.append('companyName', data.clubName)
         formData.append('createdAt', data.createdAt)
         let response = {}
-        console.log('onFinish_Company!', data.name, data.email, data.account, data.referEmail, data.createdAt)
+        console.log('onFinish_Company!', data.name, data.email, data.account, data.referEmail, data.password, data.clubName)
         try {
             response = await createAccout(formData)
             if (response.status === HTTP_SUCCESS) {
@@ -128,21 +130,6 @@ export const RegisterCompanyComponent = (props) => {
                         required={true}
                         readOnly={false}
                       />
-                      {/* <Fragment>
-                          <div>
-                              <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.name'})}/>
-                              <Col lg={16} className={"p-0 lg:ml-24"} >
-                                  <Form.Item
-                                      name={"referEmail"}
-                                      rules={[{required: false, 
-                                        type: "email",
-                                        message: props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})}]}
-                                  >
-                                      <List size={"large"} type={"string"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
-                                  </Form.Item>
-                              </Col>
-                          </div>
-                      </Fragment> */}
                       <Col className={"lg:ml-24"}>
                             <div className={"flex items-center mt-5 mb-5"}>
                                 <img alt="" src={require('../../assets/images/require.png')}/>
