@@ -8,7 +8,7 @@ import {Error404} from '../pages/common';
 const routes = [
   {path: PageConstant.HOME, component: Home, isPrivate: false},
   {path: PageConstant.LOGIN, component: Login, isPrivate: false},
-  //{path: PageConstant.LOGOUT, component: Logout, isPrivate: false},
+  // {path: PageConstant.MAIN, component: Main, isPrivate: false},
   {path: PageConstant.SIGNUP, component: Register, isPrivate: false},
   {path: PageConstant.SIGNUP_COMPANY, component: RegisterCompany, isPrivate: false},
   {path: PageConstant.ACTIVATE_EMAIL, component: ActivateEmail, isPrivate: false},

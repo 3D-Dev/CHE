@@ -16,10 +16,6 @@ function LoginBase(props) {
   const {loading,} = useAuthState()
   const [remember, setRemember] = useState(false);
 
-  const items = [
-    {to: '', label: props.logout ? 'ログアウト' : 'ログイン'},
-  ]
-
   const changeRemember = (e) => {
     setRemember(e.target.checked)
   }
@@ -32,13 +28,9 @@ function LoginBase(props) {
     try {
       response = await login(formData)
       if (response.status === 200) {
-        // response = await getProfile()
-        // if (!_.isEmpty(response.data)) {
-        //   if (response.data.data) {
-        //     updateProfile(dispatch, response.data.data, remember)
-        //     history.push(PageConstant.HOME)
-        //   }
-        // }
+        console.log('Login Success!!!', response.data)
+        updateProfile(dispatch, response.data, remember)
+        history.push(PageConstant.HOME)
       }
     } catch (error) {
       console.log(error)

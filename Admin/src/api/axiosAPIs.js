@@ -49,6 +49,11 @@ export const login = (data) => {
 export const logout = () => {
   return axiosRequest('post', axiosConfig.LOGOUT_URL)
 }
+
+export const userPublic = (id, data) => {
+  return axiosRequest('put', axiosConfig.USER_PUBLIC + id, data)
+}
+
 // User API
 export const getUserList = (data) => {
   data.page = data.page + 1

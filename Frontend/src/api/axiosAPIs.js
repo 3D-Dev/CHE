@@ -43,11 +43,11 @@ export const axiosRequest = (method, url, reqData = null, needLoader = true) => 
 export const createAccout = (data) => {
   return axiosRequest('post', axiosConfig.CREATE, data)
 }
-export const getIntruducer = (data) => {
-  return axiosRequest('get', axiosConfig.GET_INTRODUCER, data)
+export const getIntruducer = (id) => {
+  return axiosRequest('get', axiosConfig.GET_INTRODUCER + id)
 }
-export const getEmailActivateStatus = (data) => {
-  return axiosRequest('get', axiosConfig.GET_ACTIVATE, data)
+export const getEmailActivateStatus = (id) => {
+  return axiosRequest('put', axiosConfig.GET_ACTIVATE + '/' + id, {id: id})
 }
 export const signup = (data) => {
   return axiosRequest('post', axiosConfig.SIGNUP, data)

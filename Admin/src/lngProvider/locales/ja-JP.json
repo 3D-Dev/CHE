@@ -139,7 +139,7 @@
   "table.header.userName": "ユーザー名",
   "table.header.mailAddress": "メールアドレス",
   "table.header.referId": "紹介ID",
-  "table.header.referAddress": "紹介者",
+  "table.header.referAddress": "クラブ名",
   "table.header.account": "入金アドレス",
   "table.header.totalDistribution": "補償額",
   "table.header.startAt": "報酬開始日",
@@ -151,7 +151,10 @@
   "table.header.result.success": "成功",
   "table.header.result.fail": "失敗",
   "table.header.result.wait": "進行中",
-
+  "table.header.accept.owner": "オーナー設定",
+  "table.header.accept.owner.success": "許可する",
+  "table.header.accept.owner.cancel": "キャンセル",
+  
   "message.success.Request": "リクエストいただきました。少々お待ちください。",
   "message.error.Request": "リクエストが失敗しました。もう一度試してください。",
 
