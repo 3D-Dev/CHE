@@ -65,7 +65,7 @@ generateCode = async () => {
 
 sendProcEmail = async (data) => {
   const code = data.code
-  const activateLink = process.env.FRONTEND_HOST + "/register/" + code
+  const activateLink = process.env.FRONTEND_HOST + "/account_activate/" + code
 
   const title = "【うさぎ倶楽部】仮登録完了のお知らせ"
 
