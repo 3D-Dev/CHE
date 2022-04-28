@@ -46,7 +46,6 @@ exports.findAll = async (req, res) => {
     if (data) {
       res.send({data: data, total: count, request: request})
     }
-
   }
   catch (err) {
     res.status(500).send({
@@ -64,7 +63,7 @@ generateCode = async () => {
   return code
 }
 
-sendEmail = async (data) => {
+sendProcEmail = async (data) => {
   const code = data.code
   const activateLink = process.env.FRONTEND_HOST + "/register/" + code
 
@@ -107,7 +106,7 @@ exports.create = async (req, res) => {
       })
       return
     }
-    let result = await Account.findOne({where: {email: req.body.referEmail}})
+    let result = await Account.findOne({where: {code: req.body.referCode}})
     let referId = 0
     if (result) {
       referId = result.id
@@ -120,7 +119,6 @@ exports.create = async (req, res) => {
       account: req.body.account || "",
       code: await generateCode(),
       referId: referId,
-      referEmail: req.body.referEmail,
       isIntroducer: req.body.isIntroducer || false,
       companyName: req.body.companyName || "",
     }
@@ -134,7 +132,7 @@ exports.create = async (req, res) => {
     } else {
       const data = await Account.create(account)
       if (data) {
-        await sendEmail(data)
+        await sendProcEmail(data)
         res.send(data)
       }
     }
@@ -211,7 +209,7 @@ exports.findOne = async (req, res) => {
 
     const id = req.params.id
 
-    const data = await Course.findByPk(id)
+    const data = await Account.findByPk(id)
     if (data) {
       res.send(data)
     } else {
