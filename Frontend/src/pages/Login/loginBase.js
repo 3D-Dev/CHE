@@ -28,9 +28,9 @@ function LoginBase(props) {
     try {
       response = await login(formData)
       if (response.status === 200) {
-        console.log('Login Success!!!')
-          updateProfile(dispatch, response.data, remember)
-          history.push(PageConstant.HOME)
+        console.log('Login Success!!!', response.data)
+        updateProfile(dispatch, response.data, remember)
+        history.push(PageConstant.HOME)
       }
     } catch (error) {
       console.log(error)

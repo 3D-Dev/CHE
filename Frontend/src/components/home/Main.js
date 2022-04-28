@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import cookies from 'js-cookie'
 import {ProgramShare} from "../modal/ProgramShare";
 import {PageConstant} from "../../constants/PageConstant";
+import {getIntruducer} from "../../api/axiosAPIs";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
 import {
     HTTP_SUCCESS,
@@ -42,6 +43,7 @@ export const Main = (props) => {
     const {loading, profile} = useAuthState();
     const formRef = useRef();
     const [isConfirm, setIsConfirm] = useState(false);
+    const [isIntroducer, setIntroducer] = useState(0);
     const [initFormValue] = useState(isLogined(profile) ? {
         inquiry_name: profile.name,
         email: profile.email,
@@ -57,7 +59,7 @@ export const Main = (props) => {
     const [sharedState, setSharedState] = useState({bCopied: false, key: key});
 
     const getUrl = () => {
-        return window.location.host + PageConstant.LOGIN + "/" + sharedState.key
+        return window.location.host + PageConstant.SIGNUP + "/" + sharedState.key
     }
     
     const onCopyUrl = (url) => {
@@ -83,27 +85,20 @@ export const Main = (props) => {
         }
         setSharedState({bCopied: true, key: sharedState.key})
     }
-    const onItemShareClick = (e, item) => {
-        e.preventDefault()
-        let formData = new FormData()
-        formData.append('program_id', item.id)
-        // addSharedProgramUrl(formData).then(response => {
-        //     if (!_.isEmpty(response.data)) {
-        //       if (response.data.key) {
-        //         setSharedState({
-        //           isVisible: true,
-        //           bCopied: false,
-        //           key: response.data.key,
-        //         })
-        //       }
-        //     }
-        // })
-    }
+    const getUserInfo = async (data) => {
+        let response = await getIntruducer(key)
+            if (response.status === HTTP_SUCCESS) {
+                console.log("login_getUserInfo_Success!", response.data)            
+                setIntroducer(response.data.isIntroducer)
+                console.log('login_getUserInfo_isIntroducer!', isIntroducer)
+            }
+      }
 
     useEffect(() => {
         console.log('Setting page stuff')
         document.body.dir = currentLanguage.dir || 'ltr'
         document.title = props.intl.formatMessage({id: 'app_title'})
+        getUserInfo()
     }, [currentLanguage, t])
 
   return (
@@ -114,7 +109,7 @@ export const Main = (props) => {
         </div>
       </div>
       <ProgramShare
-        isModalVisible={true}
+        isVisible={isIntroducer}
         intl={props.intl}
         bCopied={sharedState.bCopied}
         onCopyUrl={onCopyUrl}

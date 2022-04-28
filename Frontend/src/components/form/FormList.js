@@ -46,7 +46,7 @@ const list = [
   '倶楽部オーナー番号',
 ]
 for(let i = 0; i < list.length-1; i ++) {
-  children.push(<Option key={i}>{list[i]}</Option>);
+  children.push(<Option key={list[i]}>{list[i]}</Option>);
 
 }
 
