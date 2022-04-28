@@ -155,10 +155,9 @@ exports.userActivate = async (req, res) => {
 
     const data = await Account.findOne({where: {code: code}})
     if (data) {
-      // const createDate = moment(data.createdAt)
-      // const diff = moment().diff(createDate, 'hour')
-      if (true) {
-      // if (diff <= 8) {
+      const createDate = moment(data.createdAt)
+      const diff = moment().diff(createDate, 'hour')
+      if (diff <= 24) {
         const result = await Account.update({ activated: true }, { where: { code: code } })
         if (result[0] === 1) {
           res.send({
@@ -166,7 +165,7 @@ exports.userActivate = async (req, res) => {
           })
         }
       } else {
-        res.send({
+        res.status(410).send({
           message: "account activation link was expired."
         })
       }
@@ -175,8 +174,6 @@ exports.userActivate = async (req, res) => {
         message: "account is not existed."
       })
     }
-
-
   } catch(err) {
     res.status(500).send({
       message: "Error userActivate"
