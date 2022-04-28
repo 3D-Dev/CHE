@@ -52,7 +52,7 @@ export const ProgramShare = (props) => {
                   size={128}
                 />
               </div>
-              <div className={"pt-8 flex items-center"}>
+              <div className={"pt-8 flex items-center  justify-center"}>
                   <button
                     className={"flex items-center justify-center bg-yellow btn-secondary-semi-round text-black font-bold text-sm h-50px"}
                     style={{width: 315}}
