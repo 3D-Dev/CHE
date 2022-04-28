@@ -5,6 +5,7 @@ import {FormInput} from "../form/FormInput";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
 import {FormLabel} from "../form/FormLabel";
+import {FormList} from "../form/FormList";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
@@ -69,9 +70,11 @@ export const RegisterCompanyComponent = (props) => {
         formData.append('account', data.account)
         formData.append('referId', '')
         formData.append('referEmail', data.referEmail? data.referEmail : '')
+        formData.append('password', data.password)
+        formData.append('companyName', data.clubName)
         formData.append('createdAt', data.createdAt)
         let response = {}
-        console.log('onFinish_Company!', data.name, data.email, data.account, data.referEmail, data.createdAt)
+        console.log('onFinish_Company!', data.name, data.email, data.account, data.referEmail, data.password, data.clubName)
         try {
             response = await createAccout(formData)
             if (response.status === HTTP_SUCCESS) {
@@ -119,21 +122,14 @@ export const RegisterCompanyComponent = (props) => {
                           </div>
                       </Col>
                       {/*紹介者*/}
-                      <Fragment>
-                          <div>
-                              <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.name'})}/>
-                              <Col lg={16} className={"p-0 lg:ml-24"} >
-                                  <Form.Item
-                                      name={"referEmail"}
-                                      rules={[{required: false, 
-                                        type: "email",
-                                        message: props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})}]}
-                                  >
-                                      <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
-                                  </Form.Item>
-                              </Col>
-                          </div>
-                      </Fragment>
+                      <FormList
+                        label={props.intl.formatMessage({id: 'form.item.club.name'})}
+                        name={"clubName"}
+                        placeholder={props.intl.formatMessage({id: 'form.item.club.name.confirm'})}
+                        intl={props.intl}
+                        required={true}
+                        readOnly={false}
+                      />
                       <Col className={"lg:ml-24"}>
                             <div className={"flex items-center mt-5 mb-5"}>
                                 <img alt="" src={require('../../assets/images/require.png')}/>

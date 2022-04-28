@@ -135,6 +135,14 @@ export const RegisterUserComponent = (props) => {
                               </Col>
                           </div>
                       </Fragment>
+                      <FormInput
+                        label={props.intl.formatMessage({id: 'form.item.club.name'})}
+                        name={"clubName"}
+                        placeholder=""
+                        intl={props.intl}
+                        required={true}
+                        readOnly={true}
+                      />
                       <Col className={"lg:ml-24"}>
                             <div className={"flex items-center mt-5 mb-5"}>
                                 <img alt="" src={require('../../assets/images/require.png')}/>

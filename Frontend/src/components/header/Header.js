@@ -76,12 +76,12 @@ export const Header = (props) => {
                           >
                               <span className="pl-2">ログイン</span>
                           </a>
-                          <a href={PageConstant.SIGNUP}
+                          <a href={PageConstant.SIGNUP_COMPANY}
                              className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
                           >
                               <span className="pl-2">会員登録</span>
                           </a>
-                          <a href={PageConstant.SIGNUP_COMPANY}
+                          <a href={PageConstant.SIGNUP}
                              className="mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4" style={{display: "flex"}}
                           >
                               <span className="pl-2">ユーザー登録</span>
