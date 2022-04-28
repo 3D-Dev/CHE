@@ -62,7 +62,6 @@ export class MainApp extends Component {
   render() {
     console.log('MainApp', this.props)
     const {role, match, width, navStyle} = this.props
-    console.log("@@@@", role)
     return (
       (role === 'NO_USER') ? (<Redirect
           to={{pathname: '/admin/login', state: {from: this.props.location}}}

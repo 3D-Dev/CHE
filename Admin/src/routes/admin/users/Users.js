@@ -53,7 +53,7 @@ class Users extends React.Component {
         rowsPerPage: rowsPerPageState
       })
     }
-    this.timer = setInterval(()=>this.fetchUserList(), 5000)
+    this.timer = setInterval(()=>this.fetchUserList(), 30000)
     this.fetchUserList(data)
   }
   componentWillUnmount() {
@@ -109,15 +109,13 @@ class Users extends React.Component {
     isPublic = !isPublic
     userPublic(id, {isPublic: isPublic})
       .then(response => {
-        if(response.code == 200) {
-          const {page, rowsPerPage} = this.state
-          let data = {
-            page: page,
-            limit: rowsPerPage
-          }
-      
-          this.fetchUserList(data)
-
+        if(response.status == 200) {
+          const {rows} = this.state
+          const row = rows.find(item => item.id === id)
+          row.isPublic = isPublic
+          this.setState(
+            {rows: rows}
+          )
           console.log('userPublic_changed!!!!')
         }
         else {
