@@ -53,11 +53,6 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },
-      referEmail: {
-        type: Sequelize.STRING,
-        trim: true,
-        defaultValue: '',
-      },
       distributed: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,

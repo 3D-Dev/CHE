@@ -100,10 +100,8 @@ const copyUser = (record) => {
     email: record.email,
     account: record.account,
     referId: record.referId,
-    referEmail: record.referEmail,
     distributed: record.distributed,
     totalDistribution: record.totalDistribution,
-    name: record.name,
   }
 }
 

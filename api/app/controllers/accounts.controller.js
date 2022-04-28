@@ -46,7 +46,6 @@ exports.findAll = async (req, res) => {
     if (data) {
       res.send({data: data, total: count, request: request})
     }
-
   }
   catch (err) {
     res.status(500).send({
@@ -64,36 +63,37 @@ generateCode = async () => {
   return code
 }
 
-sendEmail = async (data) => {
+sendProcEmail = async (data) => {
   const code = data.code
-  const activateLink = process.env.FRONTEND_HOST + "/register/" + code
+  const activateLink = process.env.FRONTEND_HOST + "/account_activate/" + code
 
-  const title = "新規登録認証メール"
+  const title = "【うさぎ倶楽部】仮登録完了のお知らせ"
 
-  const text = "この度は 新規登録いただきまして、有難うございます。\
-  以下のURLをクリックし、メールアドレスの認証を行うことで\
-  会員登録が完了いたします。\
+  const text = "この度はうさぎ俱楽部へご登録いただき、誠にありがとうございます。\
+  現在はまだ仮登録の状態です。\
+  下記リンクをクリックして本登録をお願いします。\
   \
   " + activateLink + "\
   \
-  会員登録を開始された覚えのない場合は、\
-  このメールを破棄してくださいますようお願いたします。\
+  注意事項\
+  ・ このメールは、うさぎ俱楽部へ登録された方に自動送信しています。本メールにお心当りがない場合は、誠に恐れ入りますが弊社までお問い合せくださいますようお願いいたします。\
+  ・ このメールに記載されたURLの有効期限は24時間です。有効期限切れの場合は、お手数ですが改めて新規登録手続きを行なってください。\
   \
-  株式会社"
+  うさぎ倶楽部 事務局"
 
-  const html = "<p>この度は 新規登録いただきまして、有難うございます。</p>\
-  <br/>\
-  <p>以下のURLをクリックし、メールアドレスの認証を行うことで</p>\
-  <p>会員登録が完了いたします。</p>\
+  const html = "<p>この度はうさぎ俱楽部へご登録いただき、誠にありがとうございます。</p>\
+  <p>現在はまだ仮登録の状態です。</p>\
+  <p>下記リンクをクリックして本登録をお願いします。</p>\
   <br/>\
   <p><a href=\"" + activateLink + "\">" + activateLink + "</a></p>\
   <br/>\
-  <p>※会員登録を開始された覚えのない場合は、</p>\
-  <p>このメールを破棄してくださいますようお願いたします。</p>\
+  <p>注意事項</p>\
+  <p>・ このメールは、うさぎ俱楽部へ登録された方に自動送信しています。本メールにお心当りがない場合は、誠に恐れ入りますが弊社までお問い合せくださいますようお願いいたします。</p>\
+  <p>・ このメールに記載されたURLの有効期限は24時間です。有効期限切れの場合は、お手数ですが改めて新規登録手続きを行なってください。</p>\
   <br/>\
-  <p>株式会社</p>"
+  <p>うさぎ倶楽部 事務局</p>"
 
-  await sendEmail(adminDB[0].email, data.email, title, text, html)
+  await sendEmail(process.env.SERVICE_EMAIL, data.email, title, text, html)
 }
 
 exports.create = async (req, res) => {
@@ -107,10 +107,13 @@ exports.create = async (req, res) => {
       })
       return
     }
-    let result = await Account.findOne({where: {email: req.body.referEmail}})
+
     let referId = 0
-    if (result) {
-      referId = result.id
+    if (req.body.isIntroducer === 0) {
+      let result = await Account.findOne({where: {code: req.body.referCode}})
+      if (result) {
+        referId = result.id
+      }
     }
 
     const account = {
@@ -120,7 +123,6 @@ exports.create = async (req, res) => {
       account: req.body.account || "",
       code: await generateCode(),
       referId: referId,
-      referEmail: req.body.referEmail,
       isIntroducer: req.body.isIntroducer || false,
       companyName: req.body.companyName || "",
     }
@@ -134,7 +136,7 @@ exports.create = async (req, res) => {
     } else {
       const data = await Account.create(account)
       if (data) {
-        await sendEmail(data)
+        await sendProcEmail(data)
         res.send(data)
       }
     }
@@ -211,7 +213,7 @@ exports.findOne = async (req, res) => {
 
     const id = req.params.id
 
-    const data = await Course.findByPk(id)
+    const data = await Account.findByPk(id)
     if (data) {
       res.send(data)
     } else {
