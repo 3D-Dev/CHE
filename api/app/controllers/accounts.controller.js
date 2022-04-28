@@ -185,7 +185,7 @@ exports.publicUpdate = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
     const id = req.params.id
-    const isPublic = req.params.isPublic
+    const isPublic = req.body.isPublic
     const result = await Account.update({ isPublic: isPublic}, { where: { id: id } })
     if (result[0] === 1) {
       res.send({
