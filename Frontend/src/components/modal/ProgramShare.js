@@ -19,7 +19,7 @@ export const ProgramShare = (props) => {
   return (
     <Fragment>
         <div className={"px-4 py-4"}>
-          {props.isVisible === 1? 
+          {props.isVisible? 
           <div>
             <div className={"flex items-center pb-4"}>
               <img alt={""} style={{width: 22.6, height: 24.65, marginTop: -6}}

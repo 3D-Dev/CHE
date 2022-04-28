@@ -44,8 +44,8 @@ function LoginBase(props) {
           <StaticAlert content={"ログアウトしました"}/>
         )
       }
-      <div className={"px-32 pb-12 bg-yellow-light"}>
-        <div className="bg-white mx-auto" style={{width: 500, borderRadius: 20, overflow: 'hidden'}}>
+      <div className={"md:px-32 md:pb-12 md:pt-12 xl:px-100 lg:px-100 lg:pb-32 lg:pt-32 bg-yellow-light"}>
+        <div className="bg-white lg:mx-auto" style={{width: '100%', borderRadius: 20, overflow: 'hidden'}}>
           <div className={"flex items-center justify-center bg-yellow"} style={{height: 75}}>
             <span className={"text-xl text-blue font-bold"}>ログイン</span>
           </div>

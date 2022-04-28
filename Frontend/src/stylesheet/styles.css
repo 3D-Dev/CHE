@@ -43677,6 +43677,11 @@ video {
         padding-right: 16rem;
     }
 
+    .lg\:px-100 {
+        padding-left: 26rem;
+        padding-right: 26rem;
+    }
+
     .lg\:py-px {
         padding-top: 1px;
         padding-bottom: 1px;
@@ -56635,6 +56640,11 @@ video {
 
     .xl\:pl-px {
         padding-left: 1px;
+    }
+
+    .xl\:px-100 {
+        padding-right: 35rem;
+        padding-left: 35rem;
     }
 
     .xl\:placeholder-transparent::-webkit-input-placeholder {
