@@ -2,7 +2,7 @@ import {PageConstant} from "../constants/PageConstant";
 import {SET_PROFILE} from "../constants/ActionType";
 
 export const isLogined = (profile) => {
-  return Boolean(profile.id)
+  return Boolean(profile.code)
 }
 
 export const updateProfile = (dispatch, payload, remember) => {

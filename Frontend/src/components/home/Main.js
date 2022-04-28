@@ -3,11 +3,7 @@ import {useHistory} from "react-router-dom";
 import {isLogined} from "../../helper/utils";
 import {useAuthState} from "../../context";
 import { useTranslation } from 'react-i18next'
-import i18next from 'i18next'
 import cookies from 'js-cookie'
-import validation from 'validator'
-import {createAccout} from "../../api/axiosAPIs";
-import {Input, Modal} from "antd";
 import {ProgramShare} from "../modal/ProgramShare";
 import {PageConstant} from "../../constants/PageConstant";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
@@ -57,29 +53,35 @@ export const Main = (props) => {
     ]
 
     const QRCode = require('qrcode.react');
-    const [sharedState, setSharedState] = useState({isVisible: false, bCopied: false, key: ''});
-    const onItemDetailClick = (e, item) => {
-        e.preventDefault()
-        history.push(PageConstant.PROGRAM_DETAIL, {data: item})
-      }
-    const onDownload = (e) => {
-        const canvas = document.getElementById("program-share-qr-code");
-        const pngUrl = canvas
-        .toDataURL("image/png")
-        .replace("image/png", "image/octet-stream");
-        const link = document.createElement("a");
-        link.href = pngUrl;
-        link.setAttribute("download", "qrcode.png"); //or any other extension
-        document.body.appendChild(link);
-        link.click();
-    }
+    const key = JSON.parse(localStorage.getItem("currentProfile")).code
+    const [sharedState, setSharedState] = useState({bCopied: false, key: key});
+
     const getUrl = () => {
-        return window.location.host + PageConstant.SHARED_PROGRAM + "/" + sharedState.key
+        return window.location.host + PageConstant.LOGIN + "/" + sharedState.key
     }
     
     const onCopyUrl = (url) => {
-        navigator.clipboard.writeText(url).catch(console.error)
-        setSharedState({isVisible: sharedState.isVisible, bCopied: true, key: sharedState.key})
+        console.log('getURL_QR:', url)
+        if(navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(url)
+        }
+        else {
+        let textArea = document.createElement("textarea");
+        textArea.value = url;
+        // make the textarea out of viewport
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        new Promise((res, rej) => {
+            // here the magic happens
+            document.execCommand('copy') ? res() : rej();
+            textArea.remove();
+        });
+        }
+        setSharedState({bCopied: true, key: sharedState.key})
     }
     const onItemShareClick = (e, item) => {
         e.preventDefault()
@@ -98,27 +100,6 @@ export const Main = (props) => {
         // })
     }
 
-    const onFinish = async(data) => {
-        let formData = new FormData()
-        formData.append('name', data.name)
-        formData.append('email', data.email)
-        formData.append('account', data.account)
-        formData.append('referId', '')
-        formData.append('referEmail', data.referEmail? data.referEmail : '')
-        formData.append('createdAt', data.createdAt)
-        let response = {}
-        try {
-            response = await createAccout(formData)
-            if (response.status === HTTP_SUCCESS) {
-                console.log("create_successfully!")
-                openNotificationWithIcon(SUCCESS, props.intl.formatMessage({id: 'message.success.user'}))
-            }
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
-
     useEffect(() => {
         console.log('Setting page stuff')
         document.body.dir = currentLanguage.dir || 'ltr'
@@ -133,7 +114,7 @@ export const Main = (props) => {
         </div>
       </div>
       <ProgramShare
-        isModalVisible={sharedState.isVisible}
+        isModalVisible={true}
         intl={props.intl}
         bCopied={sharedState.bCopied}
         onCopyUrl={onCopyUrl}

@@ -39,20 +39,24 @@ const ActivateEmail = (props) => {
   const urlParams = window.location.pathname
   const key = urlParams.toString().split('/', -1)[2]
   console.log('AcitivateEmailKey:', key)
+  
+  useEffect(() => {
+    verifyEmail();
+  }, []);
+
   const goLogin = e => {
     e.preventDefault()
     history.push(PageConstant.LOGIN)
   }
 
   const verifyEmail = async() => {
-    let formData = new FormData()
-    formData.append('id', key)
     let response = {}
     console.log('Verified_Email!', key)
     try {
-        response = await getEmailActivateStatus(formData)
+        response = await getEmailActivateStatus(key)
         if (response.status === HTTP_SUCCESS) {
             console.log("emailVerify_successfully!")
+            setIsVerified(true)
         }
     } catch (error) {
         console.log(error)
@@ -62,7 +66,6 @@ const ActivateEmail = (props) => {
 
   return (
     <Fragment>
-        {verifyEmail}
         <div className={"pt-4 lg:pb-20 sm:px-0 md:px-8 lg:px-30 xl:px-56 bg-yellow-light"}>
             <div className={"lg:px-32 lg:pb-12"}>
                 <div className={"flex items-center justify-center lg:m-10"}>
