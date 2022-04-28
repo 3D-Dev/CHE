@@ -41,5 +41,8 @@
   "str.item.link.tokenpoket": "→ Giải thích về túi mã thông báo trong 10 phút!",
   "str.item.register.step4": "4) Vui lòng nhập mật khẩu của bạn.",
   "str.item.register.step5": "5) Vui lòng chọn câu lạc bộ bạn thuộc về.",
-  "btn.send": "Gửi"
+  "str.item.mail.verify.success": "Xác minh email đã thành công!",
+  "str.item.mail.verify.fail": "Xác thực email không thành công. Vui lòng thử lại.",
+  "btn.send": "Gửi",
+  "btn.login.send": "Di chuyển để đăng nhập"
 }

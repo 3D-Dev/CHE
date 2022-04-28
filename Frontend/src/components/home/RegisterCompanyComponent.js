@@ -69,9 +69,9 @@ export const RegisterCompanyComponent = (props) => {
         formData.append('email', data.email)
         formData.append('account', data.account)
         formData.append('referId', '')
-        formData.append('referEmail', data.referEmail? data.referEmail : '')
         formData.append('password', data.password)
         formData.append('companyName', data.clubName)
+        formData.append('isIntroducer', 1)
         formData.append('createdAt', data.createdAt)
         let response = {}
         console.log('onFinish_Company!', data.name, data.email, data.account, data.referEmail, data.password, data.clubName)

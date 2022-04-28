@@ -42,5 +42,8 @@
   "str.item.link.tokenpoket": "→ Explain the token pocket in 10 minutes!",
   "str.item.register.step4": "4) Please enter your password.",
   "str.item.register.step5": "5) Please select the club you belong to.",
-  "btn.send": "Send"
+  "str.item.mail.verify.success": "Email verification was successful!",
+  "str.item.mail.verify.fail": "Email authentication failed. Please try again.",
+  "btn.send": "Send",
+  "btn.login.send": "Move to login"
 }

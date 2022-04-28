@@ -82,9 +82,11 @@
   "str.item.link.tokenpoket": "→ トークンポケットを10分で解説！",
   "str.item.register.step4": "4)パスワードを入力してください。",
   "str.item.register.step5": "5)所属の倶楽部を選択してください。",
-
+  "str.item.mail.verify.success": "メールの確認に成功しました！",
+  "str.item.mail.verify.fail": "メール認証に失敗しました。 もう一度やり直してください。",
 
   "btn.send": "送信する",
+  "btn.login.send": "ログインに移行する",
 
   "table.rows.per.page": "ページ行数",
   "table.noData": "表示するデータがありません。",

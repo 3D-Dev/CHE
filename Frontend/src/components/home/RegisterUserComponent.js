@@ -16,6 +16,7 @@ import {Register} from './Register'
 import {
     HTTP_SUCCESS,
 } from "../../constants/ResponseCode";
+import { PageConstant } from '../../constants/PageConstant';
 const languages = [
     {
         code: 'en',
@@ -39,6 +40,9 @@ const languages = [
     },
 ]
 export const RegisterUserComponent = (props) => {
+    const urlParams = window.location.pathname
+    const key = urlParams.toString().split('/', -1)[2]
+    console.log('SignUP_ReferCode', key)
     const currentLanguageCode = cookies.get('i18next') || 'en'
     const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
     console.log('current language1', currentLanguage)
@@ -68,7 +72,7 @@ export const RegisterUserComponent = (props) => {
         formData.append('email', data.email)
         formData.append('account', data.account)
         formData.append('referId', '')
-        formData.append('referEmail', data.referEmail? data.referEmail : '')
+        formData.append('referCode', data.referEmail? data.referEmail : '')
         formData.append('createdAt', data.createdAt)
         console.log('onFinish_User!', data.name, data.email, data.account, data.referEmail, data.createdAt)
 

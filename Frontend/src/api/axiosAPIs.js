@@ -43,6 +43,12 @@ export const axiosRequest = (method, url, reqData = null, needLoader = true) => 
 export const createAccout = (data) => {
   return axiosRequest('post', axiosConfig.CREATE, data)
 }
+export const getIntruducer = (data) => {
+  return axiosRequest('get', axiosConfig.GET_INTRODUCER, data)
+}
+export const getEmailActivateStatus = (data) => {
+  return axiosRequest('get', axiosConfig.GET_ACTIVATE, data)
+}
 export const signup = (data) => {
   return axiosRequest('post', axiosConfig.SIGNUP, data)
 }

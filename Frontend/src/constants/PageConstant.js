@@ -4,5 +4,6 @@ export const PageConstant = {
   LOGOUT: '/logout',
   SIGNUP: '/signup',
   SIGNUP_COMPANY: '/signup_company',
+  ACTIVATE_EMAIL: '/account_activate',
   _404: '/*',
 }

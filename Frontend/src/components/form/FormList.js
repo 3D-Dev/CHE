@@ -2,6 +2,10 @@ import React, { useState, useEffect, Fragment} from 'react';
 import {Select, Col, Form} from "antd";
 import {FormLabel} from "./FormLabel";
 
+const children = []
+// for(let i = 0; i < 100; i ++) {
+//   children.push(<Option key></Option>)
+// }
 export const FormList = (props) => {
   const {Option} = Select;
 

@@ -41,5 +41,9 @@
   "str.item.link.tokenpoket": "→ Jelaskan kantong token dalam 10 menit!",
   "str.item.register.step4": "4) Silakan masukkan kata sandi Anda.",
   "str.item.register.step5": "5) Silakan pilih klub yang Anda ikuti.",
-  "btn.send": "Mengirim"
+  "str.item.mail.verify.success": "Verifikasi email berhasil!",
+  "str.item.mail.verify.fail": "Otentikasi email gagal. Silakan coba lagi.",
+  "btn.send": "Mengirim",
+  "btn.login.send": "Pindah ke login"
+
 }
