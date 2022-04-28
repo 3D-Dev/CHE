@@ -43,7 +43,7 @@ export const Main = (props) => {
     const {loading, profile} = useAuthState();
     const formRef = useRef();
     const [isConfirm, setIsConfirm] = useState(false);
-    const [isIntroducer, setIntroducer] = useState(0);
+    const [isPublic, setPublic] = useState(0);
     const [initFormValue] = useState(isLogined(profile) ? {
         inquiry_name: profile.name,
         email: profile.email,
@@ -89,8 +89,8 @@ export const Main = (props) => {
         let response = await getIntruducer(key)
             if (response.status === HTTP_SUCCESS) {
                 console.log("login_getUserInfo_Success!", response.data)            
-                setIntroducer(response.data.isIntroducer)
-                console.log('login_getUserInfo_isIntroducer!', isIntroducer)
+                setPublic(response.data.isPublic)
+                console.log('login_getUserInfo_isIntroducer!', isPublic)
             }
       }
 
@@ -109,7 +109,7 @@ export const Main = (props) => {
         </div>
       </div>
       <ProgramShare
-        isVisible={isIntroducer}
+        isVisible={isPublic}
         intl={props.intl}
         bCopied={sharedState.bCopied}
         onCopyUrl={onCopyUrl}

@@ -11,6 +11,7 @@ import { initSettings, setRole } from '../../../appRedux/actions/User'
 import { setTitleText } from '../../../appRedux/actions/Custom'
 import {HTTP_SUCCESS} from "../../../constants/ResponseCode";
 import {openNotificationWithIcon} from "../../../components/common/Messages";
+import { userPublic } from '../../../api/axiosAPIs'
 
 class Users extends React.Component {
   constructor(props) {
@@ -104,6 +105,27 @@ class Users extends React.Component {
       })
   }
 
+  handleChangeAllowStatus = (isPublic, id) => {
+    isPublic = !isPublic
+    userPublic(id, {isPublic: isPublic})
+      .then(response => {
+        if(response.code == 200) {
+          const {page, rowsPerPage} = this.state
+          let data = {
+            page: page,
+            limit: rowsPerPage
+          }
+      
+          this.fetchUserList(data)
+
+          console.log('userPublic_changed!!!!')
+        }
+        else {
+          console.log('userPublic_NOT changed!!!!')
+        }
+      })
+  }
+
   fetchCSVData() {
     const {asc, keyword} = this.state
 
@@ -129,8 +151,8 @@ class Users extends React.Component {
       { label: 'ユーザー名', key: "name" },
       { label: 'メールアドレス', key: "email" },
       { label: '入金アドレス', key: "account" },
-      { label: '紹介者ID', key: "referId" },
-      { label: '紹介者', key: "referEmail" },
+      { label: 'クラブID', key: "referId" },
+      { label: 'クラブ名', key: "companyName" },
       { label: '補償額', key: "totalDistribution" },
       { label: '報酬開始日', key: "createdAt" },
       { label: '最終更新日', key: "updatedAt" },
@@ -230,7 +252,7 @@ class Users extends React.Component {
           if (response.status === HTTP_SUCCESS) {
             openNotificationWithIcon('success', this.props.intl.formatMessage({id: 'message.success.Request'}))
             this.setState({btnActive: false})
-            this.timer = setInterval(() => this.fetchUserList(), 5000)
+            this.timer = setInterval(() => this.fetchUserList(), 50000)
           }
         })
   }
@@ -302,6 +324,7 @@ class Users extends React.Component {
               onClickDeleteButton={this.onClickDeleteButton}
               onClickEditButton={this.onClickEditButton}
               onClickGoStoreLogin={this.onClickGoStoreLogin}
+              handleChangeAllowStatus={this.handleChangeAllowStatus}
             />
           </Spin>
         </Card>
