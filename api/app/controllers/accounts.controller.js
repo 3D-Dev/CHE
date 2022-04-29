@@ -109,7 +109,8 @@ exports.create = async (req, res) => {
     }
 
     let referId = 0
-    if (req.body.isIntroducer === 0) {
+    console.log("################", req.body)
+    if (req.body.isIntroducer === '0') {
       let result = await Account.findOne({where: {code: req.body.referCode}})
       if (result) {
         referId = result.id
@@ -123,7 +124,7 @@ exports.create = async (req, res) => {
       account: req.body.account || "",
       code: await generateCode(),
       referId: referId,
-      isIntroducer: req.body.isIntroducer || false,
+      isIntroducer: req.body.isIntroducer || 0,
       companyName: req.body.companyName || "",
     }
 
@@ -170,7 +171,7 @@ exports.userActivate = async (req, res) => {
         })
       }
     } else {
-      res.send({
+      res.status(401).send({
         message: "account is not existed."
       })
     }
@@ -185,7 +186,7 @@ exports.publicUpdate = async (req, res) => {
   try {
     const userId = await isAuth(req, res)
     const id = req.params.id
-    const isPublic = req.params.isPublic
+    const isPublic = req.body.isPublic
     const result = await Account.update({ isPublic: isPublic}, { where: { id: id } })
     if (result[0] === 1) {
       res.send({
