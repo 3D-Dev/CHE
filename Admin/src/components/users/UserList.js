@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useState } from 'react'
 import { Button } from 'antd'
 import { withStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
@@ -182,7 +182,7 @@ const StyledTableRow = withStyles(theme => ({
 }))(TableRow)
 
 class UserList extends Component {
-
+ 
   /**
    * Handle function for change page
    */
@@ -195,6 +195,31 @@ class UserList extends Component {
    */
   handleChangeRowsPerPage = event => {
     this.props.onChangeRowsPerPage(event)
+  }
+
+  renderSwitch(isPublic, isIntroducer, id) {
+    if(isIntroducer) {
+      if(isPublic) {
+        return (
+          <button className="label danger flex items-center  justify-center"
+          onClick={(e)=>{
+            this.props.handleChangeAllowStatus(isPublic, id)
+          }}
+          >キャンセル</button>
+      )
+      }
+      else {
+        return (
+          <button className="label success flex items-center  justify-center"
+          onClick={(e)=>{
+            this.props.handleChangeAllowStatus(isPublic, id)
+          }}
+          >許可する</button>
+      )
+      }
+    }
+    
+
   }
 
   /**
@@ -242,15 +267,11 @@ class UserList extends Component {
       {
         id: 7,
         title: intl.formatMessage({id: 'table.header.lastUpdatedAt'})
+      },
+      {
+        id: 8,
+        title: intl.formatMessage({id: 'table.header.accept.owner'})
       }
-      // {
-      //   id: 7,
-      //   title: intl.formatMessage({id: 'table.header.edit'})
-      // },
-      // {
-      //   id: 8,
-      //   title: ''
-      // }
     ]
     return (
       <div className={classes.tableWrapper}>
@@ -285,22 +306,15 @@ class UserList extends Component {
                   <StyledTableCell>{row.name}</StyledTableCell>
                   <StyledTableCell>{row.email}</StyledTableCell>
                   <StyledTableCell>{row.account}</StyledTableCell>
-                  <StyledTableCell>{row.referEmail}</StyledTableCell>
+                  <StyledTableCell>{row.companyName}</StyledTableCell>
                   <StyledTableCell>{row.totalDistribution}</StyledTableCell>
                   <StyledTableCell><Moment format="YYYY/MM/DD">{row.createdAt}</Moment></StyledTableCell>
                   <StyledTableCell><Moment format="YYYY/MM/DD">{row.updatedAt}</Moment></StyledTableCell>
-                  {/*<StyledTableCell>*/}
-                  {/*  <p className="gx-text-primary gx-pointer gx-mb-0" type="primary"*/}
-                  {/*     onClick={() => this.props.onClickEditButton(row.id)}>*/}
-                  {/*    <FormattedMessage id="btn.edit"/>*/}
-                  {/*  </p>*/}
-                  {/*</StyledTableCell>*/}
-                  {/*<StyledTableCell align="center">*/}
-                  {/*  <Button className="gx-mb-0 gx-btn-rounded-blue1" type="primary"*/}
-                  {/*          onClick={() => this.props.onClickGoStoreLogin(row.id)}>*/}
-                  {/*    <FormattedMessage id="btn.goStoreLogin"/>*/}
-                  {/*  </Button>*/}
-                  {/*</StyledTableCell>*/}
+                  <StyledTableCell>
+                    {
+                      this.renderSwitch(row.isPublic, row.isIntroducer, row.id)
+                    }
+                  </StyledTableCell>
                 </StyledTableRow>
               )
             })}

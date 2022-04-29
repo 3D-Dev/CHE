@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
 import cookies from 'js-cookie'
 import validation from 'validator'
-import {createAccout} from "../../api/axiosAPIs";
+import {createAccout, getIntruducer} from "../../api/axiosAPIs";
 import {ERROR, openNotificationWithIcon, SUCCESS} from "../common/Messages";
 import {Register} from './Register'
 
@@ -52,6 +52,7 @@ export const RegisterUserComponent = (props) => {
     const {loading, profile} = useAuthState();
     const formRef = useRef();
     const [isConfirm, setIsConfirm] = useState(false);
+    const [clubName, setClubName] = useState('');
     const [initFormValue] = useState(isLogined(profile) ? {
         inquiry_name: profile.name,
         email: profile.email,
@@ -72,7 +73,10 @@ export const RegisterUserComponent = (props) => {
         formData.append('email', data.email)
         formData.append('account', data.account)
         formData.append('referId', '')
-        formData.append('referCode', data.referEmail? data.referEmail : '')
+        formData.append('password', data.password)
+        formData.append('isIntroducer', 0)
+        formData.append('referCode', key)
+        formData.append('companyName', clubName)
         formData.append('createdAt', data.createdAt)
         console.log('onFinish_User!', data.name, data.email, data.account, data.referEmail, data.createdAt)
 
@@ -93,10 +97,26 @@ export const RegisterUserComponent = (props) => {
         console.log(date, dateString);
     }
 
+    const getClubName = async() => {
+        let response = {}
+        console.log('getClubNameKey!', key)
+        try {
+            response = await getIntruducer(key)
+            if (response.status === HTTP_SUCCESS) {
+                console.log("emailVerify_successfully!")            
+                setClubName(response.data.companyName)
+                console.log('getClubName!', clubName)
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
         console.log('Setting page stuff')
         document.body.dir = currentLanguage.dir || 'ltr'
         document.title = props.intl.formatMessage({id: 'app_title'})
+        getClubName()
     }, [currentLanguage, t])
 
   return (
@@ -123,30 +143,15 @@ export const RegisterUserComponent = (props) => {
                               <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step5'})}</span>
                           </div>
                       </Col>
-                      {/*紹介者*/}
-                      <Fragment>
-                          <div>
-                              <FormLabel label={props.intl.formatMessage({id: 'form.item.introduce.name'})}/>
-                              <Col lg={16} className={"p-0 lg:ml-24"} >
-                                  <Form.Item
-                                      name={"referEmail"}
-                                      rules={[{required: false, 
-                                        type: "email",
-                                        message: props.intl.formatMessage({id: 'alert.fieldReferEmailConfirm'})}]}
-                                  >
-                                      <Input size={"large"} type={"email"} placeholder={props.intl.formatMessage({id: 'form.item.name.confirm'})}/>
-                                  </Form.Item>
-                              </Col>
-                          </div>
-                      </Fragment>
-                      <FormInput
+                      <FormLabel label={props.intl.formatMessage({id: 'form.item.club.name'})+ ' : ' + clubName} required={true}/>
+                      {/* <FormInput
                         label={props.intl.formatMessage({id: 'form.item.club.name'})}
-                        name={"clubName"}
-                        placeholder=""
+                        name={clubName}
+                        placeholder={clubName}
                         intl={props.intl}
                         required={true}
                         readOnly={true}
-                      />
+                      /> */}
                       <Col className={"lg:ml-24"}>
                             <div className={"flex items-center mt-5 mb-5"}>
                                 <img alt="" src={require('../../assets/images/require.png')}/>

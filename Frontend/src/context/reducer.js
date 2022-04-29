@@ -2,10 +2,9 @@ import React from 'react';
 import {HIDE_LOADING, INIT_STATE, SET_PROFILE, SHOW_LOADING} from "../constants/ActionType";
 
 export const initialProfile = {
-  id: '',
-  name: '',
+  code: '',
+  accessToken: '',
   email: '',
-  permission: '',
   remember: false,
 };
 
