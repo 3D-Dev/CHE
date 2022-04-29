@@ -54,7 +54,7 @@ const ActivateEmail = (props) => {
     try {
         response = await getEmailActivateStatus(key)
         console.log('Verified_Email!', response)
-        if (response.message === 'account was activated successfully.') {
+        if (response.data.message === 'account was activated successfully.') {
             console.log("emailVerify_successfully!")
             setIsVerified(1)
         }
