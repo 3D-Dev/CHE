@@ -34,7 +34,7 @@ i18next
 
 const ActivateEmail = (props) => {
   const {profile} = useAuthState();
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState(-1);
   let history = useHistory();
   const urlParams = window.location.pathname
   const key = urlParams.toString().split('/', -1)[2]
@@ -51,12 +51,15 @@ const ActivateEmail = (props) => {
 
   const verifyEmail = async() => {
     let response = {}
-    console.log('Verified_Email!', key)
     try {
         response = await getEmailActivateStatus(key)
-        if (response.status === HTTP_SUCCESS) {
+        console.log('Verified_Email!', response)
+        if (response.data.message === 'account was activated successfully.') {
             console.log("emailVerify_successfully!")
-            setIsVerified(true)
+            setIsVerified(1)
+        }
+        else {
+            setIsVerified(2)
         }
     } catch (error) {
         console.log(error)
@@ -69,10 +72,13 @@ const ActivateEmail = (props) => {
         <div className={"pt-4 lg:pb-20 sm:px-0 md:px-8 lg:px-30 xl:px-56 bg-yellow-light"}>
             <div className={"lg:px-32 lg:pb-12"}>
                 <div className={"flex items-center justify-center lg:m-10"}>
-                    {isVerified?
-                    <span className={"blue-color text-3xl font-bold"}>{props.intl.formatMessage({id: 'str.item.mail.verify.success'})}</span>
-                    :
-                    <span className={"blue-color text-3xl font-bold"}>{props.intl.formatMessage({id: 'str.item.mail.verify.fail'})}</span>
+                    {
+                        (isVerified === 1) && 
+                        <span className={"blue-color text-3xl font-bold"}>{props.intl.formatMessage({id: 'str.item.mail.verify.success'})}</span>
+                    }
+                    {
+                        (isVerified === 2) && 
+                        <span className={"blue-color text-3xl font-bold"}>{props.intl.formatMessage({id: 'str.item.mail.verify.fail'})}</span>
                     }
                 </div>
             </div>
