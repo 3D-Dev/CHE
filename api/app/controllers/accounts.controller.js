@@ -176,7 +176,7 @@ exports.userActivate = async (req, res) => {
       })
     }
   } catch(err) {
-    res.status(500).send({
+    res.send({
       message: "Error userActivate"
     })
   }
