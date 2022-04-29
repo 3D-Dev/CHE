@@ -115,6 +115,7 @@ const copyRequest = (record) => {
 
 const updateUserInfo = async (record) => {
   // update user
+  console.log("########## ==== Start of updateUserInfo ==== ##########")
   const newRecord = copyUser(record)
   newRecord.distributed = true
   newRecord.totalDistribution += USER_PAYMENT
@@ -124,13 +125,14 @@ const updateUserInfo = async (record) => {
 
   // update refer
   if (record.referId > 0) {
+    console.log("########## ==== record.referId > 0 ==== ##########")
     const referRecord = await Account.findByPk(record.referId)
     const newReferRecord = copyUser(referRecord)
     newReferRecord.totalDistribution += INTRODUCTION_PAYMENT
     await transferHBYFromAdmin(newReferRecord.account, (INTRODUCTION_PAYMENT * FEE_PERCENT).toString())
-
     await Account.update(newReferRecord, { where: { id: referRecord.id } })
   }
+  console.log("########## ==== End of updateUserInfo ==== ##########")
 }
 
 const updateRequestRetryCount = async (record) => {

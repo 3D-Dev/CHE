@@ -34,11 +34,8 @@ const transferHBYFromAdmin = async (toAddress, amount, fee=2.25) => {
     gasLimit: ethers.BigNumber.from("95000"),
   };
 
-  contract.transfer(toAddress, ethers.utils.parseUnits(amount, "ether"), options).then((result) => {
-    console.log('###############################transferHBYFromAdmin_result: ',result)
-  }).catch((error) => {
-    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@transferHBYFromAdmin_error: ',error)
-  })
+  const result = await contract.transfer(toAddress, ethers.utils.parseUnits(amount, "ether"), options)
+  console.log('###############################transferHBYFromAdmin_result: ',result)
 }
 
 module.exports = {

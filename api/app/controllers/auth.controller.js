@@ -23,7 +23,7 @@ exports.adminLogin = async (req, res) => {
     // 5. Send token. RefreshToken as a cookie and accessToken as a regular response
     sendAccessToken(res, req, accessToken, '', 'admin')
   } catch (err) {
-    res.send({
+    res.status(401).send({
       error: `${err.message}`,
     })
   }
@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
     // 5. Send token. RefreshToken as a cookie and accessToken as a regular response
     sendAccessToken(res, req, accessToken, user.code)
   } catch (err) {
-    res.send({
+    res.status(401).send({
       error: `${err.message}`,
     })
   }
