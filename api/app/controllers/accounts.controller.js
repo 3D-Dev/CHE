@@ -166,12 +166,12 @@ exports.userActivate = async (req, res) => {
           })
         }
       } else {
-        res.status(410).send({
+        res.send({
           message: "account activation link was expired."
         })
       }
     } else {
-      res.status(401).send({
+      res.send({
         message: "account is not existed."
       })
     }
