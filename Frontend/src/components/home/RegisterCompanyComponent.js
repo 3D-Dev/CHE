@@ -68,7 +68,6 @@ export const RegisterCompanyComponent = (props) => {
         formData.append('name', data.name)
         formData.append('email', data.email)
         formData.append('account', data.account)
-        formData.append('referId', '')
         formData.append('password', data.password)
         formData.append('companyName', data.clubName)
         formData.append('isIntroducer', 1)

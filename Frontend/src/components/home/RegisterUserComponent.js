@@ -72,7 +72,6 @@ export const RegisterUserComponent = (props) => {
         formData.append('name', data.name)
         formData.append('email', data.email)
         formData.append('account', data.account)
-        formData.append('referId', '')
         formData.append('password', data.password)
         formData.append('isIntroducer', 0)
         formData.append('referCode', key)
