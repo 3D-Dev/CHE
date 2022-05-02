@@ -270,8 +270,20 @@ class Users extends React.Component {
     const today = new Date()
     return (
       <div>
-        <div className="gx-flex-row gx-align-items-right gx-mb-3">
-          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" disabled={!btnActive} onClick={this.onClickSendRequest}>
+        <div className="gx-flex-row gx-align-items-right">
+          <Button className="ant-btn-primary gx-btn-rounded-green gx-ml-auto"
+                  onClick={this.onClickDownloadCSV}>
+            <FormattedMessage id="btn.downloadCSV"/>
+          </Button>
+          <CSVLink
+            data={this.state.downloadRows}
+            headers={this.getItemCSVWithName()}
+            filename={"CHE_list_" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ".csv"}
+            className="hidden"
+            ref={this.csvLink}
+            target="_blank"
+          />
+          <Button className="ant-btn-primary gx-btn-rounded-blue" style={{marginleft: '2px !important'}} disabled={!btnActive} onClick={this.onClickSendRequest}>
           {
             this.changeStatusTimer(btnActive)
           }
@@ -295,23 +307,9 @@ class Users extends React.Component {
                   </div>
                 </div>
               </div>
+              
               <div
-                className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-12 ant-col-lg-6 ant-col-xl-4 ant-col-xxl-4 gx-mb-2">
-                <Button className="ant-btn-primary gx-btn-rounded-green gx-no-margin gx-w-100"
-                        onClick={this.onClickDownloadCSV}>
-                  <FormattedMessage id="btn.downloadCSV"/>
-                </Button>
-                <CSVLink
-                  data={this.state.downloadRows}
-                  headers={this.getItemCSVWithName()}
-                  filename={"CHE_list_" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ".csv"}
-                  className="hidden"
-                  ref={this.csvLink}
-                  target="_blank"
-                />
-              </div>
-              <div
-                className="ant-col ant-col-xs-24 ant-col-sm-4 ant-col-md-12 ant-col-lg-16 gx-mb-2 gx-no-padding" style={{width: '40%'}}>
+                className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-4 ant-col-xxl-4 gx-mb-2">
                 <FormList
                         name={"clubName"}
                         placeholder='倶楽部を選択'

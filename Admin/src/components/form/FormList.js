@@ -62,8 +62,9 @@ for(let i = 0; i < list.length-1; i ++) {
     <Fragment>
         <div>
             <Select
-                size='middle'
+                size='undefined'
                 showSearch
+                style={{ width: '100%' }}
                 placeholder={props.placeholder}
                 optionFilterProp="children"
                 onChange={onChange}
