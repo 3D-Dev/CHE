@@ -8,6 +8,7 @@ export const FormList = (props) => {
 
   const children = []
 const list = [
+  'すべて選択',
   '名古屋中央兔子俱乐部',
   '神戸兔子俱乐部',
   '大阪梅田兔俱乐部',
@@ -67,8 +68,8 @@ for(let i = 0; i < list.length-1; i ++) {
                 style={{ width: '100%' }}
                 placeholder={props.placeholder}
                 optionFilterProp="children"
-                onChange={onChange}
-                onSearch={onSearch}
+                onChange={props.onChange}
+                onSearch={props.onSearch}
                 filterOption={(input, option) =>
                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                 }

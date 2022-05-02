@@ -80,6 +80,7 @@ class Users extends React.Component {
       .then(response => {
         if (!_.isEmpty(response.data)) {
           if (response.data.data) {
+            console.log('fetchUserList')
             this.setState({
               count: response.data.total,
               rows: response.data.data
@@ -172,6 +173,8 @@ class Users extends React.Component {
     getUserList(data)
       .then(response => {
         if (!_.isEmpty(response.data)) {
+          console.log('handleChangePage')
+
           this.setState({
             page: page,
             count: response.data.total,
@@ -181,6 +184,51 @@ class Users extends React.Component {
       })
   }
 
+  onChange = (value) => {
+    console.log(`selected ${value}`);
+    const {asc, keyword} = this.state
+
+    let params = {
+      asc: asc,
+      keyword: keyword
+    }
+    Object.assign(params)
+    getUserList(params)
+      .then(response => {
+        if (!_.isEmpty(response.data)) {
+          if (response.data.data) {
+            this.setState({
+              count: response.data.total,
+              rows: response.data.data
+            })
+            if(value === 'すべて選択')
+            return
+            const {rows} = this.state
+            if(rows) {
+              const data = rows.filter((item =>
+                item.companyName === value
+                ))          
+              if(data.length) {
+                this.setState(
+                  {count: data.length, rows: data}
+                )
+              }
+              else {        
+                this.setState(
+                  {count: data.length, rows: ''}
+                )
+              }    
+            }
+          }
+        }
+      })
+    
+    
+  }
+  
+  onSearch = (val) => {
+    console.log('search:', val);
+  }
   /**
    * Handle function for change rows per page
    */
@@ -192,7 +240,7 @@ class Users extends React.Component {
       asc: asc,
       keyword: keyword
     }
-
+    console.log('handleChangeRowsPerPage')
     getUserList(data)
       .then(response => {
         if (!_.isEmpty(response.data)) {
@@ -311,8 +359,10 @@ class Users extends React.Component {
               <div
                 className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-4 ant-col-xxl-4 gx-mb-2">
                 <FormList
-                        name={"clubName"}
+                        name={"companyName"}
                         placeholder='倶楽部を選択'
+                        onChange={this.onChange}
+                        onSearch={this.onSearch}
                         intl={this.props.intl}
                         required={true}
                         readOnly={false}
