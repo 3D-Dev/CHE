@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { UserList } from '../../../components'
+import { FormList } from "../../../components/form/FormList"
 import { CSVLink } from 'react-csv'
 import {getUserList, getDownloadList, loginCustomerFromUser, addRequest} from '../../../api/axiosAPIs'
 import _ from 'lodash'
@@ -307,6 +308,16 @@ class Users extends React.Component {
                   className="hidden"
                   ref={this.csvLink}
                   target="_blank"
+                />
+              </div>
+              <div
+                className="ant-col ant-col-xs-24 ant-col-sm-4 ant-col-md-12 ant-col-lg-16 gx-mb-2 gx-no-padding" style={{width: '40%'}}>
+                <FormList
+                        name={"clubName"}
+                        placeholder='倶楽部を選択'
+                        intl={this.props.intl}
+                        required={true}
+                        readOnly={false}
                 />
               </div>
 
