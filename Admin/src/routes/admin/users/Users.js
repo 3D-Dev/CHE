@@ -29,7 +29,8 @@ class Users extends React.Component {
       asc: 'desc',
       keyword: '',
       btnActive: true,
-      downloadRows: []
+      downloadRows: [],
+      filterKey: ''
     }
     this.csvLink = React.createRef()
   }
@@ -54,8 +55,10 @@ class Users extends React.Component {
         rowsPerPage: rowsPerPageState
       })
     }
-    this.timer = setInterval(()=>this.fetchUserList(), 30000)
+    console.log('componentDidMount')
     this.fetchUserList(data)
+    this.timer = setInterval(()=>this.fetchUserList(), 30000)
+
   }
   componentWillUnmount() {
     clearInterval(this.timer)
@@ -69,11 +72,12 @@ class Users extends React.Component {
   }
 
   fetchUserList(data) {
-    const {asc, keyword} = this.state
+    const {asc, keyword, filterKey} = this.state
 
     let params = {
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: filterKey
     }
     Object.assign(params, data)
     getUserList(params)
@@ -163,12 +167,13 @@ class Users extends React.Component {
    * Handle function for change page
    */
   handleChangePage = (event, page) => {
-    const {rowsPerPage, asc, keyword} = this.state
+    const {rowsPerPage, asc, keyword, filterKey} = this.state
     const data = {
       page: page,
       limit: rowsPerPage,
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: filterKey
     }
     getUserList(data)
       .then(response => {
@@ -186,11 +191,17 @@ class Users extends React.Component {
 
   onChange = (value) => {
     console.log(`selected ${value}`);
+    let selectedValue = ''
+    if(value !== 'すべて選択') {
+      selectedValue = value
+    }
+    this.setState({filterKey: selectedValue})
     const {asc, keyword} = this.state
 
     let params = {
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: selectedValue
     }
     Object.assign(params)
     getUserList(params)
@@ -233,12 +244,13 @@ class Users extends React.Component {
    * Handle function for change rows per page
    */
   handleChangeRowsPerPage = (event) => {
-    const {asc, keyword} = this.state
+    const {asc, keyword, filterKey} = this.state
     const data = {
       page: 0,
       limit: event.target.value,
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: filterKey
     }
     console.log('handleChangeRowsPerPage')
     getUserList(data)
