@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Layout } from 'antd'
 import { toggleCollapsedSideNav } from '../../appRedux/actions/Setting'
 import Auxiliary from 'util/Auxiliary'
+import { LogoutMenu } from '../../components'
+import { Menu } from 'antd'
 import { NAV_STYLE_DRAWER, NAV_STYLE_FIXED, NAV_STYLE_MINI_SIDEBAR, TAB_SIZE } from '../../constants/ThemeSetting'
 import Setting from './Setting'
 
@@ -25,7 +27,7 @@ class Topbar extends Component {
             </div> : null}
           <ul className="gx-header-notifications gx-ml-auto">
             <li className="gx-language">
-              <Setting/>
+                <LogoutMenu/>
             </li>
           </ul>
         </Header>

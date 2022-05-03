@@ -201,7 +201,7 @@ class UserList extends Component {
     if(isIntroducer) {
       if(isPublic) {
         return (
-          <button className="label danger flex items-center  justify-center"
+          <button className="ant-btn-primary gx-btn-rounded-green"
           onClick={(e)=>{
             this.props.handleChangeAllowStatus(isPublic, id)
           }}
@@ -210,7 +210,7 @@ class UserList extends Component {
       }
       else {
         return (
-          <button className="label success flex items-center  justify-center"
+          <button className="ant-btn-primary gx-btn-rounded-blue"
           onClick={(e)=>{
             this.props.handleChangeAllowStatus(isPublic, id)
           }}
@@ -296,7 +296,7 @@ class UserList extends Component {
                 </TableCell>
               </StyledTableRow>
             }
-            {rows.map((row, key) => {
+            {rows.length && rows.map((row, key) => {
               console.log('Data!!!', row)
               return (
                 <StyledTableRow

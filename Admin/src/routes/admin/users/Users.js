@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { connect } from 'react-redux'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { UserList } from '../../../components'
+import { FormList } from "../../../components/form/FormList"
 import { CSVLink } from 'react-csv'
 import {getUserList, getDownloadList, loginCustomerFromUser, addRequest} from '../../../api/axiosAPIs'
 import _ from 'lodash'
@@ -28,7 +29,8 @@ class Users extends React.Component {
       asc: 'desc',
       keyword: '',
       btnActive: true,
-      downloadRows: []
+      downloadRows: [],
+      filterKey: ''
     }
     this.csvLink = React.createRef()
   }
@@ -53,8 +55,10 @@ class Users extends React.Component {
         rowsPerPage: rowsPerPageState
       })
     }
-    this.timer = setInterval(()=>this.fetchUserList(), 30000)
+    console.log('componentDidMount')
     this.fetchUserList(data)
+    this.timer = setInterval(()=>this.fetchUserList(), 30000)
+
   }
   componentWillUnmount() {
     clearInterval(this.timer)
@@ -68,17 +72,19 @@ class Users extends React.Component {
   }
 
   fetchUserList(data) {
-    const {asc, keyword} = this.state
+    const {asc, keyword, filterKey} = this.state
 
     let params = {
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: filterKey
     }
     Object.assign(params, data)
     getUserList(params)
       .then(response => {
         if (!_.isEmpty(response.data)) {
           if (response.data.data) {
+            console.log('fetchUserList')
             this.setState({
               count: response.data.total,
               rows: response.data.data
@@ -161,16 +167,19 @@ class Users extends React.Component {
    * Handle function for change page
    */
   handleChangePage = (event, page) => {
-    const {rowsPerPage, asc, keyword} = this.state
+    const {rowsPerPage, asc, keyword, filterKey} = this.state
     const data = {
       page: page,
       limit: rowsPerPage,
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: filterKey
     }
     getUserList(data)
       .then(response => {
         if (!_.isEmpty(response.data)) {
+          console.log('handleChangePage')
+
           this.setState({
             page: page,
             count: response.data.total,
@@ -180,18 +189,70 @@ class Users extends React.Component {
       })
   }
 
+  onChange = (value) => {
+    console.log(`selected ${value}`);
+    let selectedValue = ''
+    if(value !== 'すべて選択') {
+      selectedValue = value
+    }
+    this.setState({filterKey: selectedValue})
+    const {asc, keyword} = this.state
+
+    let params = {
+      asc: asc,
+      keyword: keyword,
+      filterKey: selectedValue
+    }
+    Object.assign(params)
+    getUserList(params)
+      .then(response => {
+        if (!_.isEmpty(response.data)) {
+          if (response.data.data) {
+            this.setState({
+              count: response.data.total,
+              rows: response.data.data
+            })
+            if(value === 'すべて選択')
+            return
+            const {rows} = this.state
+            if(rows) {
+              const data = rows.filter((item =>
+                item.companyName === value
+                ))          
+              if(data.length) {
+                this.setState(
+                  {count: data.length, rows: data}
+                )
+              }
+              else {        
+                this.setState(
+                  {count: data.length, rows: ''}
+                )
+              }    
+            }
+          }
+        }
+      })
+    
+    
+  }
+  
+  onSearch = (val) => {
+    console.log('search:', val);
+  }
   /**
    * Handle function for change rows per page
    */
   handleChangeRowsPerPage = (event) => {
-    const {asc, keyword} = this.state
+    const {asc, keyword, filterKey} = this.state
     const data = {
       page: 0,
       limit: event.target.value,
       asc: asc,
-      keyword: keyword
+      keyword: keyword,
+      filterKey: filterKey
     }
-
+    console.log('handleChangeRowsPerPage')
     getUserList(data)
       .then(response => {
         if (!_.isEmpty(response.data)) {
@@ -269,8 +330,20 @@ class Users extends React.Component {
     const today = new Date()
     return (
       <div>
-        <div className="gx-flex-row gx-align-items-right gx-mb-3">
-          <Button className="ant-btn-primary gx-btn-rounded-blue gx-ml-auto" disabled={!btnActive} onClick={this.onClickSendRequest}>
+        <div className="gx-flex-row gx-align-items-right">
+          <Button className="ant-btn-primary gx-btn-rounded-green gx-ml-auto"
+                  onClick={this.onClickDownloadCSV}>
+            <FormattedMessage id="btn.downloadCSV"/>
+          </Button>
+          <CSVLink
+            data={this.state.downloadRows}
+            headers={this.getItemCSVWithName()}
+            filename={"CHE_list_" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ".csv"}
+            className="hidden"
+            ref={this.csvLink}
+            target="_blank"
+          />
+          <Button className="ant-btn-primary gx-btn-rounded-blue" style={{marginleft: '2px !important'}} disabled={!btnActive} onClick={this.onClickSendRequest}>
           {
             this.changeStatusTimer(btnActive)
           }
@@ -294,19 +367,17 @@ class Users extends React.Component {
                   </div>
                 </div>
               </div>
+              
               <div
-                className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-12 ant-col-lg-6 ant-col-xl-4 ant-col-xxl-4 gx-mb-2">
-                <Button className="ant-btn-primary gx-btn-rounded-green gx-no-margin gx-w-100"
-                        onClick={this.onClickDownloadCSV}>
-                  <FormattedMessage id="btn.downloadCSV"/>
-                </Button>
-                <CSVLink
-                  data={this.state.downloadRows}
-                  headers={this.getItemCSVWithName()}
-                  filename={"CHE_list_" + today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ".csv"}
-                  className="hidden"
-                  ref={this.csvLink}
-                  target="_blank"
+                className="ant-col ant-col-xs-24 ant-col-sm-24 ant-col-md-12 ant-col-lg-8 ant-col-xl-4 ant-col-xxl-4 gx-mb-2">
+                <FormList
+                        name={"companyName"}
+                        placeholder='倶楽部を選択'
+                        onChange={this.onChange}
+                        onSearch={this.onSearch}
+                        intl={this.props.intl}
+                        required={true}
+                        readOnly={false}
                 />
               </div>
 
