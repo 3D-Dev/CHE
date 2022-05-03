@@ -3,8 +3,9 @@ import * as axiosConfig from './axiosConfig'
 import {FINDALL_URL, REQUEST_FINDALL_URL} from "./axiosConfig";
 
 export const axiosRequest = (method, url, reqData = null, needLoader = true) => {
-  const user = JSON.parse(localStorage.getItem("persist:root")).user
-  const auth = JSON.parse(user).profile.adminAccessToken ? `Bearer ${JSON.parse(user).profile.adminAccessToken}` : undefined
+  //const user = JSON.parse(localStorage.getItem("persist:root")).user
+  //const auth = JSON.parse(user).profile.adminAccessToken ? `Bearer ${JSON.parse(user).profile.adminAccessToken}` : undefined
+  const auth = 'Bearer ' + localStorage.getItem('token')
   const getHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json; charset=utf-8',

@@ -8,6 +8,7 @@ class LogoutMenu extends Component {
 
   doLogout = () => {
     this.props.initSettings()
+    localStorage.removeItem('token')
     this.props.history.push('/admin/login')
   }
 
