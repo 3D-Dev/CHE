@@ -12,15 +12,26 @@ export const Header = (props) => {
 
 
   return (
-          <nav className="flex items-center justify-between flex-wrap p-6" style={{background: '#0d0a0a'}}>
-              <div className="flex items-center flex-no-shrink text-white mr-6">
-                  <span className="font-semibold text-xl tracking-tight">HBY&CHE COIN</span>
+          <nav className="flex items-center justify-between flex-wrap p-6" style={{background: '#ffffff'}}>
+              <div className="flex items-center flex-no-shrink text-black mr-6">
+                <span className="font-semibold text-xl tracking-tight" style={{color: '#ff00ff'}}>
+                    <strong>
+                        <span style={{color: '#ff0000'}}>H</span>
+                        <span style={{color: '#ff0000'}}>B</span>
+                        <span style={{color: '#ff99cc'}}>Y</span>
+                        <span style={{color: '#00ff00'}}>&</span>
+                        <span style={{color: '#ff0000'}}>C</span>H
+                        <span style={{color: '#ff0000'}}>E</span>&nbsp;
+                        <span style={{color: '#ff0000'}}>C</span>O
+                        <span style={{color: '#ff99cc'}}>I</span>N
+                    </strong>
+                </span>
               </div>
               <div className="block lg:hidden">
                   <button
-                      className="flex items-center px-3 py-2 border rounded text-lighter border-light hover:text-white hover:border-white"
+                      className="flex items-center px-3 py-2 border rounded text-lighter border-light hover:text-grey hover:border-grey"
                       onClick={onClickNavMenu}>
-                      <svg className="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style={{stroke:"white", fill:"white"}}><title>Menu</title>
+                      <svg className="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" style={{stroke:"black", fill:"black"}}><title>Menu</title>
                           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
                       </svg>
                   </button>
