@@ -16,13 +16,17 @@ exports.findAll = async (req, res) => {
     const keyword = req.query.keyword || ""
     const limit = parseInt(req.query.limit) || 0
     const offset = limit * ((parseInt(req.query.page || 1)) - 1)
-
+    const filterKey = req.query.filterKey || ""
     const condition = {
-      [Op.or]: [
-        {name: {[Op.like]: '%' + keyword + '%'}},
-        {email: {[Op.like]: '%' + keyword + '%'}},
-        {account: {[Op.like]: '%' + keyword + '%'}},
-      ]
+        [Op.or]: [
+          {name: {[Op.like]: '%' + keyword + '%'}},
+          {email: {[Op.like]: '%' + keyword + '%'}},
+          {account: {[Op.like]: '%' + keyword + '%'}},
+        ],
+    }
+
+    if (filterKey !== '') {
+      condition.companyName = filterKey
     }
 
     const count = await Account.count({where: condition})
