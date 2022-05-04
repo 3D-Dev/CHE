@@ -34,6 +34,7 @@ class Login extends Component {
         console.log('login', response.data)
         this.props.setSettings(response.data)
         if (response.status === HTTP_SUCCESS) {
+          localStorage.setItem('token', response.data.adminAccessToken)
           this.props.setRole('SELECTED_USER')
           this.props.history.push('/admin/')
         }

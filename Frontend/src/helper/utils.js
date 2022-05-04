@@ -8,9 +8,9 @@ export const isLogined = (profile) => {
 export const updateProfile = (dispatch, payload, remember) => {
   payload.remember = remember
   dispatch({type: SET_PROFILE, payload: payload});
-  if (remember) {
-    localStorage.setItem('currentProfile', JSON.stringify(payload));
-  }
+  //if (remember) {
+  localStorage.setItem('currentProfile', JSON.stringify(payload));
+  //}
 }
 
 export const isShared = () => {
