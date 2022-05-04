@@ -31,7 +31,7 @@ const contract = new ethers.Contract(process.env.HBY_TOKEN_ADDRESS, contractAbiF
 const transferHBYFromAdmin = async (toAddress, amount, fee=10) => {
   let options = {
     gasPrice: ethers.utils.parseUnits(`${fee}`, "gwei"),
-    gasLimit: ethers.BigNumber.from("95000"),
+    gasLimit: ethers.BigNumber.from("150000"),
   };
 
   const result = await contract.transfer(toAddress, ethers.utils.parseUnits(amount, "ether"), options)
