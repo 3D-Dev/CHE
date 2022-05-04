@@ -120,7 +120,7 @@ const updateUserInfo = async (record) => {
   newRecord.distributed = true
   newRecord.totalDistribution += USER_PAYMENT
 
-  await transferHBYFromAdmin(newRecord.account, (USER_PAYMENT * FEE_PERCENT).toString())
+  await transferHBYFromAdmin(newRecord.account, (USER_PAYMENT).toString())
   await Account.update(newRecord, { where: { id: record.id } })
 
   // update refer
@@ -129,7 +129,7 @@ const updateUserInfo = async (record) => {
     const referRecord = await Account.findByPk(record.referId)
     const newReferRecord = copyUser(referRecord)
     newReferRecord.totalDistribution += INTRODUCTION_PAYMENT
-    await transferHBYFromAdmin(newReferRecord.account, (INTRODUCTION_PAYMENT * FEE_PERCENT).toString())
+    await transferHBYFromAdmin(newReferRecord.account, (INTRODUCTION_PAYMENT).toString())
     await Account.update(newReferRecord, { where: { id: referRecord.id } })
   }
   console.log("########## ==== End of updateUserInfo ==== ##########")
