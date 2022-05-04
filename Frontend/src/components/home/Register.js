@@ -71,6 +71,13 @@ export const Register = (props) => {
     <Fragment>
         <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
             <div className={"flex items-center mt-2"}>
+                <span className={"text-base"}>
+                <a href= "https://rabbitmember.com/start/" target="_blank" >→ しあわせを配るうさぎ、について</a>
+                </span>
+            </div>
+        </Col>
+        <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
+            <div className={"flex items-center mt-2"}>
                 <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step1'})}</span>
             </div>
         </Col>
