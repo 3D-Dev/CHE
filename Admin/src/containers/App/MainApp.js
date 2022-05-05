@@ -75,11 +75,6 @@ export class MainApp extends Component {
               <Content className={`gx-layout-content ${this.getContainerClass(navStyle)} `}>
                 <TitleArea/>
                 <AppRoute match={match}/>
-                {/*<Footer>*/}
-                {/*  <div className="gx-layout-footer-content gx-align-items-center">*/}
-                {/*    {COPYRIGHT_COMPANY}*/}
-                {/*  </div>*/}
-                {/*</Footer>*/}
               </Content>
             </Layout>
           </Layout>)

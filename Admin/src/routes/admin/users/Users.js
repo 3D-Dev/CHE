@@ -13,7 +13,7 @@ import { setTitleText } from '../../../appRedux/actions/Custom'
 import {HTTP_SUCCESS} from "../../../constants/ResponseCode";
 import {openNotificationWithIcon} from "../../../components/common/Messages";
 import { userPublic } from '../../../api/axiosAPIs'
-
+import AuthVerify from '../../../components/common/AuthVerify'
 class Users extends React.Component {
   constructor(props) {
     super(props)
@@ -382,6 +382,7 @@ class Users extends React.Component {
               </div>
 
             </div>
+            <AuthVerify/>
             <UserList
               rows={rows}
               count={count}

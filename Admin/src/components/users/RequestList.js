@@ -17,7 +17,7 @@ import { FormattedMessage, injectIntl } from 'react-intl'
 import Moment from 'react-moment'
 import 'moment-timezone'
 import '../../styles/base.css'
-
+import AuthVerify from '../common/AuthVerify'
 /**
  * Table pagination Component style sheets
  */
@@ -297,6 +297,7 @@ class UserList extends Component {
             })}
           </TableBody>
         </Table>
+        <AuthVerify/>
         <div>
           <TablePagination
             component="div"
