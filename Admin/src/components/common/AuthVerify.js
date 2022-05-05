@@ -15,9 +15,8 @@ class AuthVerify extends Component {
   AuthVerify = () => {
     const token = localStorage.getItem("token");
     if (token) {
-        console.log('########444444')
       const decodedJwt = this.parseJwt(token);
-      console.log('########', decodedJwt.exp)
+      console.log('Auth Expired', decodedJwt.exp)
       if (decodedJwt.exp * 1000 < Date.now()) {
         this.doLogout();
       }
