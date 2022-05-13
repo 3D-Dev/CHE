@@ -21,6 +21,7 @@
   "message.success.user": "Đăng ký người dùng đã thành công.",
   "message.error.serverSide": "Kết nối máy chủ không thành công. Vui lòng thử lại.",
   "message.error.userSide": "Thông tin đăng ký không chính xác. Vui lòng thử lại.",
+  "message.error.userSignUpLink": "Không có tên câu lạc bộ được xác định. Để đăng ký người dùng, vui lòng sử dụng liên kết được phân phối bởi câu lạc bộ.",
 
   "str.item.policy.confirm": "Tôi đồng ý với các điều khoản sử dụng.",
   "str.item.policy": "→Điều khoản sử dụng",

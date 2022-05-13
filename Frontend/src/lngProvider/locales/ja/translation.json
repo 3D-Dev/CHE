@@ -109,6 +109,7 @@
   "message.success.user": "ユーザー登録に成功しました。",
   "message.error.serverSide": "サーバー接続に失敗しました。 もう一度試してください。",
   "message.error.userSide": "登録情報が正確ではありません。 もう一度試してください。",
+  "message.error.userSignUpLink": "クラブ名が定義されていません。 ユーザー登録はクラブから配布されたリンクをご利用ください。",
 
   "str.today.month": "今月",
   "str.prev.month": "前月",

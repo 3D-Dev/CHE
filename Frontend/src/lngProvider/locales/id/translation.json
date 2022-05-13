@@ -21,7 +21,7 @@
   "message.success.user": "Pendaftaran pengguna berhasil.",
   "message.error.serverSide": "Koneksi server gagal. Silakan coba lagi.",
   "message.error.userSide": "Informasi pendaftaran tidak akurat. Silakan coba lagi.",
-
+  "message.error.userSignUpLink": "Tidak ada nama klub yang ditentukan. Untuk pendaftaran pengguna, silakan gunakan tautan yang didistribusikan oleh klub.",
   "str.item.policy.confirm": "Saya setuju dengan syarat penggunaan.",
   "str.item.policy": "→Syarat penggunaan",
   "str.item.news.first": "Sekitar 5% pembakaran (insinerator) dan penambangan",

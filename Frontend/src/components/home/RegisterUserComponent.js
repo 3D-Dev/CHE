@@ -58,6 +58,7 @@ export const RegisterUserComponent = (props) => {
         email: profile.email,
         coin_address: profile.coin_address
     } : {});
+    const [isSignUpPath, setIsSignUpPath] = useState(false);
 
     const items = [
         {to: '', label: 'お問い合わせ'},
@@ -68,28 +69,33 @@ export const RegisterUserComponent = (props) => {
     }
 
     const onFinish = async(data) => {
-        let formData = new FormData()
-        formData.append('name', data.name)
-        formData.append('email', data.email)
-        formData.append('account', data.account)
-        formData.append('password', data.password)
-        formData.append('isIntroducer', 0)
-        formData.append('referCode', key)
-        formData.append('companyName', clubName)
-        formData.append('createdAt', data.createdAt)
-        console.log('onFinish_User!', data.name, data.email, data.account, data.referEmail, data.createdAt)
-
-        let response = {}
-        try {
-            response = await createAccout(formData)
-            if (response.status === HTTP_SUCCESS) {
-                console.log("create_successfully!")
-                openNotificationWithIcon(SUCCESS, props.intl.formatMessage({id: 'message.success.user'}))
-            }
-        } catch (error) {
-            console.log(error)
+        if(!isSignUpPath) {
+            console.log("don't correct SignUp path from email")
+            openNotificationWithIcon(ERROR, props.intl.formatMessage({id: 'message.error.userSignUpLink'}))
         }
-
+        else {
+            let formData = new FormData()
+            formData.append('name', data.name)
+            formData.append('email', data.email)
+            formData.append('account', data.account)
+            formData.append('password', data.password)
+            formData.append('isIntroducer', 0)
+            formData.append('referCode', key)
+            formData.append('companyName', clubName)
+            formData.append('createdAt', data.createdAt)
+            console.log('onFinish_User!', data.name, data.email, data.account, data.referEmail, data.createdAt)
+    
+            let response = {}
+            try {
+                response = await createAccout(formData)
+                if (response.status === HTTP_SUCCESS) {
+                    console.log("create_successfully!")
+                    openNotificationWithIcon(SUCCESS, props.intl.formatMessage({id: 'message.success.user'}))
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
     }
 
     const onChange = (date, dateString) => {
@@ -100,11 +106,17 @@ export const RegisterUserComponent = (props) => {
         let response = {}
         console.log('getClubNameKey!', key)
         try {
-            response = await getIntruducer(key)
-            if (response.status === HTTP_SUCCESS) {
-                console.log("emailVerify_successfully!")            
-                setClubName(response.data.companyName)
-                console.log('getClubName!', clubName)
+            if(key) {
+                response = await getIntruducer(key)
+                if (response.status === HTTP_SUCCESS) {
+                    console.log("emailVerify_successfully!")            
+                    setClubName(response.data.companyName)
+                    setIsSignUpPath(true)
+                    console.log('getClubName!', clubName)
+                }
+            }
+            else {
+                setIsSignUpPath(false)
             }
         } catch (error) {
             console.log(error)
@@ -137,11 +149,11 @@ export const RegisterUserComponent = (props) => {
                       initialValues={initFormValue}
                   >
                       <Register {...props}/>
-                      <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
+                      {/* <Col className={"lg:ml-20"} style={{marginBottom: '2rem'}}>
                           <div className={"flex items-center mt-2"}>
                               <span className={"text-base"}>{props.intl.formatMessage({id: 'str.item.register.step5'})}</span>
                           </div>
-                      </Col>
+                      </Col> */}
                       <FormLabel label={props.intl.formatMessage({id: 'form.item.club.name'})+ ' : ' + clubName} required={true}/>
                       {/* <FormInput
                         label={props.intl.formatMessage({id: 'form.item.club.name'})}

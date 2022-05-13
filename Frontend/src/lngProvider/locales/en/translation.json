@@ -24,7 +24,7 @@
   "message.success.user": "User registration was successful.",
   "message.error.serverSide": "Server connection failed. Please try again.",
   "message.error.userSide": "The registration information is not accurate. Please try again.",
-
+  "message.error.userSignUpLink": "No club name defined. For user registration, please use the link distributed by the club.",
   "str.item.news.first": "About 5% burn(incinerator) and mining",
   "str.item.news.second": "Since the number of new people has increased, we have once again summarized the basic information of Rabbit Coin HBY &#x1f609;",
   "str.item.news.third": "To protect the Rabbit Coin community",
